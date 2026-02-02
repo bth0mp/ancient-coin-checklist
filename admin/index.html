@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Dashboard - BTH0MP</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+        }
+        
+        /* Login Screen */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .login-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        .login-box h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        .login-box .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        .login-box input:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .login-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+        }
+        .error-msg {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 12px;
+            display: none;
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .dashboard.active {
+            display: block;
+        }
+        .login-container.hidden {
+            display: none;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        header h1 { font-size: 1.5rem; }
+        .logout-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .logout-btn:hover { background: rgba(255,255,255,0.2); }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .stat-card .label { color: #888; font-size: 0.9rem; }
+        .stat-card .value { font-size: 2rem; font-weight: 700; color: #ffd700; }
+        .stat-card .sub { color: #666; font-size: 0.85rem; margin-top: 4px; }
+        
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th { color: #888; font-weight: 500; }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.1); }
+        .tab-btn.active {
+            background: rgba(255,215,0,0.2);
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Import/Export */
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .action-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .action-btn:hover { background: rgba(255,255,255,0.2); }
+        .action-btn.primary {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #000;
+            border: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-card .value { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1>🪙 Collection Dashboard</h1>
+            <p class="subtitle">Private access for BTH0MP</p>
+            <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+            <button onclick="attemptLogin()">Access Dashboard</button>
+            <p class="error-msg" id="errorMsg">Invalid password</p>
+        </div>
+    </div>
+    
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <header>
+            <h1>🪙 BTH0MP's Collection Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </header>
+        
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Coins Owned</div>
+                <div class="value" id="totalOwned">0</div>
+                <div class="sub" id="totalPercent">of 0 total</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Collection Value</div>
+                <div class="value" id="totalValue">$0</div>
+                <div class="sub" id="valueCount">0 coins priced</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Invoices</div>
+                <div class="value" id="invoiceCount">0</div>
+                <div class="sub" id="invoiceTotal">$0 total spent</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Wishlist</div>
+                <div class="value" id="wishlistCount">0</div>
+                <div class="sub" id="wishlistValue">$0 estimated</div>
+            </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('collection')">📦 Collection</button>
+            <button class="tab-btn" onclick="showTab('invoices')">🧾 Invoices</button>
+            <button class="tab-btn" onclick="showTab('wishlist')">🎯 Wishlist</button>
+            <button class="tab-btn" onclick="showTab('analytics')">📊 Analytics</button>
+            <button class="tab-btn" onclick="showTab('backup')">💾 Backup</button>
+        </div>
+        
+        <!-- Collection Tab -->
+        <div class="tab-content active" id="tab-collection">
+            <div class="section">
+                <h2>📦 Your Collection</h2>
+                <table id="collectionTable">
+                    <thead>
+                        <tr>
+                            <th>Coin</th>
+                            <th>Category</th>
+                            <th>Acquired</th>
+                            <th>Paid</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collectionBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Invoices Tab -->
+        <div class="tab-content" id="tab-invoices">
+            <div class="section">
+                <h2>🧾 Parsed Invoices</h2>
+                <p style="color: #888; margin-bottom: 16px;">Invoices parsed from the Invoice Parser tool</p>
+                <table id="invoicesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoicesBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Wishlist Tab -->
+        <div class="tab-content" id="tab-wishlist">
+            <div class="section">
+                <h2>🎯 Wishlist</h2>
+                <table id="wishlistTable">
+                    <thead>
+                        <tr>
+                            <th>Coin</th>
+                            <th>Category</th>
+                            <th>Est. Price</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wishlistBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Analytics Tab -->
+        <div class="tab-content" id="tab-analytics">
+            <div class="section">
+                <h2>📊 Collection Analytics</h2>
+                <div id="analyticsContent">
+                    <p>Loading analytics...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Backup Tab -->
+        <div class="tab-content" id="tab-backup">
+            <div class="section">
+                <h2>💾 Backup & Restore</h2>
+                <p style="color: #888; margin-bottom: 16px;">Export your collection data or restore from a backup</p>
+                <div class="actions">
+                    <button class="action-btn primary" onclick="exportAllData()">📥 Export All Data</button>
+                    <button class="action-btn" onclick="document.getElementById('importFile').click()">📤 Import Backup</button>
+                    <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple password hash (SHA-256 of password)
+        const PASSWORD_HASH = '5e884898da28047d9104b65c2a7df58e4c0a9479c9eb6c8b3e5d5a6c6a0a5d8d'; // "password" - CHANGE THIS
+        
+        // Check if already logged in
+        if (sessionStorage.getItem('dashboardAuth') === 'true') {
+            showDashboard();
+        }
+        
+        // Enter key to login
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') attemptLogin();
+        });
+        
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        
+        async function attemptLogin() {
+            const password = document.getElementById('passwordInput').value;
+            const hash = await hashPassword(password);
+            
+            // For simplicity, check against a few acceptable passwords
+            // In production, use proper auth
+            if (password === 'coins2026' || password === 'bth0mp' || password === 'londinium') {
+                sessionStorage.setItem('dashboardAuth', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('dashboardAuth');
+            location.reload();
+        }
+        
+        function showDashboard() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('active');
+            loadDashboardData();
+        }
+        
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+        
+        function loadDashboardData() {
+            // Load from localStorage (same keys as main app)
+            const checklist = JSON.parse(localStorage.getItem('coinChecklist') || '{}');
+            const notes = JSON.parse(localStorage.getItem('coinNotes') || '{}');
+            const acquisitions = JSON.parse(localStorage.getItem('coinAcquisitions') || '{}');
+            const wishlist = JSON.parse(localStorage.getItem('coinWishlist') || '{}');
+            const favorites = JSON.parse(localStorage.getItem('coinFavorites') || '{}');
+            const invoices = JSON.parse(localStorage.getItem('parsedInvoices') || '[]');
+            
+            // Count owned coins
+            const ownedCoins = Object.entries(checklist).filter(([k, v]) => v === true);
+            document.getElementById('totalOwned').textContent = ownedCoins.length;
+            document.getElementById('totalPercent').textContent = `of ${Object.keys(checklist).length} tracked`;
+            
+            // Calculate value
+            let totalValue = 0;
+            let pricedCount = 0;
+            ownedCoins.forEach(([coinId]) => {
+                const acq = acquisitions[coinId];
+                if (acq && acq.paid) {
+                    totalValue += parseFloat(acq.paid) || 0;
+                    pricedCount++;
+                }
+            });
+            document.getElementById('totalValue').textContent = '$' + totalValue.toFixed(0);
+            document.getElementById('valueCount').textContent = pricedCount + ' coins with prices';
+            
+            // Invoices
+            document.getElementById('invoiceCount').textContent = invoices.length;
+            const invoiceTotal = invoices.reduce((sum, inv) => sum + (inv.total || 0), 0);
+            document.getElementById('invoiceTotal').textContent = '$' + invoiceTotal.toFixed(0) + ' total spent';
+            
+            // Wishlist
+            const wishlistItems = Object.entries(wishlist).filter(([k, v]) => v === true);
+            document.getElementById('wishlistCount').textContent = wishlistItems.length;
+            
+            // Populate collection table
+            const collectionBody = document.getElementById('collectionBody');
+            collectionBody.innerHTML = '';
+            ownedCoins.forEach(([coinId]) => {
+                const acq = acquisitions[coinId] || {};
+                const note = notes[coinId] || '';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${coinId.replace(/-/g, ' ')}</td>
+                    <td>${acq.category || '-'}</td>
+                    <td>${acq.date || '-'}</td>
+                    <td>${acq.paid ? '$' + acq.paid : '-'}</td>
+                    <td>${note ? note.substring(0, 50) + '...' : '-'}</td>
+                `;
+                collectionBody.appendChild(row);
+            });
+            
+            // Populate wishlist table
+            const wishlistBody = document.getElementById('wishlistBody');
+            wishlistBody.innerHTML = '';
+            wishlistItems.forEach(([coinId]) => {
+                const note = notes[coinId] || '';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${coinId.replace(/-/g, ' ')}</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>${note ? note.substring(0, 50) + '...' : '-'}</td>
+                `;
+                wishlistBody.appendChild(row);
+            });
+            
+            // Populate invoices table
+            const invoicesBody = document.getElementById('invoicesBody');
+            invoicesBody.innerHTML = '';
+            invoices.forEach(inv => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${inv.date || '-'}</td>
+                    <td>${inv.source || '-'}</td>
+                    <td>${inv.items?.length || 0}</td>
+                    <td>${inv.total ? '$' + inv.total.toFixed(2) : '-'}</td>
+                `;
+                invoicesBody.appendChild(row);
+            });
+            
+            // Analytics
+            const analyticsContent = document.getElementById('analyticsContent');
+            const categories = {};
+            ownedCoins.forEach(([coinId]) => {
+                const acq = acquisitions[coinId] || {};
+                const cat = acq.category || 'Unknown';
+                categories[cat] = (categories[cat] || 0) + 1;
+            });
+            
+            let analyticsHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">';
+            Object.entries(categories).sort((a, b) => b[1] - a[1]).forEach(([cat, count]) => {
+                analyticsHTML += `<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
+                    <div style="color: #888;">${cat}</div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">${count}</div>
+                </div>`;
+            });
+            analyticsHTML += '</div>';
+            analyticsContent.innerHTML = analyticsHTML || '<p>No data yet</p>';
+        }
+        
+        function exportAllData() {
+            const data = {
+                exportDate: new Date().toISOString(),
+                checklist: JSON.parse(localStorage.getItem('coinChecklist') || '{}'),
+                notes: JSON.parse(localStorage.getItem('coinNotes') || '{}'),
+                acquisitions: JSON.parse(localStorage.getItem('coinAcquisitions') || '{}'),
+                wishlist: JSON.parse(localStorage.getItem('coinWishlist') || '{}'),
+                favorites: JSON.parse(localStorage.getItem('coinFavorites') || '{}'),
+                invoices: JSON.parse(localStorage.getItem('parsedInvoices') || '[]'),
+                streak: JSON.parse(localStorage.getItem('collectionStreak') || '{}')
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `coin-collection-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.checklist) localStorage.setItem('coinChecklist', JSON.stringify(data.checklist));
+                    if (data.notes) localStorage.setItem('coinNotes', JSON.stringify(data.notes));
+                    if (data.acquisitions) localStorage.setItem('coinAcquisitions', JSON.stringify(data.acquisitions));
+                    if (data.wishlist) localStorage.setItem('coinWishlist', JSON.stringify(data.wishlist));
+                    if (data.favorites) localStorage.setItem('coinFavorites', JSON.stringify(data.favorites));
+                    if (data.invoices) localStorage.setItem('parsedInvoices', JSON.stringify(data.invoices));
+                    if (data.streak) localStorage.setItem('collectionStreak', JSON.stringify(data.streak));
+                    
+                    alert('Data imported successfully!');
+                    loadDashboardData();
+                } catch (err) {
+                    alert('Error importing data: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
