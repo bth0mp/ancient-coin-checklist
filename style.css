@@ -5392,6 +5392,15 @@ body.light-theme .ref-num {
     box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
 }
 
+/* Imaged filter mode (` key) - show only coins with images */
+.imaged-filter .coin-item:has(.coin-img-placeholder) {
+    display: none;
+}
+.imaged-filter .coin-item:not(:has(.coin-img-placeholder)) {
+    border-left: 3px solid #06b6d4;
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
 /* Undo highlight (Z key) - flash when restoring coin state */
 .highlight-undo {
     animation: undo-flash 1.5s ease-out;

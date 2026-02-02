@@ -1636,6 +1636,12 @@ function handleKeyboardShortcuts(e) {
         return;
     }
     
+    // ` (backtick) - Toggle images filter (show only coins with images)
+    if (e.key === '`') {
+        toggleImagesFilter();
+        return;
+    }
+    
     // Escape - Clear search
     if (e.key === 'Escape') {
         const searchBox = document.getElementById('search-box');
@@ -2154,6 +2160,25 @@ function togglePricedFilter() {
     }
 }
 
+// Toggle imaged filter mode (` key) - show only coins with images
+function toggleImagesFilter() {
+    document.body.classList.toggle('imaged-filter');
+    const isActive = document.body.classList.contains('imaged-filter');
+    // Count coins that have actual images (not placeholders)
+    const imagedCount = document.querySelectorAll('.coin-item .coin-img:not([style*="display: none"])').length;
+    
+    if (isActive) {
+        if (imagedCount === 0) {
+            showToast('📷 No coins have images yet', 'warning');
+            document.body.classList.remove('imaged-filter');
+            return;
+        }
+        showToast(`📷 Images Filter ON\nShowing ${imagedCount} coins with photos`, 'info');
+    } else {
+        showToast('📷 Images Filter OFF\nAll coins visible', 'info');
+    }
+}
+
 // Go back to previous tab (B key)
 function goBackTab() {
     if (tabHistory.length <= 1) {
@@ -2267,7 +2292,7 @@ function toggleOwnedFilter() {
 
 // Clear all filter modes (L key)
 function clearAllFilters() {
-    const filters = ['focus-mode', 'favorites-filter', 'wishlist-filter', 'owned-filter', 'priced-filter'];
+    const filters = ['focus-mode', 'favorites-filter', 'wishlist-filter', 'owned-filter', 'priced-filter', 'imaged-filter'];
     let hadActive = false;
     
     filters.forEach(filter => {
@@ -2559,6 +2584,7 @@ function showKeyboardHelp() {
                     <div class="shortcut"><kbd>O</kbd> <span>Owned</span></div>
                     <div class="shortcut"><kbd>W</kbd> <span>Wishlist</span></div>
                     <div class="shortcut"><kbd>Q</kbd> <span>Priced coins</span></div>
+                    <div class="shortcut"><kbd>\`</kbd> <span>Has image</span></div>
                     <div class="shortcut"><kbd>L</kbd> <span>Clear all</span></div>
                 </div>
                 <div class="shortcut-category">
