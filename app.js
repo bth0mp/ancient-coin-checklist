@@ -1,4 +1,13 @@
-// Ancient Coin Checklist - App v4.1 - Collection Tracking
+// Ancient Coin Checklist - App v4.2 - Collection Tracking
+
+// Undo tracking - stores last checkbox toggle for Z key undo
+let lastToggledCoin = null;
+
+// Session activity counter
+let sessionChanges = 0;
+
+// Track current position for sequential hunting with N key
+let lastUncollectedIndex = -1;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Register service worker for offline capability
@@ -112,6 +121,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up event listeners for checkboxes
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
+            // Track for undo (Z key) - store coin id and previous state
+            const coinId = this.getAttribute('data-coin');
+            if (coinId) {
+                lastToggledCoin = {
+                    coinId: coinId,
+                    wasChecked: !this.checked  // Store the state BEFORE this change
+                };
+            }
+            
+            // Track session activity
+            sessionChanges++;
+            
             saveCheckboxStates();
             updateProgress();
             updateGlobalStats();
@@ -358,7 +379,209 @@ function toggleWishlist(coinId) {
         
         saveWishlist();
         updateGlobalStats();
+        renderWishlistCoins(); // Update wishlist view
     }
+}
+
+// ========== Wishlist Tab Rendering ==========
+
+function renderWishlistCoins() {
+    const container = document.getElementById('wishlist-coins-list');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    // Get all wishlisted coins
+    const wishlistButtons = document.querySelectorAll('.wishlist-btn.active');
+    const wishlistCoins = [];
+    
+    // Category mapping for grouping
+    const categoryMap = {
+        'greek': { name: '🏛️ Greek World', order: 1 },
+        'lydia': { name: '🏛️ Greek World', order: 1 },
+        'athens': { name: '🦉 Athens Owls', order: 2 },
+        'owl': { name: '🦉 Athens Owls', order: 2 },
+        'rr': { name: '🗡️ Roman Republic', order: 3 },
+        'roman-republic': { name: '🗡️ Roman Republic', order: 3 },
+        'londinium': { name: '🏰 Londinium Mint', order: 4 },
+        'london': { name: '🏰 Londinium Mint', order: 4 },
+        'carausius': { name: '🏰 Londinium Mint', order: 4 },
+        'marc-antony': { name: '⚔️ Marc Antony Legionary', order: 5 },
+        'legionary': { name: '⚔️ Marc Antony Legionary', order: 5 },
+        'bactrian': { name: '🐘 Bactrian Kings', order: 6 },
+        'byzantine': { name: '☦️ Byzantine Empire', order: 7 },
+        'celtic': { name: '🌀 Celtic Britain', order: 8 },
+        'parthian': { name: '🏹 Parthian Empire', order: 9 },
+        'sasanian': { name: '🔥 Sasanian Empire', order: 10 },
+        'ptolemaic': { name: '🦅 Ptolemaic Egypt', order: 11 },
+        'seleucid': { name: '🐘 Seleucid Empire', order: 12 },
+        'judaea': { name: '✡️ Judaean', order: 13 }
+    };
+    
+    const rarityOrder = { 'special': 5, 'very-rare': 4, 'rare': 3, 'scarce': 2, 'common': 1, 'unknown': 0 };
+    
+    wishlistButtons.forEach(btn => {
+        const coinId = btn.getAttribute('data-coin');
+        const coinItem = btn.closest('.coin-item');
+        const coinName = coinItem?.getAttribute('data-name') || coinId;
+        const rarity = coinItem?.getAttribute('data-rarity') || 'unknown';
+        const coinImg = coinItem?.querySelector('.coin-img');
+        const imgSrc = coinImg?.src || '';
+        
+        // Determine category from coin ID
+        let category = { name: '📦 Other', order: 99 };
+        for (const [prefix, cat] of Object.entries(categoryMap)) {
+            if (coinId.toLowerCase().startsWith(prefix)) {
+                category = cat;
+                break;
+            }
+        }
+        
+        wishlistCoins.push({
+            id: coinId,
+            name: coinName,
+            rarity: rarity,
+            rarityOrder: rarityOrder[rarity] || 0,
+            imgSrc: imgSrc,
+            category: category.name,
+            categoryOrder: category.order
+        });
+    });
+    
+    // Update count badge
+    const countBadge = document.getElementById('wishlist-tab-count');
+    if (countBadge) countBadge.textContent = wishlistCoins.length;
+    
+    if (wishlistCoins.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">🎯</div>
+                <h4>Your wishlist is empty</h4>
+                <p class="empty-hint">Browse the checklist and click the 🎯 button on coins you want to acquire.</p>
+                <p class="empty-tip">Tip: Wishlisted coins appear with a blue highlight in the checklist!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Get current sort preference
+    const sortSelect = document.getElementById('wishlist-sort');
+    const sortBy = sortSelect?.value || 'name';
+    
+    // Sort based on preference
+    switch (sortBy) {
+        case 'name':
+            wishlistCoins.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'name-desc':
+            wishlistCoins.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+        case 'rarity':
+            wishlistCoins.sort((a, b) => b.rarityOrder - a.rarityOrder || a.name.localeCompare(b.name));
+            break;
+        case 'category':
+            wishlistCoins.sort((a, b) => a.categoryOrder - b.categoryOrder || a.name.localeCompare(b.name));
+            break;
+    }
+    
+    // Render coins
+    if (sortBy === 'category') {
+        // Group by category
+        const groups = {};
+        wishlistCoins.forEach(coin => {
+            if (!groups[coin.category]) groups[coin.category] = [];
+            groups[coin.category].push(coin);
+        });
+        
+        Object.entries(groups)
+            .sort((a, b) => {
+                const orderA = wishlistCoins.find(c => c.category === a[0])?.categoryOrder || 99;
+                const orderB = wishlistCoins.find(c => c.category === b[0])?.categoryOrder || 99;
+                return orderA - orderB;
+            })
+            .forEach(([category, coins]) => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'wishlist-group';
+                groupDiv.innerHTML = `<h4 class="wishlist-group-title">${category} <span class="wishlist-group-count">(${coins.length})</span></h4>`;
+                
+                const listDiv = document.createElement('div');
+                listDiv.className = 'wishlist-group-items';
+                coins.forEach(coin => listDiv.appendChild(createWishlistCoinCard(coin)));
+                
+                groupDiv.appendChild(listDiv);
+                container.appendChild(groupDiv);
+            });
+    } else {
+        // Flat list
+        wishlistCoins.forEach(coin => container.appendChild(createWishlistCoinCard(coin)));
+    }
+    
+    // Set up sort change handler
+    if (sortSelect && !sortSelect.hasAttribute('data-listener')) {
+        sortSelect.setAttribute('data-listener', 'true');
+        sortSelect.addEventListener('change', renderWishlistCoins);
+    }
+    
+    // Set up "Search All" button
+    const searchAllBtn = document.getElementById('wishlist-search-all');
+    if (searchAllBtn && !searchAllBtn.hasAttribute('data-listener')) {
+        searchAllBtn.setAttribute('data-listener', 'true');
+        searchAllBtn.addEventListener('click', () => {
+            const terms = wishlistCoins.slice(0, 5).map(c => c.name).join(' OR ');
+            const url = `https://www.acsearch.info/search.html?term=${encodeURIComponent(terms)}`;
+            window.open(url, '_blank');
+        });
+    }
+}
+
+function createWishlistCoinCard(coin) {
+    const card = document.createElement('div');
+    card.className = `wishlist-coin-card rarity-${coin.rarity}`;
+    
+    const rarityLabel = {
+        'common': 'Common',
+        'scarce': 'Scarce',
+        'rare': '⭐ Rare',
+        'very-rare': '💎 Very Rare',
+        'special': '🌟 Special'
+    }[coin.rarity] || coin.rarity;
+    
+    // Create search-friendly name for auction sites
+    const searchName = coin.name.replace(/[^\w\s]/g, '').substring(0, 50);
+    
+    card.innerHTML = `
+        <div class="wishlist-coin-img">
+            ${coin.imgSrc ? `<img src="${coin.imgSrc}" alt="${coin.name}" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">` : '<span class="coin-img-placeholder">🪙</span>'}
+        </div>
+        <div class="wishlist-coin-info">
+            <h5 class="wishlist-coin-name">${coin.name}</h5>
+            <div class="wishlist-coin-meta">
+                <span class="wishlist-coin-rarity">${rarityLabel}</span>
+                <span class="wishlist-coin-category">${coin.category}</span>
+            </div>
+        </div>
+        <div class="wishlist-coin-actions">
+            <a href="https://www.acsearch.info/search.html?term=${encodeURIComponent(searchName)}" 
+               target="_blank" class="wishlist-action-btn" title="Search on ACSearch">
+                🔍
+            </a>
+            <a href="https://www.vcoins.com/en/Search.aspx?search=${encodeURIComponent(searchName)}" 
+               target="_blank" class="wishlist-action-btn" title="Search on VCoins">
+                🛒
+            </a>
+            <button class="wishlist-action-btn wishlist-remove-btn" 
+                    data-coin="${coin.id}" title="Remove from wishlist">
+                ✕
+            </button>
+        </div>
+    `;
+    
+    // Set up remove button
+    const removeBtn = card.querySelector('.wishlist-remove-btn');
+    removeBtn.addEventListener('click', () => {
+        toggleWishlist(coin.id);
+    });
+    
+    return card;
 }
 
 // ========== Save Indicator ==========
@@ -1383,6 +1606,36 @@ function handleKeyboardShortcuts(e) {
         return;
     }
     
+    // Y - Jump to random owned coin (admire your collection)
+    if (e.key === 'y' || e.key === 'Y') {
+        showRandomOwned();
+        return;
+    }
+    
+    // N - Jump to next uncollected coin (sequential hunting)
+    if (e.key === 'n' || e.key === 'N') {
+        jumpToNextUncollected();
+        return;
+    }
+    
+    // K - Quick category breakdown (completion per category)
+    if (e.key === 'k' || e.key === 'K') {
+        showCategoryBreakdown();
+        return;
+    }
+    
+    // Z - Undo last checkbox toggle
+    if (e.key === 'z' || e.key === 'Z') {
+        undoLastToggle();
+        return;
+    }
+    
+    // Q - Toggle priced filter (show only coins with price estimates)
+    if (e.key === 'q' || e.key === 'Q') {
+        togglePricedFilter();
+        return;
+    }
+    
     // Escape - Clear search
     if (e.key === 'Escape') {
         const searchBox = document.getElementById('search-box');
@@ -1455,6 +1708,10 @@ function showQuickStats() {
     const wishlist = document.querySelectorAll('.wishlist-btn.active').length;
     const days = getCollectingDays();
     
+    // Count coins with notes
+    const notesData = JSON.parse(localStorage.getItem('coinNotes') || '{}');
+    const notesCount = Object.values(notesData).filter(n => n && n.trim()).length;
+    
     // Count by rarity
     let rare = 0, veryRare = 0, extremelyRare = 0;
     document.querySelectorAll('.coin-item input:checked').forEach(cb => {
@@ -1467,14 +1724,17 @@ function showQuickStats() {
     
     const daysText = days === 0 ? 'Started today!' : days === 1 ? '1 day' : `${days} days`;
     const achievements = getAchievements();
+    const sessionText = sessionChanges === 0 ? 'No changes yet' : sessionChanges === 1 ? '1 change' : `${sessionChanges} changes`;
     
     const statsMsg = `📊 Collection Stats
 ━━━━━━━━━━━━━━━━
 🪙 ${owned}/${total} coins (${pct}%)
 ⭐ ${favorites} favorites
 🎯 ${wishlist} wishlist
+📝 ${notesCount} annotated
 📅 Collecting: ${daysText}
 🏅 Achievements: ${achievements.length}
+⚡ This session: ${sessionText}
 
 💎 Rare: ${rare}
 💠 Very Rare: ${veryRare}
@@ -1713,6 +1973,187 @@ function showRandomUncollected() {
     showToast(`🎯 Hunt suggestion:\n${rarityEmoji}${coinName.substring(0, 40)}`, 'info');
 }
 
+// Show a random owned coin (Y key) - admire your collection
+function showRandomOwned() {
+    // Get all owned coins
+    const owned = Array.from(document.querySelectorAll('.coin-item'))
+        .filter(item => item.querySelector('input[type="checkbox"]')?.checked);
+    
+    if (owned.length === 0) {
+        showToast('🪙 No coins collected yet!\nStart building your collection!', 'info');
+        return;
+    }
+    
+    // Pick a random one
+    const randomCoin = owned[Math.floor(Math.random() * owned.length)];
+    const coinName = randomCoin.getAttribute('data-name') || 
+                     randomCoin.querySelector('.coin-name')?.textContent?.trim() || 
+                     'Unknown coin';
+    
+    // Find which section it's in
+    const section = randomCoin.closest('.collection-section');
+    const sectionId = section?.id;
+    
+    // Switch to that tab if needed
+    if (sectionId && window.switchToTab) {
+        window.switchToTab(sectionId);
+    }
+    
+    // Scroll to and highlight the coin
+    setTimeout(() => {
+        randomCoin.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        randomCoin.classList.add('highlight-pulse');
+        setTimeout(() => randomCoin.classList.remove('highlight-pulse'), 2000);
+    }, 100);
+    
+    // Show toast with coin name
+    const rarity = randomCoin.getAttribute('data-rarity') || '';
+    const rarityEmoji = rarity === 'rare' ? '💎 ' : rarity === 'very-rare' ? '👑 ' : '';
+    showToast(`✨ From your collection:\n${rarityEmoji}${coinName.substring(0, 40)}`, 'success');
+}
+
+// Jump to next uncollected coin (N key) - sequential hunting
+function jumpToNextUncollected() {
+    // Get all uncollected coins
+    const uncollected = Array.from(document.querySelectorAll('.coin-item'))
+        .filter(item => !item.querySelector('input[type="checkbox"]')?.checked);
+    
+    if (uncollected.length === 0) {
+        showToast('🎉 Amazing! You\'ve collected everything!', 'success');
+        lastUncollectedIndex = -1;
+        return;
+    }
+    
+    // Move to next, wrapping around
+    lastUncollectedIndex = (lastUncollectedIndex + 1) % uncollected.length;
+    const nextCoin = uncollected[lastUncollectedIndex];
+    
+    const coinName = nextCoin.getAttribute('data-name') || 
+                     nextCoin.querySelector('.coin-name')?.textContent?.trim() || 
+                     'Unknown coin';
+    
+    // Find which section it's in and switch to that tab
+    const section = nextCoin.closest('.collection-section');
+    const sectionId = section?.id;
+    
+    if (sectionId && window.switchToTab) {
+        window.switchToTab(sectionId);
+    }
+    
+    // Scroll to and highlight the coin
+    setTimeout(() => {
+        nextCoin.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        nextCoin.classList.add('highlight-pulse');
+        setTimeout(() => nextCoin.classList.remove('highlight-pulse'), 2000);
+    }, 100);
+    
+    // Show toast with position
+    showToast(`➡️ Next (${lastUncollectedIndex + 1}/${uncollected.length}):\n${coinName.substring(0, 35)}...`, 'info');
+}
+
+// Show category breakdown (K key) - quick completion overview per category
+function showCategoryBreakdown() {
+    const categories = [];
+    document.querySelectorAll('.collection-section').forEach(section => {
+        const id = section.id;
+        if (id === 'home' || id === 'my-collection' || id === 'resources') return;
+        
+        const coins = section.querySelectorAll('.coin-item');
+        const total = coins.length;
+        if (total === 0) return;
+        
+        const owned = Array.from(coins).filter(c => c.querySelector('input:checked')).length;
+        const pct = Math.round((owned / total) * 100);
+        
+        // Get section name from tab button
+        const tabBtn = document.querySelector(`.tab-btn[data-tab="${id}"]`);
+        const name = tabBtn ? tabBtn.textContent.trim().replace(/\s*\d+$/, '') : id;
+        
+        categories.push({ name, owned, total, pct });
+    });
+    
+    // Sort by completion percentage (highest first)
+    categories.sort((a, b) => b.pct - a.pct);
+    
+    // Build compact display - top 8 categories
+    const top8 = categories.slice(0, 8);
+    const lines = top8.map(c => {
+        const bar = c.pct === 100 ? '✅' : c.pct >= 50 ? '🟡' : c.pct > 0 ? '🔵' : '⬜';
+        return `${bar} ${c.name}: ${c.owned}/${c.total} (${c.pct}%)`;
+    });
+    
+    const complete = categories.filter(c => c.pct === 100).length;
+    const started = categories.filter(c => c.pct > 0).length;
+    
+    const msg = `📊 Category Breakdown
+────────────────
+${lines.join('\n')}
+${categories.length > 8 ? `...+${categories.length - 8} more` : ''}
+────────────────
+✅ Complete: ${complete}/${categories.length}
+🎯 Started: ${started}/${categories.length}`;
+    
+    showToast(msg, 'info');
+}
+
+// Undo last checkbox toggle (Z key)
+function undoLastToggle() {
+    if (!lastToggledCoin) {
+        showToast('⏮️ Nothing to undo', 'info');
+        return;
+    }
+    
+    const checkbox = document.querySelector(`input[data-coin="${lastToggledCoin.coinId}"]`);
+    if (!checkbox) {
+        showToast('❌ Coin not found', 'error');
+        lastToggledCoin = null;
+        return;
+    }
+    
+    // Restore previous state
+    checkbox.checked = lastToggledCoin.wasChecked;
+    
+    // Update storage and UI without triggering another undo track
+    saveCheckboxStates();
+    updateProgress();
+    updateGlobalStats();
+    
+    // Get coin name for feedback
+    const coinItem = checkbox.closest('.coin-item');
+    const coinName = coinItem?.querySelector('.coin-name')?.textContent || lastToggledCoin.coinId;
+    const action = lastToggledCoin.wasChecked ? 're-checked' : 'unchecked';
+    
+    showToast(`⏮️ Undo: ${coinName} ${action}`, 'success');
+    
+    // Scroll to the coin
+    if (coinItem) {
+        coinItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        coinItem.classList.add('highlight-undo');
+        setTimeout(() => coinItem.classList.remove('highlight-undo'), 1500);
+    }
+    
+    // Clear undo buffer (only one level of undo)
+    lastToggledCoin = null;
+}
+
+// Toggle priced filter mode (Q key) - show only coins with price estimates
+function togglePricedFilter() {
+    document.body.classList.toggle('priced-filter');
+    const isActive = document.body.classList.contains('priced-filter');
+    const pricedCount = document.querySelectorAll('.coin-item[data-price-low]').length;
+    
+    if (isActive) {
+        if (pricedCount === 0) {
+            showToast('💲 No coins have price estimates yet', 'warning');
+            document.body.classList.remove('priced-filter');
+            return;
+        }
+        showToast(`💲 Priced Filter ON\nShowing ${pricedCount} coins with estimates`, 'info');
+    } else {
+        showToast('💲 Priced Filter OFF\nAll coins visible', 'info');
+    }
+}
+
 // Go back to previous tab (B key)
 function goBackTab() {
     if (tabHistory.length <= 1) {
@@ -1826,7 +2267,7 @@ function toggleOwnedFilter() {
 
 // Clear all filter modes (L key)
 function clearAllFilters() {
-    const filters = ['focus-mode', 'favorites-filter', 'wishlist-filter', 'owned-filter'];
+    const filters = ['focus-mode', 'favorites-filter', 'wishlist-filter', 'owned-filter', 'priced-filter'];
     let hadActive = false;
     
     filters.forEach(filter => {
@@ -2105,7 +2546,9 @@ function showKeyboardHelp() {
                     <h4>🔍 Discovery</h4>
                     <div class="shortcut"><kbd>R</kbd> <span>Random coin</span></div>
                     <div class="shortcut"><kbd>U</kbd> <span>Random uncollected</span></div>
+                    <div class="shortcut"><kbd>Y</kbd> <span>Random owned</span></div>
                     <div class="shortcut"><kbd>J</kbd> <span>First uncollected</span></div>
+                    <div class="shortcut"><kbd>N</kbd> <span>Next uncollected</span></div>
                     <div class="shortcut"><kbd>/</kbd> <span>Focus search</span></div>
                     <div class="shortcut-tip">💡 Search also searches your notes! 📝 = matched via notes</div>
                 </div>
@@ -2115,12 +2558,14 @@ function showKeyboardHelp() {
                     <div class="shortcut"><kbd>G</kbd> <span>Favorites</span></div>
                     <div class="shortcut"><kbd>O</kbd> <span>Owned</span></div>
                     <div class="shortcut"><kbd>W</kbd> <span>Wishlist</span></div>
+                    <div class="shortcut"><kbd>Q</kbd> <span>Priced coins</span></div>
                     <div class="shortcut"><kbd>L</kbd> <span>Clear all</span></div>
                 </div>
                 <div class="shortcut-category">
                     <h4>📊 Information</h4>
                     <div class="shortcut"><kbd>S</kbd> <span>Quick stats</span></div>
                     <div class="shortcut"><kbd>I</kbd> <span>Insights</span></div>
+                    <div class="shortcut"><kbd>K</kbd> <span>Category breakdown</span></div>
                     <div class="shortcut"><kbd>A</kbd> <span>Achievements</span></div>
                     <div class="shortcut"><kbd>D</kbd> <span>Date timeline</span></div>
                     <div class="shortcut"><kbd>C</kbd> <span>Copy & share</span></div>
@@ -2130,6 +2575,7 @@ function showKeyboardHelp() {
                     <h4>🔧 Tools</h4>
                     <div class="shortcut"><kbd>T</kbd> <span>Toggle theme</span></div>
                     <div class="shortcut"><kbd>X</kbd> <span>Hide images</span></div>
+                    <div class="shortcut"><kbd>Z</kbd> <span>Undo last toggle</span></div>
                     <div class="shortcut"><kbd>P</kbd> <span>Print view</span></div>
                     <div class="shortcut"><kbd>E</kbd> <span>Export</span></div>
                     <div class="shortcut"><kbd>Esc</kbd> <span>Close/Reset</span></div>
@@ -2935,6 +3381,9 @@ async function loadMyCollection() {
         const response = await fetch('my-collection.json');
         if (!response.ok) {
             console.log('my-collection.json not found');
+            // Still render wishlist even without collection data
+            renderWishlistCoins();
+            initSubTabs();
             return;
         }
         
@@ -2944,11 +3393,15 @@ async function loadMyCollection() {
         renderCollectionSummary(data.summary);
         renderIdentifiedCoins(data.invoices);
         renderUnidentifiedCoins(data.invoices);
+        renderWishlistCoins();
         renderInvoicesNew(data.invoices);
         updateOverviewBreakdown(data.invoices, data.summary);
         initSubTabs();
     } catch (err) {
         console.error('Error loading collection:', err);
+        // Still render wishlist even on error
+        renderWishlistCoins();
+        initSubTabs();
     }
 }
 
@@ -2989,6 +3442,272 @@ function switchSubTab(subtab) {
 
 // Make switchSubTab globally accessible for onclick handlers
 window.switchSubTab = switchSubTab;
+
+// ========== Portfolio Analysis ==========
+
+function renderPortfolio() {
+    renderTopValueCoins();
+    renderCategoryBreakdown();
+    renderROIAnalysis();
+}
+
+function renderTopValueCoins() {
+    const container = document.getElementById('portfolio-top-coins');
+    if (!container) return;
+    
+    // Get all owned coins with price estimates
+    const valuedCoins = [];
+    document.querySelectorAll('.coin-item input:checked').forEach(cb => {
+        const item = cb.closest('.coin-item');
+        if (!item) return;
+        
+        const priceLow = parseFloat(item.getAttribute('data-price-low'));
+        const priceHigh = parseFloat(item.getAttribute('data-price-high'));
+        
+        if (!isNaN(priceLow) && !isNaN(priceHigh)) {
+            const section = item.closest('.tab-content');
+            const tabBtn = section ? document.querySelector(`.tab-btn[data-tab="${section.id}"]`) : null;
+            const category = tabBtn ? tabBtn.textContent.trim() : 'Unknown';
+            
+            valuedCoins.push({
+                name: item.getAttribute('data-name') || item.querySelector('.coin-name')?.textContent || 'Unknown',
+                coinId: cb.getAttribute('data-coin'),
+                priceLow,
+                priceHigh,
+                priceMid: Math.round((priceLow + priceHigh) / 2),
+                category,
+                rarity: item.getAttribute('data-rarity') || 'common'
+            });
+        }
+    });
+    
+    if (valuedCoins.length === 0) {
+        container.innerHTML = `
+            <div class="portfolio-empty">
+                <p>📭 No price data available for your owned coins yet.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    Price estimates are added to coins over time based on recent auction results.
+                </p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Sort by mid-point value (highest first)
+    valuedCoins.sort((a, b) => b.priceMid - a.priceMid);
+    const top10 = valuedCoins.slice(0, 10);
+    
+    const rarityEmoji = {
+        'common': '',
+        'scarce': '⭐',
+        'rare': '⭐⭐',
+        'very-rare': '💎',
+        'extremely-rare': '👑'
+    };
+    
+    container.innerHTML = top10.map((coin, i) => `
+        <div class="portfolio-coin-row ${i < 3 ? 'top-three' : ''}">
+            <span class="portfolio-rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i + 1)}</span>
+            <div class="portfolio-coin-info">
+                <span class="portfolio-coin-name">${coin.name}</span>
+                <span class="portfolio-coin-meta">${coin.category} ${rarityEmoji[coin.rarity] || ''}</span>
+            </div>
+            <div class="portfolio-coin-value">
+                <span class="portfolio-value-mid">$${coin.priceMid.toLocaleString()}</span>
+                <span class="portfolio-value-range">$${coin.priceLow.toLocaleString()} - $${coin.priceHigh.toLocaleString()}</span>
+            </div>
+        </div>
+    `).join('') + `
+        <div class="portfolio-summary">
+            <strong>Top 10 total:</strong> $${top10.reduce((sum, c) => sum + c.priceMid, 0).toLocaleString()} estimated
+            <br><span style="font-size: 0.85rem; color: var(--text-muted);">${valuedCoins.length} coins have price data</span>
+        </div>
+    `;
+}
+
+function renderCategoryBreakdown() {
+    const container = document.getElementById('portfolio-category-breakdown');
+    if (!container) return;
+    
+    // Calculate value by category
+    const categoryValues = {};
+    let totalValue = 0;
+    
+    document.querySelectorAll('.coin-item input:checked').forEach(cb => {
+        const item = cb.closest('.coin-item');
+        if (!item) return;
+        
+        const priceLow = parseFloat(item.getAttribute('data-price-low'));
+        const priceHigh = parseFloat(item.getAttribute('data-price-high'));
+        
+        if (!isNaN(priceLow) && !isNaN(priceHigh)) {
+            const mid = Math.round((priceLow + priceHigh) / 2);
+            const section = item.closest('.tab-content');
+            const tabBtn = section ? document.querySelector(`.tab-btn[data-tab="${section.id}"]`) : null;
+            const category = tabBtn ? tabBtn.textContent.trim() : 'Other';
+            
+            if (!categoryValues[category]) {
+                categoryValues[category] = { value: 0, count: 0 };
+            }
+            categoryValues[category].value += mid;
+            categoryValues[category].count++;
+            totalValue += mid;
+        }
+    });
+    
+    if (totalValue === 0) {
+        container.innerHTML = `
+            <div class="portfolio-empty">
+                <p>📭 No value data to analyze yet.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Sort by value descending
+    const sortedCategories = Object.entries(categoryValues)
+        .map(([name, data]) => ({ name, ...data, pct: Math.round(data.value / totalValue * 100) }))
+        .sort((a, b) => b.value - a.value);
+    
+    container.innerHTML = sortedCategories.map(cat => `
+        <div class="category-value-row">
+            <div class="category-value-info">
+                <span class="category-value-name">${cat.name}</span>
+                <span class="category-value-count">${cat.count} coin${cat.count !== 1 ? 's' : ''}</span>
+            </div>
+            <div class="category-value-bar-wrap">
+                <div class="category-value-bar" style="width: ${cat.pct}%"></div>
+            </div>
+            <div class="category-value-amount">
+                <span class="category-value-dollars">$${cat.value.toLocaleString()}</span>
+                <span class="category-value-pct">${cat.pct}%</span>
+            </div>
+        </div>
+    `).join('') + `
+        <div class="portfolio-summary">
+            <strong>Total estimated value:</strong> $${totalValue.toLocaleString()}
+        </div>
+    `;
+}
+
+function renderROIAnalysis() {
+    const container = document.getElementById('portfolio-roi');
+    if (!container) return;
+    
+    // Get acquisition data (purchase prices)
+    const acquisitions = JSON.parse(localStorage.getItem('coinAcquisitions') || '{}');
+    
+    // Find coins with both purchase price and estimate
+    const comparisons = [];
+    
+    document.querySelectorAll('.coin-item input:checked').forEach(cb => {
+        const coinId = cb.getAttribute('data-coin');
+        const item = cb.closest('.coin-item');
+        if (!item || !coinId) return;
+        
+        const acqData = acquisitions[coinId];
+        if (!acqData?.price) return;
+        
+        // Parse purchase price (strip currency symbols, handle various formats)
+        const purchaseStr = acqData.price.replace(/[^0-9.,-]/g, '').replace(',', '');
+        const purchasePrice = parseFloat(purchaseStr);
+        if (isNaN(purchasePrice) || purchasePrice <= 0) return;
+        
+        const priceLow = parseFloat(item.getAttribute('data-price-low'));
+        const priceHigh = parseFloat(item.getAttribute('data-price-high'));
+        if (isNaN(priceLow) || isNaN(priceHigh)) return;
+        
+        const estimateMid = Math.round((priceLow + priceHigh) / 2);
+        const diff = estimateMid - purchasePrice;
+        const pctChange = Math.round((diff / purchasePrice) * 100);
+        
+        comparisons.push({
+            name: item.getAttribute('data-name') || item.querySelector('.coin-name')?.textContent || 'Unknown',
+            coinId,
+            purchasePrice,
+            estimateMid,
+            diff,
+            pctChange,
+            date: acqData.date || 'Unknown'
+        });
+    });
+    
+    if (comparisons.length === 0) {
+        container.innerHTML = `
+            <div class="portfolio-empty">
+                <p>📭 No ROI data available yet.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    To track ROI, add purchase prices in the coin notes modal (📝 button on each coin).
+                    Make sure coins also have price estimates in the checklist data.
+                </p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Calculate totals
+    const totalPaid = comparisons.reduce((sum, c) => sum + c.purchasePrice, 0);
+    const totalEstimate = comparisons.reduce((sum, c) => sum + c.estimateMid, 0);
+    const totalDiff = totalEstimate - totalPaid;
+    const totalPct = Math.round((totalDiff / totalPaid) * 100);
+    
+    // Sort by pct change (best performers first)
+    comparisons.sort((a, b) => b.pctChange - a.pctChange);
+    
+    // Get top 3 gainers and losers
+    const topGainers = comparisons.filter(c => c.pctChange > 0).slice(0, 3);
+    const topLosers = comparisons.filter(c => c.pctChange < 0).slice(-3).reverse();
+    
+    const formatItem = (c, type) => `
+        <div class="roi-item ${type}">
+            <span class="roi-name">${c.name.substring(0, 30)}${c.name.length > 30 ? '...' : ''}</span>
+            <span class="roi-numbers">
+                $${c.purchasePrice.toLocaleString()} → $${c.estimateMid.toLocaleString()}
+            </span>
+            <span class="roi-change ${c.pctChange >= 0 ? 'positive' : 'negative'}">
+                ${c.pctChange >= 0 ? '+' : ''}${c.pctChange}%
+            </span>
+        </div>
+    `;
+    
+    container.innerHTML = `
+        <div class="roi-summary ${totalPct >= 0 ? 'positive' : 'negative'}">
+            <div class="roi-summary-main">
+                <span class="roi-summary-label">Overall Portfolio ROI</span>
+                <span class="roi-summary-value">${totalPct >= 0 ? '+' : ''}${totalPct}%</span>
+            </div>
+            <div class="roi-summary-detail">
+                Paid: $${totalPaid.toLocaleString()} → Est: $${totalEstimate.toLocaleString()}
+                (${totalPct >= 0 ? '+' : ''}$${totalDiff.toLocaleString()})
+            </div>
+            <div class="roi-summary-count">${comparisons.length} coin${comparisons.length !== 1 ? 's' : ''} with complete data</div>
+        </div>
+        
+        ${topGainers.length > 0 ? `
+            <div class="roi-section">
+                <h5>📈 Top Performers</h5>
+                ${topGainers.map(c => formatItem(c, 'gainer')).join('')}
+            </div>
+        ` : ''}
+        
+        ${topLosers.length > 0 ? `
+            <div class="roi-section">
+                <h5>📉 Below Estimate</h5>
+                ${topLosers.map(c => formatItem(c, 'loser')).join('')}
+            </div>
+        ` : ''}
+    `;
+}
+
+// Initialize portfolio when sub-tab is clicked
+document.addEventListener('DOMContentLoaded', () => {
+    const portfolioBtn = document.querySelector('.sub-tab-btn[data-subtab="portfolio"]');
+    if (portfolioBtn) {
+        portfolioBtn.addEventListener('click', () => {
+            setTimeout(renderPortfolio, 50); // Small delay to ensure tab is active
+        });
+    }
+});
 
 // ========== Identified vs Unidentified Coins ==========
 
