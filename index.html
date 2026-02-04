@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260202c">
+    <link rel="stylesheet" href="style.css?v=20260203b">
     <!-- PWA manifest and theme -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#d4af37">
@@ -802,11 +802,11 @@
                         <button class="favorite-btn" data-coin="maroneia-tet">☆</button>
                         <button class="notes-btn" data-coin="maroneia-tet">📝</button>
                     </label>
-                    <label class="coin-item" data-name="Thracian Kings - Tetradrachm">
-                        <input type="checkbox" data-coin="thrace-kings-tet">
-                        <span class="coin-name">Thracian Kings - Tetradrachm (Various)</span>
-                        <button class="favorite-btn" data-coin="thrace-kings-tet">☆</button>
-                        <button class="notes-btn" data-coin="thrace-kings-tet">📝</button>
+                    <label class="coin-item" data-name="Seuthes III - Tetradrachm">
+                        <input type="checkbox" data-coin="seuthes-iii-tet">
+                        <span class="coin-name">Seuthes III - Tetradrachm (Thracian king, 331-300 BC)</span>
+                        <button class="favorite-btn" data-coin="seuthes-iii-tet">☆</button>
+                        <button class="notes-btn" data-coin="seuthes-iii-tet">📝</button>
                     </label>
                     <label class="coin-item" data-name="Lysimachos - Tetradrachm">
                         <input type="checkbox" data-coin="lysimachos-tet">
@@ -838,6 +838,7 @@
                     </label>
                     <label class="coin-item" data-name="Rhodes - Didrachm (Helios/Rose)">
                         <input type="checkbox" data-coin="rhodes-didrachm">
+                        <img class="coin-img" src="images/greek/rhodes-didrachm-helios-rose.jpg" alt="Rhodes Didrachm Helios Rose" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Rhodes - Didrachm (Helios/Rose)</span>
                         <button class="favorite-btn" data-coin="rhodes-didrachm">☆</button>
                         <button class="notes-btn" data-coin="rhodes-didrachm">📝</button>
@@ -1443,19 +1444,26 @@
                         <button class="favorite-btn" data-coin="antiochus-iii-tet">☆</button>
                         <button class="notes-btn" data-coin="antiochus-iii-tet">📝</button>
                     </label>
-                    <label class="coin-item" data-name="Seleucid - Tetradrachm (Various)">
-                        <input type="checkbox" data-coin="seleucid-tet-various">
-                        <img class="coin-img" src="images/seleucid/seleucus-iii-tetradrachm.jpg" alt="Seleucus III Keraunos Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
-                        <span class="coin-name">Seleucid Kings - Tetradrachm (Various kings)</span>
-                        <button class="favorite-btn" data-coin="seleucid-tet-various">☆</button>
-                        <button class="notes-btn" data-coin="seleucid-tet-various">📝</button>
+                    <label class="coin-item special" data-name="Antiochus IV Epiphanes - Tetradrachm">
+                        <input type="checkbox" data-coin="antiochus-iv-tet">
+                        <img class="coin-img" src="images/seleucid/antiochus-iv-tetradrachm.jpg" alt="Antiochus IV Epiphanes Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <span class="coin-name">Antiochus IV Epiphanes - Tetradrachm (The Hanukkah villain, 175-164 BC)</span>
+                        <button class="favorite-btn" data-coin="antiochus-iv-tet">☆</button>
+                        <button class="notes-btn" data-coin="antiochus-iv-tet">📝</button>
                     </label>
-                    <label class="coin-item" data-name="Seleucid - Bronze (Various)">
-                        <input type="checkbox" data-coin="seleucid-bronze">
-                        <img class="coin-img" src="images/seleucid/antiochus-son-seleucus-iv-tet.jpg" alt="Antiochus son of Seleucus IV Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
-                        <span class="coin-name">Seleucid Kings - Bronze (Various types)</span>
-                        <button class="favorite-btn" data-coin="seleucid-bronze">☆</button>
-                        <button class="notes-btn" data-coin="seleucid-bronze">📝</button>
+                    <label class="coin-item" data-name="Demetrius I Soter - Tetradrachm">
+                        <input type="checkbox" data-coin="demetrius-i-tet">
+                        <img class="coin-img" src="images/seleucid/demetrius-i-tetradrachm.jpg" alt="Demetrius I Soter Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <span class="coin-name">Demetrius I Soter - Tetradrachm (162-150 BC)</span>
+                        <button class="favorite-btn" data-coin="demetrius-i-tet">☆</button>
+                        <button class="notes-btn" data-coin="demetrius-i-tet">📝</button>
+                    </label>
+                    <label class="coin-item" data-name="Antiochus VII Sidetes - Tetradrachm">
+                        <input type="checkbox" data-coin="antiochus-vii-tet">
+                        <img class="coin-img" src="images/seleucid/antiochus-vii-tetradrachm.jpg" alt="Antiochus VII Sidetes Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <span class="coin-name">Antiochus VII Sidetes - Tetradrachm (Last great king, 138-129 BC)</span>
+                        <button class="favorite-btn" data-coin="antiochus-vii-tet">☆</button>
+                        <button class="notes-btn" data-coin="antiochus-vii-tet">📝</button>
                     </label>
                 </div>
             </div>
@@ -1660,7 +1668,7 @@
                     </label>
                     <label class="coin-item" data-name="Romano-Campanian Didrachm">
                         <input type="checkbox" data-coin="rr-didrachm">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Didrachm_roma_head.jpg/120px-Didrachm_roma_head.jpg" alt="Romano-Campanian Didrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/romano-campanian-didrachm.jpg" alt="Romano-Campanian Didrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Romano-Campanian Didrachm (Roma head, c. 269-240 BC)</span>
                         <button class="favorite-btn" data-coin="rr-didrachm">☆</button>
                         <button class="notes-btn" data-coin="rr-didrachm">📝</button>
@@ -1698,7 +1706,7 @@
                     </label>
                     <label class="coin-item" data-name="Anonymous Quinarius">
                         <input type="checkbox" data-coin="rr-anonymous-quinarius">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Roman_Republic_Quinarius.jpg/120px-Roman_Republic_Quinarius.jpg" alt="Quinarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/anonymous-quinarius.jpg" alt="Quinarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Anonymous Quinarius (half denarius) <span class="ref-num">[RRC 44/6]</span></span>
                         <button class="favorite-btn" data-coin="rr-anonymous-quinarius">☆</button>
                         <button class="notes-btn" data-coin="rr-anonymous-quinarius">📝</button>
@@ -1799,8 +1807,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Memmius - Denarius (Dioscuri)" data-price-low="120" data-price-high="350">
-                        <input type="checkbox" data-coin="rr-memmius">
-                        <span class="coin-name">L. Memmius - Denarius (Dioscuri standing) <span class="ref-num">[RRC 304/1]</span></span>
+                        <input type="checkbox" data-coin="rr-memmius"><img class="coin-img" src="images/roman-republic/l-memmius-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Memmius - Denarius (Dioscuri standing) <span class="ref-num">[RRC 304/1]</span></span>
                         <span class="price-estimate">$120-350</span>
                         <button class="favorite-btn" data-coin="rr-memmius">☆</button>
                         <button class="notes-btn" data-coin="rr-memmius">📝</button>
@@ -1815,8 +1822,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="C. Sulpicius Galba - Denarius (Oath Scene)" data-price-low="150" data-price-high="400">
-                        <input type="checkbox" data-coin="rr-sulpicius-galba">
-                        <span class="coin-name">C. Sulpicius Galba - Denarius (Penates/Oath scene) <span class="ref-num">[RRC 312/1]</span></span>
+                        <input type="checkbox" data-coin="rr-sulpicius-galba"><img class="coin-img" src="images/roman-republic/c-sulpicius-galba-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">C. Sulpicius Galba - Denarius (Penates/Oath scene) <span class="ref-num">[RRC 312/1]</span></span>
                         <span class="price-estimate">$150-400</span>
                         <button class="favorite-btn" data-coin="rr-sulpicius-galba">☆</button>
                         <button class="notes-btn" data-coin="rr-sulpicius-galba">📝</button>
@@ -1837,8 +1843,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="P. Nerva - Denarius (Voting Scene)" data-price-low="200" data-price-high="500">
-                        <input type="checkbox" data-coin="rr-nerva-voting">
-                        <span class="coin-name">P. Nerva - Denarius (Roma/Voting scene with bridge) <span class="ref-num">[RRC 292/1]</span></span>
+                        <input type="checkbox" data-coin="rr-nerva-voting"><img class="coin-img" src="images/roman-republic/p-nerva-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">P. Nerva - Denarius (Roma/Voting scene with bridge) <span class="ref-num">[RRC 292/1]</span></span>
                         <span class="price-estimate">$200-500</span>
                         <button class="favorite-btn" data-coin="rr-nerva-voting">☆</button>
                         <button class="notes-btn" data-coin="rr-nerva-voting">📝</button>
@@ -1853,8 +1858,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Thorius Balbus - Denarius (Juno Sospita)" data-price-low="180" data-price-high="450">
-                        <input type="checkbox" data-coin="rr-thorius-balbus">
-                        <span class="coin-name">L. Thorius Balbus - Denarius (Juno Sospita/Bull) <span class="ref-num">[RRC 316/1]</span></span>
+                        <input type="checkbox" data-coin="rr-thorius-balbus"><img class="coin-img" src="images/roman-republic/l-thorius-balbus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Thorius Balbus - Denarius (Juno Sospita/Bull) <span class="ref-num">[RRC 316/1]</span></span>
                         <span class="price-estimate">$180-450</span>
                         <button class="favorite-btn" data-coin="rr-thorius-balbus">☆</button>
                         <button class="notes-btn" data-coin="rr-thorius-balbus">📝</button>
@@ -1870,7 +1874,7 @@
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Piso Frugi - Denarius (Apollo/Horseman)">
                         <input type="checkbox" data-coin="rr-piso-frugi">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/L_Piso_Frugi_denarius.jpg/120px-L_Piso_Frugi_denarius.jpg" alt="L. Piso Frugi Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/l-piso-frugi-denarius.jpg" alt="L. Piso Frugi Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">L. Calpurnius Piso Frugi - Denarius (Apollo/Horseman) <span class="ref-num">[RRC 340/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-piso-frugi">☆</button>
                         <button class="notes-btn" data-coin="rr-piso-frugi">📝</button>
@@ -1886,14 +1890,13 @@
                 <div class="checklist">
                     <label class="coin-item special" data-name="Social War - Italia Denarius">
                         <input type="checkbox" data-coin="rr-social-war-italia">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Italia_denarius_Social_War.jpg/120px-Italia_denarius_Social_War.jpg" alt="Social War Italia" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/social-war-italia-denarius.jpg" alt="Social War Italia" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Social War - Denarius (Italia/Bull goring wolf) ⭐</span>
                         <button class="favorite-btn" data-coin="rr-social-war-italia">☆</button>
                         <button class="notes-btn" data-coin="rr-social-war-italia">📝</button>
                     </label>
                     <label class="coin-item" data-name="Social War - Oath Scene">
-                        <input type="checkbox" data-coin="rr-social-war-oath">
-                        <span class="coin-name">Social War - Denarius (Soldiers swearing oath) <span class="ref-num">[HN Italy 407]</span></span>
+                        <input type="checkbox" data-coin="rr-social-war-oath"><img class="coin-img" src="images/roman-republic/social-war-oath-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Social War - Denarius (Soldiers swearing oath) <span class="ref-num">[HN Italy 407]</span></span>
                         <button class="favorite-btn" data-coin="rr-social-war-oath">☆</button>
                         <button class="notes-btn" data-coin="rr-social-war-oath">📝</button>
                     </label>
@@ -1907,8 +1910,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Papius - Denarius (Juno Sospita/Griffin)">
-                        <input type="checkbox" data-coin="rr-papius">
-                        <span class="coin-name">L. Papius - Denarius (Juno Sospita/Griffin) <span class="ref-num">[RRC 384/1]</span></span>
+                        <input type="checkbox" data-coin="rr-papius"><img class="coin-img" src="images/roman-republic/l-papius-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Papius - Denarius (Juno Sospita/Griffin) <span class="ref-num">[RRC 384/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-papius">☆</button>
                         <button class="notes-btn" data-coin="rr-papius">📝</button>
                     </label>
@@ -1922,8 +1924,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Lucretius Trio - Denarius (Neptune/Cupid on Dolphin)">
-                        <input type="checkbox" data-coin="rr-lucretius">
-                        <span class="coin-name">L. Lucretius Trio - Denarius (Neptune/Cupid on dolphin) <span class="ref-num">[RRC 390/1-2]</span></span>
+                        <input type="checkbox" data-coin="rr-lucretius"><img class="coin-img" src="images/roman-republic/l-lucretius-trio-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Lucretius Trio - Denarius (Neptune/Cupid on dolphin) <span class="ref-num">[RRC 390/1-2]</span></span>
                         <button class="favorite-btn" data-coin="rr-lucretius">☆</button>
                         <button class="notes-btn" data-coin="rr-lucretius">📝</button>
                     </label>
@@ -1937,8 +1938,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Farsuleius Mensor - Denarius (Libertas)">
-                        <input type="checkbox" data-coin="rr-farsuleius">
-                        <span class="coin-name">L. Farsuleius Mensor - Denarius (Libertas/Biga) <span class="ref-num">[RRC 392/1]</span></span>
+                        <input type="checkbox" data-coin="rr-farsuleius"><img class="coin-img" src="images/roman-republic/l-farsuleius-mensor-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Farsuleius Mensor - Denarius (Libertas/Biga) <span class="ref-num">[RRC 392/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-farsuleius">☆</button>
                         <button class="notes-btn" data-coin="rr-farsuleius">📝</button>
                     </label>
@@ -1952,8 +1952,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item special" data-name="Mn. Aquillius - Denarius (Sicily Rising)">
-                        <input type="checkbox" data-coin="rr-aquillius">
-                        <span class="coin-name">Mn. Aquillius - Denarius (Virtus/Warrior raising Sicily) <span class="ref-num">[RRC 401/1]</span></span>
+                        <input type="checkbox" data-coin="rr-aquillius"><img class="coin-img" src="images/roman-republic/mn-aquillius-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Mn. Aquillius - Denarius (Virtus/Warrior raising Sicily) <span class="ref-num">[RRC 401/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-aquillius">☆</button>
                         <button class="notes-btn" data-coin="rr-aquillius">📝</button>
                     </label>
@@ -1967,8 +1966,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Plautius Plancus - Denarius (Medusa/Aurora)">
-                        <input type="checkbox" data-coin="rr-plautius">
-                        <span class="coin-name">L. Plautius Plancus - Denarius (Medusa/Aurora) <span class="ref-num">[RRC 453/1]</span></span>
+                        <input type="checkbox" data-coin="rr-plautius"><img class="coin-img" src="images/roman-republic/l-plautius-plancus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Plautius Plancus - Denarius (Medusa/Aurora) <span class="ref-num">[RRC 453/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-plautius">☆</button>
                         <button class="wishlist-btn" data-coin="rr-plautius">🎯</button>
                         <button class="notes-btn" data-coin="rr-plautius">📝</button>
@@ -1983,8 +1981,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item special" data-name="Scaurus & Hypsaeus - Denarius (King Aretas)">
-                        <input type="checkbox" data-coin="rr-scaurus-aretas">
-                        <span class="coin-name">M. Scaurus & P. Hypsaeus - Denarius (Aretas kneeling/Jupiter in quadriga) <span class="ref-num">[RRC 422/1b]</span> ⭐</span>
+                        <input type="checkbox" data-coin="rr-scaurus-aretas"><img class="coin-img" src="images/roman-republic/scaurus-hypsaeus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">M. Scaurus & P. Hypsaeus - Denarius (Aretas kneeling/Jupiter in quadriga) <span class="ref-num">[RRC 422/1b]</span> ⭐</span>
                         <button class="favorite-btn" data-coin="rr-scaurus-aretas">☆</button>
                         <button class="wishlist-btn" data-coin="rr-scaurus-aretas">🎯</button>
                         <button class="notes-btn" data-coin="rr-scaurus-aretas">📝</button>
@@ -1999,8 +1996,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="C. Memmius C.f. - Denarius (Ceres/Trophy)">
-                        <input type="checkbox" data-coin="rr-memmius-cf">
-                        <span class="coin-name">C. Memmius C.f. - Denarius (Ceres/Romulus with trophy) <span class="ref-num">[RRC 427/1]</span></span>
+                        <input type="checkbox" data-coin="rr-memmius-cf"><img class="coin-img" src="images/roman-republic/c-memmius-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">C. Memmius C.f. - Denarius (Ceres/Romulus with trophy) <span class="ref-num">[RRC 427/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-memmius-cf">☆</button>
                         <button class="wishlist-btn" data-coin="rr-memmius-cf">🎯</button>
                         <button class="notes-btn" data-coin="rr-memmius-cf">📝</button>
@@ -2015,8 +2011,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="M. Plaetorius Cestianus - Denarius (Female bust)">
-                        <input type="checkbox" data-coin="rr-plaetorius">
-                        <span class="coin-name">M. Plaetorius Cestianus - Denarius (Female bust/Eagle on thunderbolt) <span class="ref-num">[RRC 409/1]</span></span>
+                        <input type="checkbox" data-coin="rr-plaetorius"><img class="coin-img" src="images/roman-republic/m-plaetorius-cestianus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">M. Plaetorius Cestianus - Denarius (Female bust/Eagle on thunderbolt) <span class="ref-num">[RRC 409/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-plaetorius">☆</button>
                         <button class="wishlist-btn" data-coin="rr-plaetorius">🎯</button>
                         <button class="notes-btn" data-coin="rr-plaetorius">📝</button>
@@ -2031,8 +2026,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="Mn. Aemilius Lepidus - Denarius (Equestrian Statue)">
-                        <input type="checkbox" data-coin="rr-aemilius-lepidus">
-                        <span class="coin-name">Mn. Aemilius Lepidus - Denarius (Roma/Equestrian statue) <span class="ref-num">[RRC 291/1]</span></span>
+                        <input type="checkbox" data-coin="rr-aemilius-lepidus"><img class="coin-img" src="images/roman-republic/mn-aemilius-lepidus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Mn. Aemilius Lepidus - Denarius (Roma/Equestrian statue) <span class="ref-num">[RRC 291/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-aemilius-lepidus">☆</button>
                         <button class="wishlist-btn" data-coin="rr-aemilius-lepidus">🎯</button>
                         <button class="notes-btn" data-coin="rr-aemilius-lepidus">📝</button>
@@ -2047,8 +2041,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="L. Appuleius Saturninus - Denarius" data-price-low="150" data-price-high="400">
-                        <input type="checkbox" data-coin="rr-saturninus">
-                        <span class="coin-name">L. Appuleius Saturninus - Denarius (Roma/Saturn in quadriga) <span class="ref-num">[RRC 317/3a]</span></span>
+                        <input type="checkbox" data-coin="rr-saturninus"><img class="coin-img" src="images/roman-republic/l-appuleius-saturninus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Appuleius Saturninus - Denarius (Roma/Saturn in quadriga) <span class="ref-num">[RRC 317/3a]</span></span>
                         <span class="price-estimate">$150-400</span>
                         <button class="favorite-btn" data-coin="rr-saturninus">☆</button>
                         <button class="wishlist-btn" data-coin="rr-saturninus">🎯</button>
@@ -2064,8 +2057,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="C. Hosidius Geta - Denarius (Boar)" data-price-low="250" data-price-high="600">
-                        <input type="checkbox" data-coin="rr-hosidius-boar">
-                        <span class="coin-name">C. Hosidius Geta - Denarius (Diana/Calydonian boar) <span class="ref-num">[RRC 407/2]</span></span>
+                        <input type="checkbox" data-coin="rr-hosidius-boar"><img class="coin-img" src="images/roman-republic/c-hosidius-geta-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">C. Hosidius Geta - Denarius (Diana/Calydonian boar) <span class="ref-num">[RRC 407/2]</span></span>
                         <span class="price-estimate">$250-600</span>
                         <button class="favorite-btn" data-coin="rr-hosidius-boar">☆</button>
                         <button class="wishlist-btn" data-coin="rr-hosidius-boar">🎯</button>
@@ -2081,8 +2073,7 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="Mn. Cordius Rufus - Denarius (Dioscuri)" data-price-low="200" data-price-high="500">
-                        <input type="checkbox" data-coin="rr-cordius-rufus">
-                        <span class="coin-name">Mn. Cordius Rufus - Denarius (Dioscuri heads/Owl) <span class="ref-num">[RRC 463/1]</span></span>
+                        <input type="checkbox" data-coin="rr-cordius-rufus"><img class="coin-img" src="images/roman-republic/mn-cordius-rufus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Mn. Cordius Rufus - Denarius (Dioscuri heads/Owl) <span class="ref-num">[RRC 463/1]</span></span>
                         <span class="price-estimate">$200-500</span>
                         <button class="favorite-btn" data-coin="rr-cordius-rufus">☆</button>
                         <button class="wishlist-btn" data-coin="rr-cordius-rufus">🎯</button>
@@ -2112,8 +2103,7 @@
                         <button class="notes-btn" data-coin="rr-sulla">📝</button>
                     </label>
                     <label class="coin-item" data-name="Sulla - Aureus">
-                        <input type="checkbox" data-coin="rr-sulla-aureus">
-                        <span class="coin-name">L. Sulla Felix - Aureus</span>
+                        <input type="checkbox" data-coin="rr-sulla-aureus"><img class="coin-img" src="images/roman-republic/sulla-aureus.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Sulla Felix - Aureus</span>
                         <button class="favorite-btn" data-coin="rr-sulla-aureus">☆</button>
                         <button class="notes-btn" data-coin="rr-sulla-aureus">📝</button>
                     </label>
@@ -2135,14 +2125,12 @@
                         <button class="notes-btn" data-coin="rr-pompey">📝</button>
                     </label>
                     <label class="coin-item" data-name="Pompey Junior - Denarius (CN MAGNVS)">
-                        <input type="checkbox" data-coin="rr-pompey-jr">
-                        <span class="coin-name">Cn. Pompeius Jr. - Denarius (Pompeia/Hispania)</span>
+                        <input type="checkbox" data-coin="rr-pompey-jr"><img class="coin-img" src="images/roman-republic/pompey-junior-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Cn. Pompeius Jr. - Denarius (Pompeia/Hispania)</span>
                         <button class="favorite-btn" data-coin="rr-pompey-jr">☆</button>
                         <button class="notes-btn" data-coin="rr-pompey-jr">📝</button>
                     </label>
                     <label class="coin-item" data-name="Sextus Pompey - Denarius (Portrait)">
-                        <input type="checkbox" data-coin="rr-sextus-pompey">
-                        <span class="coin-name">Sextus Pompeius - Denarius (Magnus Pius/Naval scene)</span>
+                        <input type="checkbox" data-coin="rr-sextus-pompey"><img class="coin-img" src="images/roman-republic/sextus-pompey-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Sextus Pompeius - Denarius (Magnus Pius/Naval scene)</span>
                         <button class="favorite-btn" data-coin="rr-sextus-pompey">☆</button>
                         <button class="notes-btn" data-coin="rr-sextus-pompey">📝</button>
                     </label>
@@ -2172,21 +2160,21 @@
                     </label>
                     <label class="coin-item" data-name="Julius Caesar - Venus Denarius">
                         <input type="checkbox" data-coin="rr-caesar-venus">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Aeneas_denarius.jpg/120px-Aeneas_denarius.jpg" alt="Caesar Venus Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/caesar-venus-denarius.jpg" alt="Caesar Venus Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">C. Julius Caesar - Denarius (Venus/Aeneas carrying Anchises) <span class="ref-num">[RRC 458/1]</span></span>
                         <button class="favorite-btn" data-coin="rr-caesar-venus">☆</button>
                         <button class="notes-btn" data-coin="rr-caesar-venus">📝</button>
                     </label>
                     <label class="coin-item" data-name="Julius Caesar - Gallia Denarius">
                         <input type="checkbox" data-coin="rr-caesar-gallia">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Caesar_Gallia_trophy.jpg/120px-Caesar_Gallia_trophy.jpg" alt="Caesar Gallia Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/caesar-gallia-denarius.jpg" alt="Caesar Gallia Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">C. Julius Caesar - Denarius (Gallia/Trophy, Gallic Wars)</span>
                         <button class="favorite-btn" data-coin="rr-caesar-gallia">☆</button>
                         <button class="notes-btn" data-coin="rr-caesar-gallia">📝</button>
                     </label>
                     <label class="coin-item" data-name="Julius Caesar - Aureus">
                         <input type="checkbox" data-coin="rr-caesar-aureus">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Julius_Caesar_aureus.jpg/120px-Julius_Caesar_aureus.jpg" alt="Caesar Aureus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/caesar-aureus.jpg" alt="Caesar Aureus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">C. Julius Caesar - Aureus (Various types)</span>
                         <button class="favorite-btn" data-coin="rr-caesar-aureus">☆</button>
                         <button class="notes-btn" data-coin="rr-caesar-aureus">📝</button>
@@ -2217,7 +2205,7 @@
                     </label>
                     <label class="coin-item" data-name="Brutus - Libertas Denarius">
                         <input type="checkbox" data-coin="rr-brutus-libertas">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Brutus_Libertas.jpg/120px-Brutus_Libertas.jpg" alt="Brutus Libertas" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/brutus-libertas-denarius.jpg" alt="Brutus Libertas" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">M. Brutus - Denarius (Libertas/Lyre or anchor)</span>
                         <button class="favorite-btn" data-coin="rr-brutus-libertas">☆</button>
                         <button class="notes-btn" data-coin="rr-brutus-libertas">📝</button>
@@ -2259,21 +2247,21 @@
                     </label>
                     <label class="coin-item" data-name="Mark Antony - Portrait Denarius">
                         <input type="checkbox" data-coin="rr-antony-portrait">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Mark_Antony_denarius.jpg/120px-Mark_Antony_denarius.jpg" alt="Mark Antony Portrait" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/mark-antony-portrait-denarius.jpg" alt="Mark Antony Portrait" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">M. Antonius - Denarius (Portrait types)</span>
                         <button class="favorite-btn" data-coin="rr-antony-portrait">☆</button>
                         <button class="notes-btn" data-coin="rr-antony-portrait">📝</button>
                     </label>
                     <label class="coin-item special" data-name="Mark Antony & Cleopatra - Denarius">
                         <input type="checkbox" data-coin="rr-antony-cleopatra">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Antony_and_Cleopatra_Denarius.jpg/120px-Antony_and_Cleopatra_Denarius.jpg" alt="Antony & Cleopatra" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/mark-antony-cleopatra-denarius.jpg" alt="Antony & Cleopatra" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">M. Antonius & Cleopatra - Denarius (Both portraits!) <span class="ref-num">[RRC 543/1]</span> ⭐</span>
                         <button class="favorite-btn" data-coin="rr-antony-cleopatra">☆</button>
                         <button class="notes-btn" data-coin="rr-antony-cleopatra">📝</button>
                     </label>
                     <label class="coin-item" data-name="Mark Antony - Aureus">
                         <input type="checkbox" data-coin="rr-antony-aureus">
-                        <img class="coin-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Mark_Antony_Aureus.jpg/120px-Mark_Antony_Aureus.jpg" alt="Mark Antony Aureus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
+                        <img class="coin-img" src="images/roman-republic/mark-antony-aureus.jpg" alt="Mark Antony Aureus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">M. Antonius - Aureus (Various types)</span>
                         <button class="favorite-btn" data-coin="rr-antony-aureus">☆</button>
                         <button class="notes-btn" data-coin="rr-antony-aureus">📝</button>
@@ -2293,19 +2281,19 @@
                 <div class="checklist">
                     <label class="coin-item" data-name="Octavian - Denarius (Portrait)">
                         <input type="checkbox" data-coin="rr-octavian-portrait">
-                        <span class="coin-name">Octavian - Denarius (Portrait, pre-27 BC)</span>
+                        <img class="coin-img" src="images/roman-republic/octavian-portrait-denarius.jpg" alt="Octavian Portrait Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Octavian - Denarius (Portrait, pre-27 BC)</span>
                         <button class="favorite-btn" data-coin="rr-octavian-portrait">☆</button>
                         <button class="notes-btn" data-coin="rr-octavian-portrait">📝</button>
                     </label>
                     <label class="coin-item" data-name="Octavian - Actium Victory">
                         <input type="checkbox" data-coin="rr-octavian-actium">
-                        <span class="coin-name">Octavian - Denarius (Victory/Actium naval trophy)</span>
+                        <img class="coin-img" src="images/roman-republic/octavian-actium-denarius.jpg" alt="Octavian Actium Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Octavian - Denarius (Victory/Actium naval trophy)</span>
                         <button class="favorite-btn" data-coin="rr-octavian-actium">☆</button>
                         <button class="notes-btn" data-coin="rr-octavian-actium">📝</button>
                     </label>
                     <label class="coin-item special" data-name="Octavian - DIVI IVLI (Divus Julius)">
                         <input type="checkbox" data-coin="rr-octavian-divus-julius">
-                        <span class="coin-name">Octavian - Denarius (DIVI IVLI F - Son of Divine Julius)</span>
+                        <img class="coin-img" src="images/roman-republic/octavian-divi-ivli-denarius.jpg" alt="Octavian DIVI IVLI Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Octavian - Denarius (DIVI IVLI F - Son of Divine Julius)</span>
                         <button class="favorite-btn" data-coin="rr-octavian-divus-julius">☆</button>
                         <button class="notes-btn" data-coin="rr-octavian-divus-julius">📝</button>
                     </label>
@@ -2319,20 +2307,17 @@
                 </div>
                 <div class="checklist">
                     <label class="coin-item" data-name="Q. Labienus Parthicus - Denarius">
-                        <input type="checkbox" data-coin="rr-labienus">
-                        <span class="coin-name">Q. Labienus Parthicus - Denarius (Parthian horse, 40 BC)</span>
+                        <input type="checkbox" data-coin="rr-labienus"><img class="coin-img" src="images/roman-republic/q-labienus-parthicus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">Q. Labienus Parthicus - Denarius (Parthian horse, 40 BC)</span>
                         <button class="favorite-btn" data-coin="rr-labienus">☆</button>
                         <button class="notes-btn" data-coin="rr-labienus">📝</button>
                     </label>
                     <label class="coin-item" data-name="M. Lepidus - Denarius">
-                        <input type="checkbox" data-coin="rr-lepidus">
-                        <span class="coin-name">M. Aemilius Lepidus - Denarius (Triumvir)</span>
+                        <input type="checkbox" data-coin="rr-lepidus"><img class="coin-img" src="images/roman-republic/m-lepidus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">M. Aemilius Lepidus - Denarius (Triumvir)</span>
                         <button class="favorite-btn" data-coin="rr-lepidus">☆</button>
                         <button class="notes-btn" data-coin="rr-lepidus">📝</button>
                     </label>
                     <label class="coin-item" data-name="L. Staius Murcus - Denarius">
-                        <input type="checkbox" data-coin="rr-murcus">
-                        <span class="coin-name">L. Staius Murcus - Denarius (Neptune)</span>
+                        <input type="checkbox" data-coin="rr-murcus"><img class="coin-img" src="images/roman-republic/l-staius-murcus-denarius.jpg" alt="Coin" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>??</span>'"><span class="coin-name">L. Staius Murcus - Denarius (Neptune)</span>
                         <button class="favorite-btn" data-coin="rr-murcus">☆</button>
                         <button class="notes-btn" data-coin="rr-murcus">📝</button>
                     </label>
@@ -2494,6 +2479,7 @@
                 <div class="checklist">
                     <label class="coin-item" data-name="Carausius - PAX AVG (RIC V 98-145)" data-price-low="80" data-price-high="300">
                         <input type="checkbox" data-coin="carausius-pax">
+                        <img class="coin-img" src="images/londinium/carausius-pax-avg.jpg" alt="Carausius PAX AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - PAX AVG <span class="ref-num">[RIC V 98-145]</span></span>
                         <span class="price-estimate">$80-300</span>
                         <button class="favorite-btn" data-coin="carausius-pax">☆</button>
@@ -2502,6 +2488,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - PROVIDENTIA AVG (RIC V 395-424)" data-price-low="100" data-price-high="350">
                         <input type="checkbox" data-coin="carausius-providentia">
+                        <img class="coin-img" src="images/londinium/carausius-providentia-avg.jpg" alt="Carausius PROVIDENTIA AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - PROVIDENTIA AVG <span class="ref-num">[RIC V 395-424]</span></span>
                         <span class="price-estimate">$100-350</span>
                         <button class="favorite-btn" data-coin="carausius-providentia">☆</button>
@@ -2510,6 +2497,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - MONETA AVG (RIC V 224-241)" data-price-low="120" data-price-high="400">
                         <input type="checkbox" data-coin="carausius-moneta">
+                        <img class="coin-img" src="images/londinium/carausius-moneta-avg.jpg" alt="Carausius MONETA AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - MONETA AVG <span class="ref-num">[RIC V 224-241]</span></span>
                         <span class="price-estimate">$120-400</span>
                         <button class="favorite-btn" data-coin="carausius-moneta">☆</button>
@@ -2527,6 +2515,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - FORTVNA AVG (RIC V 152-175)" data-price-low="100" data-price-high="350">
                         <input type="checkbox" data-coin="carausius-fortuna">
+                        <img class="coin-img" src="images/londinium/carausius-fortuna-avg.jpg" alt="Carausius FORTVNA AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - FORTVNA AVG <span class="ref-num">[RIC V 152-175]</span></span>
                         <span class="price-estimate">$100-350</span>
                         <button class="favorite-btn" data-coin="carausius-fortuna">☆</button>
@@ -2534,6 +2523,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - SALVS AVG (RIC V 469-501)" data-price-low="100" data-price-high="350">
                         <input type="checkbox" data-coin="carausius-salus">
+                        <img class="coin-img" src="images/londinium/carausius-salvs-avg.jpg" alt="Carausius SALVS AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - SALVS AVG <span class="ref-num">[RIC V 469-501]</span></span>
                         <span class="price-estimate">$100-350</span>
                         <button class="favorite-btn" data-coin="carausius-salus">☆</button>
@@ -2549,6 +2539,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - HILARITAS AVG" data-price-low="150" data-price-high="500">
                         <input type="checkbox" data-coin="carausius-hilaritas">
+                        <img class="coin-img" src="images/londinium/carausius-hilaritas-avg.jpg" alt="Carausius HILARITAS AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - HILARITAS AVG <span class="ref-num">[RIC V 178-181]</span></span>
                         <span class="price-estimate">$150-500</span>
                         <button class="favorite-btn" data-coin="carausius-hilaritas">☆</button>
@@ -2556,6 +2547,7 @@
                     </label>
                     <label class="coin-item special" data-name="Carausius - EXPECTATE VENI (RIC V 5)" data-price-low="2000" data-price-high="8000">
                         <input type="checkbox" data-coin="carausius-expectate">
+                        <img class="coin-img" src="images/londinium/carausius-expectate-veni.jpg" alt="Carausius EXPECTATE VENI Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - EXPECTATE VENI <span class="ref-num">[RIC V 5]</span></span>
                         <span class="price-estimate high-value">$2,000-8,000</span>
                         <button class="favorite-btn" data-coin="carausius-expectate">☆</button>
@@ -2572,6 +2564,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - RENOVAT ROMANOR" data-price-low="200" data-price-high="600">
                         <input type="checkbox" data-coin="carausius-renovat">
+                        <img class="coin-img" src="images/londinium/carausius-renovat-romanor.jpg" alt="Carausius RENOVAT ROMANOR Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - RENOVAT ROMANOR <span class="ref-num">[RIC V 444-468]</span></span>
                         <span class="price-estimate">$200-600</span>
                         <button class="favorite-btn" data-coin="carausius-renovat">☆</button>
@@ -2631,6 +2624,7 @@
                     </label>
                     <label class="coin-item" data-name="Allectus - PAX AVG (RIC V 22-33)" data-price-low="120" data-price-high="400">
                         <input type="checkbox" data-coin="allectus-pax">
+                        <img class="coin-img" src="images/londinium/allectus-pax-avg.jpg" alt="Allectus PAX AVG Antoninianus" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Allectus - PAX AVG <span class="ref-num">[RIC V 22-33]</span></span>
                         <span class="price-estimate">$120-400</span>
                         <button class="favorite-btn" data-coin="allectus-pax">☆</button>
@@ -2749,6 +2743,7 @@
                     </label>
                     <label class="coin-item" data-name="Carausius - Silver Denarius (RENOVAT ROMANO)">
                         <input type="checkbox" data-coin="carausius-denarius-renovat">
+                        <img class="coin-img" src="images/londinium/carausius-denarius-lupa-romana.jpg" alt="Carausius RENOVAT ROMANO She-wolf Denarius" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Carausius - Silver Denarius (RENOVAT ROMANO, She-wolf)</span>
                         <button class="favorite-btn" data-coin="carausius-denarius-renovat">☆</button>
                         <button class="notes-btn" data-coin="carausius-denarius-renovat">📝</button>
@@ -4620,20 +4615,21 @@
                     </label>
                     <label class="coin-item" data-name="Kujula Kadphises - Bronze (First Kushan)">
                         <input type="checkbox" data-coin="kushan-kujula">
-                        <span class="coin-name">Kujula Kadphises - Bronze (First Kushan)</span>
+                        <img class="coin-img" src="images/kushan/kujula-kadphises-bronze.jpg" alt="Kujula Kadphises Bronze" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Kujula Kadphises - Bronze (First Kushan)</span>
                         <button class="favorite-btn" data-coin="kushan-kujula">☆</button>
                         <button class="notes-btn" data-coin="kushan-kujula">📝</button>
 
                     </label>
                     <label class="coin-item" data-name="Vima Kadphises - Bronze (Shiva/Bull)">
                         <input type="checkbox" data-coin="kushan-vima">
-                        <span class="coin-name">Vima Kadphises - Bronze (Shiva/Bull)</span>
+                        <img class="coin-img" src="images/kushan/vima-kadphises-bronze.jpg" alt="Vima Kadphises Bronze" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Vima Kadphises - Bronze (Shiva/Bull)</span>
                         <button class="favorite-btn" data-coin="kushan-vima">☆</button>
                         <button class="notes-btn" data-coin="kushan-vima">📝</button>
 
                     </label>
                     <label class="coin-item special" data-name="Kanishka I - Gold Dinar (Buddha)">
                         <input type="checkbox" data-coin="kushan-kanishka-buddha">
+                        <img class="coin-img" src="images/kushan/kanishka-buddha-dinar.jpg" alt="Kanishka I Buddha Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kanishka I - Gold Dinar (Buddha image)</span>
                         <button class="favorite-btn" data-coin="kushan-kanishka-buddha">☆</button>
                         <button class="notes-btn" data-coin="kushan-kanishka-buddha">📝</button>
@@ -4641,21 +4637,21 @@
                     </label>
                     <label class="coin-item" data-name="Kanishka I - Gold Dinar (Standard)">
                         <input type="checkbox" data-coin="kushan-kanishka">
-                        <span class="coin-name">Kanishka I - Gold Dinar (Standard)</span>
+                        <img class="coin-img" src="images/kushan/kanishka-standard-dinar.jpg" alt="Kanishka I Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Kanishka I - Gold Dinar (Standard)</span>
                         <button class="favorite-btn" data-coin="kushan-kanishka">☆</button>
                         <button class="notes-btn" data-coin="kushan-kanishka">📝</button>
 
                     </label>
                     <label class="coin-item" data-name="Huvishka - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-huvishka">
-                        <span class="coin-name">Huvishka - Gold Dinar</span>
+                        <img class="coin-img" src="images/kushan/huvishka-gold-dinar.jpg" alt="Huvishka Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Huvishka - Gold Dinar</span>
                         <button class="favorite-btn" data-coin="kushan-huvishka">☆</button>
                         <button class="notes-btn" data-coin="kushan-huvishka">📝</button>
 
                     </label>
                     <label class="coin-item" data-name="Vasudeva I - Gold Dinar (Shiva)">
                         <input type="checkbox" data-coin="kushan-vasudeva">
-                        <span class="coin-name">Vasudeva I - Gold Dinar (Shiva reverse)</span>
+                        <img class="coin-img" src="images/kushan/vasudeva-gold-dinar.jpg" alt="Vasudeva I Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'"><span class="coin-name">Vasudeva I - Gold Dinar (Shiva reverse)</span>
                         <button class="favorite-btn" data-coin="kushan-vasudeva">☆</button>
                         <button class="notes-btn" data-coin="kushan-vasudeva">📝</button>
 
@@ -8658,30 +8654,35 @@
                 <div class="checklist">
                     <label class="coin-item" data-name="Kujula Kadphises - AE Tetradrachm">
                         <input type="checkbox" data-coin="kushan-kujula">
+                        <img class="coin-img" src="../images/kushan/kujula-kadphises-tetradrachm.jpg" alt="Kujula Kadphises Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kujula Kadphises - AE Tetradrachm (30-80 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-kujula">☆</button>
                         <button class="notes-btn" data-coin="kushan-kujula">📝</button>
                     </label>
                     <label class="coin-item" data-name="Kujula Kadphises - Hermaeus imitation">
                         <input type="checkbox" data-coin="kushan-kujula-hermaeus">
+                        <img class="coin-img" src="../images/kushan/kujula-kadphises-hermaeus2.jpg" alt="Kujula Kadphises Hermaeus imitation" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kujula Kadphises - Hermaeus imitation type <a href="https://coinindia.com/galleries-hermaios.html" target="_blank" class="ref-link" title="View on CoinIndia">📚</a></span>
                         <button class="favorite-btn" data-coin="kushan-kujula-hermaeus">☆</button>
                         <button class="notes-btn" data-coin="kushan-kujula-hermaeus">📝</button>
                     </label>
                     <label class="coin-item" data-name="Vima Takto - AE Tetradrachm">
                         <input type="checkbox" data-coin="kushan-vima-takto">
+                        <img class="coin-img" src="../images/kushan/vima-takto-bronze.jpg" alt="Vima Takto AE Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vima Takto (Soter Megas) - AE Tetradrachm (80-90 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-vima-takto">☆</button>
                         <button class="notes-btn" data-coin="kushan-vima-takto">📝</button>
                     </label>
                     <label class="coin-item" data-name="Vima Kadphises - AE Tetradrachm">
                         <input type="checkbox" data-coin="kushan-vima-kadphises">
+                        <img class="coin-img" src="../images/kushan/vima-kadphises-ae-tetradrachm.jpg" alt="Vima Kadphises AE Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vima Kadphises - AE Tetradrachm (90-127 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-vima-kadphises">☆</button>
                         <button class="notes-btn" data-coin="kushan-vima-kadphises">📝</button>
                     </label>
                     <label class="coin-item" data-name="Vima Kadphises - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-vima-gold">
+                        <img class="coin-img" src="../images/kushan/vima-kadphises-gold-dinar.jpg" alt="Vima Kadphises Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vima Kadphises - Gold Dinar</span>
                         <button class="favorite-btn" data-coin="kushan-vima-gold">☆</button>
                         <button class="notes-btn" data-coin="kushan-vima-gold">📝</button>
@@ -8694,6 +8695,7 @@
                 <div class="checklist">
                     <label class="coin-item special" data-name="Kanishka I - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-kanishka-gold">
+                        <img class="coin-img" src="../images/kushan/kanishka-i-gold-dinar.jpg" alt="Kanishka I Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kanishka I - Gold Dinar (127-150 AD) <span class="ref-num">[Göbl 31-78]</span></span>
                         <button class="favorite-btn" data-coin="kushan-kanishka-gold">☆</button>
                         <button class="wishlist-btn" data-coin="kushan-kanishka-gold">🎯</button>
@@ -8701,6 +8703,7 @@
                     </label>
                     <label class="coin-item" data-name="Kanishka I - AE Tetradrachm">
                         <input type="checkbox" data-coin="kushan-kanishka-ae">
+                        <img class="coin-img" src="../images/kushan/kanishka-i-bronze-tetradrachm.jpg" alt="Kanishka I Bronze Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kanishka I - AE Tetradrachm <span class="ref-num">[Göbl 758-808]</span></span>
                         <button class="favorite-btn" data-coin="kushan-kanishka-ae">☆</button>
                         <button class="wishlist-btn" data-coin="kushan-kanishka-ae">🎯</button>
@@ -8715,6 +8718,7 @@
                     </label>
                     <label class="coin-item" data-name="Huvishka - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-huvishka-gold">
+                        <img class="coin-img" src="../images/kushan/huvishka-gold-dinar.jpg" alt="Huvishka Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Huvishka - Gold Dinar (150-190 AD) <span class="ref-num">[Göbl 128-340]</span></span>
                         <button class="favorite-btn" data-coin="kushan-huvishka-gold">☆</button>
                         <button class="wishlist-btn" data-coin="kushan-huvishka-gold">🎯</button>
@@ -8722,6 +8726,7 @@
                     </label>
                     <label class="coin-item" data-name="Huvishka - AE Tetradrachm">
                         <input type="checkbox" data-coin="kushan-huvishka-ae">
+                        <img class="coin-img" src="../images/kushan/huvishka-ae-tetradrachm.jpg" alt="Huvishka AE Tetradrachm" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Huvishka - AE Tetradrachm <span class="ref-num">[Göbl 809-868]</span></span>
                         <button class="favorite-btn" data-coin="kushan-huvishka-ae">☆</button>
                         <button class="wishlist-btn" data-coin="kushan-huvishka-ae">🎯</button>
@@ -8729,6 +8734,7 @@
                     </label>
                     <label class="coin-item special" data-name="Vasudeva I - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-vasudeva-gold">
+                        <img class="coin-img" src="../images/kushan/vasudeva-i-gold-dinar.jpg" alt="Vasudeva I Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vasudeva I - Gold Dinar (190-230 AD) <span class="ref-num">[Göbl 341-508]</span></span>
                         <button class="favorite-btn" data-coin="kushan-vasudeva-gold">☆</button>
                         <button class="wishlist-btn" data-coin="kushan-vasudeva-gold">🎯</button>
@@ -8749,24 +8755,28 @@
                 <div class="checklist">
                     <label class="coin-item" data-name="Kanishka II - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-kanishka-ii">
+                        <img class="coin-img" src="images/later-kushan/kanishka-ii-dinar-ardoxsho.jpg" alt="Kanishka II Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kanishka II - Gold Dinar (230-247 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-kanishka-ii">☆</button>
                         <button class="notes-btn" data-coin="kushan-kanishka-ii">📝</button>
                     </label>
                     <label class="coin-item" data-name="Vasishka - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-vasishka">
+                        <img class="coin-img" src="images/later-kushan/vasishka-dinar.jpg" alt="Vasishka Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vasishka - Gold Dinar (247-267 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-vasishka">☆</button>
                         <button class="notes-btn" data-coin="kushan-vasishka">📝</button>
                     </label>
                     <label class="coin-item" data-name="Kanishka III - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-kanishka-iii">
+                        <img class="coin-img" src="images/later-kushan/kanishka-iii-dinar.jpg" alt="Kanishka III Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kanishka III - Gold Dinar (267-270 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-kanishka-iii">☆</button>
                         <button class="notes-btn" data-coin="kushan-kanishka-iii">📝</button>
                     </label>
                     <label class="coin-item" data-name="Vasudeva II - Gold Dinar">
                         <input type="checkbox" data-coin="kushan-vasudeva-ii">
+                        <img class="coin-img" src="images/later-kushan/vasudeva-ii-dinar.jpg" alt="Vasudeva II Gold Dinar" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Vasudeva II - Gold Dinar (270-310 AD)</span>
                         <button class="favorite-btn" data-coin="kushan-vasudeva-ii">☆</button>
                         <button class="notes-btn" data-coin="kushan-vasudeva-ii">📝</button>
@@ -8798,12 +8808,14 @@
                     </label>
                     <label class="coin-item" data-name="Kushan - Shiva/Oesho reverse">
                         <input type="checkbox" data-coin="kushan-shiva">
+                        <img class="coin-img" src="../images/kushan/huvishka-oesho-shiva.jpg" alt="Kushan Shiva Oesho" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kushan - Shiva (Oesho) reverse</span>
                         <button class="favorite-btn" data-coin="kushan-shiva">☆</button>
                         <button class="notes-btn" data-coin="kushan-shiva">📝</button>
                     </label>
                     <label class="coin-item" data-name="Kushan - Mao (Moon god) reverse">
                         <input type="checkbox" data-coin="kushan-mao">
+                        <img class="coin-img" src="../images/kushan/huvishka-mao-moon-god.jpg" alt="Kushan Mao Moon God" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kushan - Mao (Moon god) reverse</span>
                         <button class="favorite-btn" data-coin="kushan-mao">☆</button>
                         <button class="notes-btn" data-coin="kushan-mao">📝</button>
@@ -8816,6 +8828,7 @@
                     </label>
                     <label class="coin-item" data-name="Kushan - Ardochsho (Lakshmi) reverse">
                         <input type="checkbox" data-coin="kushan-ardochsho">
+                        <img class="coin-img" src="../images/kushan/huvishka-ardochsho.jpg" alt="Kushan Ardochsho Lakshmi" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Kushan - Ardochsho (Lakshmi) reverse</span>
                         <button class="favorite-btn" data-coin="kushan-ardochsho">☆</button>
                         <button class="notes-btn" data-coin="kushan-ardochsho">📝</button>
@@ -9175,6 +9188,7 @@
                     </label>
                     <label class="coin-item" data-name="Ptolemy II - Tetradrachm">
                         <input type="checkbox" data-coin="ptolemy2-tet">
+                        <img class="coin-img" src="images/ptolemaic/ptolemy-ii-tetradrachm-eagle.jpg" alt="Ptolemy II Tetradrachm Eagle" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Ptolemy II - Tetradrachm (Portrait of Ptolemy I/Eagle) <span class="ref-num">[Svoronos 389-459]</span></span>
                         <button class="favorite-btn" data-coin="ptolemy2-tet">☆</button>
                         <button class="notes-btn" data-coin="ptolemy2-tet">📝</button>
@@ -10363,6 +10377,7 @@
                     </label>
                     <label class="coin-item" data-name="Mass Classical - Early style">
                         <input type="checkbox" data-coin="mass-classical-early">
+                        <img class="coin-img" src="images/athens-owls/classical-owl-tetradrachm.jpg" alt="Mass Classical Owl Early Style" loading="lazy" onerror="this.outerHTML='<span class=coin-img-placeholder>🪙</span>'">
                         <span class="coin-name">Mass Classical - Early style (c. 454-440 BC)</span>
                         <button class="favorite-btn" data-coin="mass-classical-early">☆</button>
                         <button class="notes-btn" data-coin="mass-classical-early">📝</button>
@@ -10862,6 +10877,32 @@
         <section id="resources" class="resources-section tab-content">
             <h2>📚 Ancient Coin Resources</h2>
             <p class="section-desc">Your comprehensive guide to buying, researching, and learning about ancient coins</p>
+
+            <!-- ORIGINAL RESEARCH ARTICLES -->
+            <div class="resources-category research-articles">
+                <h3>📜 Research Articles</h3>
+                <p class="category-desc">Original scholarship and in-depth studies on ancient coinage topics.</p>
+                <div class="resources-grid">
+                    <a href="londinium/" class="resource-card resource-featured">
+                        <span class="resource-icon">🇬🇧</span>
+                        <span class="resource-name">Londinium Mint Guide</span>
+                        <span class="resource-badge">INTERACTIVE</span>
+                        <span class="resource-desc">Complete history (286-388 AD), emperor profiles, mintmark identifier</span>
+                    </a>
+                    <a href="carausius-virgil/" class="resource-card resource-featured">
+                        <span class="resource-icon">📖</span>
+                        <span class="resource-name">Carausius & Virgil's Fourth Eclogue</span>
+                        <span class="resource-badge">SCHOLARLY</span>
+                        <span class="resource-desc">Decoding RSR, INPCDA, and EXPECTATE VENI — the most literary coins in history</span>
+                    </a>
+                    <a href="athens-owls/" class="resource-card resource-featured">
+                        <span class="resource-icon">🦉</span>
+                        <span class="resource-name">Athens Owl Tetradrachms</span>
+                        <span class="resource-badge">COMPREHENSIVE</span>
+                        <span class="resource-desc">History, styles, denominations, authentication — the ancient world's dollar</span>
+                    </a>
+                </div>
+            </div>
 
             <!-- COLLECTOR'S GUIDES INDEX -->
             <div class="resources-category">

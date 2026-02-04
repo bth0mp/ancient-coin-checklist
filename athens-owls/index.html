@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athens Owl Tetradrachms - Collector's Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8960c;
+            --bg-dark: #1a1a2e;
+            --bg-card: #16213e;
+            --bg-section: #0f1729;
+            --text-primary: #e8e8e8;
+            --text-muted: #a0a0a0;
+            --accent-blue: #4a90d9;
+            --accent-green: #27ae60;
+            --accent-purple: #9b59b6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--gold-dark);
+        }
+
+        .section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: var(--bg-section);
+            border-left: 4px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box.info {
+            border-left-color: var(--accent-blue);
+        }
+
+        .highlight-box.tip {
+            border-left-color: var(--accent-green);
+        }
+
+        .highlight-box.warning {
+            border-left-color: #e74c3c;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--gold), var(--accent-blue), var(--accent-purple));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0 1rem 1.5rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 1.2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-card);
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .timeline-title {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin: 0.25rem 0;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Style card grid */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .style-card {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .style-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .style-card h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .style-card .period {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .style-card .characteristics {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Weight standards table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-section);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Owl anatomy diagram */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .anatomy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .anatomy-item {
+            background: var(--bg-section);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .anatomy-item strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Authentication checklist */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.75rem 1rem;
+            background: var(--bg-section);
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Links */
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .toc {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .toc li {
+            margin: 0;
+        }
+
+        .toc a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .toc a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Famous owls gallery */
+        .famous-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .famous-card {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .famous-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .famous-card .price {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .emoji-large {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Ancient Coin Checklist</a>
+
+        <header>
+            <h1>🦉 Athens Owl Tetradrachms</h1>
+            <p class="subtitle">The Most Iconic Coins of the Ancient World</p>
+        </header>
+
+        <nav class="toc">
+            <h3>📑 Contents</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#history">Historical Context</a></li>
+                <li><a href="#evolution">Stylistic Evolution</a></li>
+                <li><a href="#denominations">Denominations</a></li>
+                <li><a href="#anatomy">Anatomy of an Owl</a></li>
+                <li><a href="#identification">Identification Tips</a></li>
+                <li><a href="#authentication">Authentication</a></li>
+                <li><a href="#market">Market & Collecting</a></li>
+                <li><a href="#imitations">Ancient Imitations</a></li>
+                <li><a href="#resources">Further Reading</a></li>
+            </ul>
+        </nav>
+
+        <section class="section" id="introduction">
+            <h2>🏛️ Introduction</h2>
+            <p>The Athenian Owl tetradrachm is arguably the most recognizable coin in human history. Minted for over 500 years with remarkable consistency, these silver coins became the de facto international currency of the ancient Mediterranean world.</p>
+
+            <div class="highlight-box">
+                <strong>Why They Matter:</strong> Athens Owls were the "dollar" of the ancient world. Their consistent weight, high silver purity, and instantly recognizable design made them trusted from Spain to India. Finding one in a hoard from Afghanistan or Egypt speaks to their incredible reach.
+            </div>
+
+            <h3>The Design</h3>
+            <p><strong>Obverse:</strong> Head of Athena facing right, wearing a crested Attic helmet decorated with olive leaves and a floral scroll. Her eye is rendered frontal (archaic convention).</p>
+            <p><strong>Reverse:</strong> The owl (glaux) of Athena standing right, head facing. An olive sprig and crescent moon behind. The ethnic ΑΘΕ (for ΑΘΕΝΑΙΩΝ, "of the Athenians").</p>
+
+            <div class="highlight-box info">
+                <strong>The Crescent Moon:</strong> The meaning is debated. Some scholars suggest it commemorates the Battle of Marathon (490 BC), fought under a waning moon. Others see it as simply a space filler or mint control mark.
+            </div>
+        </section>
+
+        <section class="section" id="history">
+            <h2>📜 Historical Context</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">c. 525-515 BC</span>
+                    <div class="timeline-title">Earliest Owls ("Wappenmünzen" transition)</div>
+                    <div class="timeline-desc">Athens begins minting owl tetradrachms, replacing earlier heraldic types. These early issues show Athena with an almond-shaped eye.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">490 BC</span>
+                    <div class="timeline-title">Battle of Marathon</div>
+                    <div class="timeline-desc">Athenian victory over Persia. The owl's design may have been refined around this period. Some scholars connect the crescent moon to this battle.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">483 BC</span>
+                    <div class="timeline-title">Laurion Silver Strike</div>
+                    <div class="timeline-desc">Discovery of rich new silver veins at Laurion. Themistocles convinces Athens to build a fleet instead of distributing the windfall. This silver funds massive owl production.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">480-479 BC</span>
+                    <div class="timeline-title">Persian Wars</div>
+                    <div class="timeline-desc">Battles of Salamis and Plataea. Athenian naval power, funded by owls, proves decisive. Athens emerges as the preeminent Greek power.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">454 BC</span>
+                    <div class="timeline-title">Delian League Treasury Moved</div>
+                    <div class="timeline-desc">Athens transfers the treasury from Delos to the Acropolis. Tribute payments fuel continued minting and the building of the Parthenon.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">431-404 BC</span>
+                    <div class="timeline-title">Peloponnesian War</div>
+                    <div class="timeline-desc">Athens vs. Sparta. In 407/6 BC, Athens melts gold Nike statues to mint emergency gold staters. In 406/5 BC, bronze plated owls are issued—a sign of desperation.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">393 BC</span>
+                    <div class="timeline-title">Post-War Recovery</div>
+                    <div class="timeline-desc">Full-weight silver owls resume. The classical style continues with only minor variations.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">c. 165-42 BC</span>
+                    <div class="timeline-title">New Style Owls</div>
+                    <div class="timeline-desc">Major redesign: Athena on a broader flan, owl standing on amphora, elaborate magistrate names and symbols. The "stephanophoric" wreath border appears.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">86 BC</span>
+                    <div class="timeline-title">Sulla's Siege</div>
+                    <div class="timeline-desc">Roman siege of Athens. Minting continues but becomes irregular. The classical owl era effectively ends.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="evolution">
+            <h2>🎨 Stylistic Evolution</h2>
+            <p>The owl's design evolved over five centuries, but the basic elements remained remarkably consistent—a testament to the power of brand recognition in the ancient world.</p>
+
+            <div class="style-grid">
+                <div class="style-card">
+                    <h4>Archaic "Starving Owl"</h4>
+                    <div class="period">c. 515-480 BC</div>
+                    <div class="characteristics">
+                        Small, compact flan. Athena with large, almond-shaped eye. Owl appears thin and angular. The style is stiff but charming. These are the rarest and most valuable classical owls.
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <h4>Early Classical</h4>
+                    <div class="period">c. 480-450 BC</div>
+                    <div class="characteristics">
+                        Transitional period. Athena's features become more naturalistic. The owl fills out. These are the "golden age" owls, struck during Athens' rise to power.
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <h4>Classical "Mass" Style</h4>
+                    <div class="period">c. 450-404 BC</div>
+                    <div class="characteristics">
+                        High-volume production. Consistent but sometimes mechanical execution. The owl reaches its iconic form. These are the most common ancient owls on the market today.
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <h4>4th Century Classical</h4>
+                    <div class="period">c. 393-300 BC</div>
+                    <div class="characteristics">
+                        Post-Peloponnesian War recovery. Subtle style shifts. Some issues show a more ornate helmet. Quality varies. Pi-style owls (with Π-shaped tail feathers) emerge.
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <h4>"Intermediate" Style</h4>
+                    <div class="period">c. 300-165 BC</div>
+                    <div class="characteristics">
+                        Transitional period with varying styles. Hellenistic influences creep in. Control marks become more common. Production may have been intermittent.
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <h4>New Style</h4>
+                    <div class="period">c. 165-42 BC</div>
+                    <div class="characteristics">
+                        Complete redesign. Broader, thinner flan. Athena in three-quarter view on some. Owl stands on amphora. Magistrate names and dates. Wreath border. More "modern" looking.
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box tip">
+                <strong>Collecting Tip:</strong> "Mass production" classical owls (c. 450-404 BC) offer the best value. They're historically significant, instantly recognizable, and available at reasonable prices compared to archaic or new style examples.
+            </div>
+        </section>
+
+        <section class="section" id="denominations">
+            <h2>⚖️ Denominations & Weight Standards</h2>
+            <p>Athens struck a full range of denominations based on the Attic standard. The tetradrachm was the workhorse, but smaller fractions saw extensive use in daily commerce.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Denomination</th>
+                        <th>Weight (g)</th>
+                        <th>Value (Obols)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Dekadrachm</strong></td>
+                        <td>43.0</td>
+                        <td>60</td>
+                        <td>Extremely rare. Commemorative issues only.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tetradrachm</strong></td>
+                        <td>17.2</td>
+                        <td>24</td>
+                        <td>The iconic "owl." International trade standard.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Didrachm</strong></td>
+                        <td>8.6</td>
+                        <td>12</td>
+                        <td>Less common. Sometimes called "half owl."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drachm</strong></td>
+                        <td>4.3</td>
+                        <td>6</td>
+                        <td>A day's wage for a skilled worker.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Triobol</strong></td>
+                        <td>2.15</td>
+                        <td>3</td>
+                        <td>Half drachm. Common for daily use.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diobol</strong></td>
+                        <td>1.43</td>
+                        <td>2</td>
+                        <td>Owl-head design (some issues).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Obol</strong></td>
+                        <td>0.72</td>
+                        <td>1</td>
+                        <td>The basic unit. Often placed in the deceased's mouth.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hemiobol</strong></td>
+                        <td>0.36</td>
+                        <td>½</td>
+                        <td>Tiny! Easy to lose. Owl facing left.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tetartemorion</strong></td>
+                        <td>0.18</td>
+                        <td>¼</td>
+                        <td>Incredibly small. Various designs.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box info">
+                <strong>The Dekadrachm Mystery:</strong> Athenian dekadrachms are among the greatest rarities in numismatics. Only a handful exist. They were likely struck for special occasions—perhaps distributed to rowers after naval victories. A single specimen sold for $1.4 million in 2020.
+            </div>
+        </section>
+
+        <section class="section" id="anatomy">
+            <h2>🔍 Anatomy of an Owl</h2>
+            <p>Understanding the details helps with identification and authentication. Here's what to look for:</p>
+
+            <h3>Obverse (Athena)</h3>
+            <div class="anatomy-grid">
+                <div class="anatomy-item">
+                    <strong>Helmet</strong>
+                    Crested Attic style with three olive leaves and a floral scroll (palmette). The crest should curve gracefully.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Eye</strong>
+                    Rendered frontally (archaic convention), even on classical issues. Should be almond-shaped with clear pupil.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Hair</strong>
+                    Wavy locks emerge from beneath the helmet. Usually 3-4 visible curls. Fine detail on good strikes.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Earring</strong>
+                    Circular pendant earring visible on most issues. Sometimes obscured by wear.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Necklace</strong>
+                    Beaded necklace at throat. Often faint but should be present on well-preserved examples.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Border</strong>
+                    Usually no border on classical issues. New style owls have wreath border.
+                </div>
+            </div>
+
+            <h3>Reverse (Owl)</h3>
+            <div class="anatomy-grid">
+                <div class="anatomy-item">
+                    <strong>Head</strong>
+                    Facing forward with large, round eyes. Two "ear" tufts visible. Beak hooked.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Body</strong>
+                    Standing right. Wing feathers detailed with parallel lines. The "pi-style" tail (Π-shaped) appears on some 4th century issues.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Olive Sprig</strong>
+                    Behind the owl, usually with 2-3 leaves and berry clusters. Symbol of Athena and Athens.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Crescent Moon</strong>
+                    Above/behind the owl. Horizontal or slightly tilted. Absent on earliest issues.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Ethnic (ΑΘΕ)</strong>
+                    The letters alpha-theta-epsilon, abbreviation of ΑΘΕΝΑΙΩΝ ("of the Athenians"). Should be clearly cut.
+                </div>
+                <div class="anatomy-item">
+                    <strong>Incuse Square</strong>
+                    The entire design sits within a shallow incuse square, remnant of the punching technique.
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="identification">
+            <h2>🏷️ Identification Tips</h2>
+            
+            <h3>Dating by Style</h3>
+            <ul>
+                <li><strong>Archaic (pre-480 BC):</strong> Small flan, thin owl, almond eye, stiff style</li>
+                <li><strong>Early Classical (480-450 BC):</strong> Transitional features, naturalizing style</li>
+                <li><strong>Mass Production (450-404 BC):</strong> Consistent, somewhat mechanical, high volume</li>
+                <li><strong>4th Century (393-300 BC):</strong> Pi-style tails, various control marks</li>
+                <li><strong>New Style (165-42 BC):</strong> Completely different: broad flan, amphora, dated</li>
+            </ul>
+
+            <h3>Test Cuts</h3>
+            <p>Many owls show ancient test cuts—chisel marks made to verify the coin wasn't plated. This is <em>not</em> damage; it's evidence of ancient use and can actually enhance a coin's appeal to collectors. Look for:</p>
+            <ul>
+                <li>Chisel cuts through the design (often on obverse)</li>
+                <li>Multiple small punch marks</li>
+                <li>Edge cuts revealing the silver core</li>
+            </ul>
+            <div class="highlight-box tip">
+                <strong>Don't Fear Test Cuts:</strong> A genuine ancient test cut proves the coin was used in commerce. Some collectors specifically seek them out as evidence of authentic circulation.
+            </div>
+
+            <h3>Banker's Marks</h3>
+            <p>Small countermarks applied by ancient money changers to guarantee authenticity. Common marks include:</p>
+            <ul>
+                <li>Small punch marks (dots, crescents)</li>
+                <li>Tiny symbols (often hard to identify)</li>
+                <li>Letters or monograms</li>
+            </ul>
+        </section>
+
+        <section class="section" id="authentication">
+            <h2>🛡️ Authentication</h2>
+            <p>Athens owls are among the most frequently faked ancient coins. Modern forgeries range from crude tourist fakes to sophisticated deceptions that fool experts.</p>
+
+            <div class="highlight-box warning">
+                <strong>Red Flags:</strong> If a price seems too good to be true, it probably is. Archaic owls, dekadrachms, and "perfect" specimens at low prices are almost certainly forgeries.
+            </div>
+
+            <h3>Authentication Checklist</h3>
+            <ul class="checklist">
+                <li><strong>Weight:</strong> Should be 17.0-17.3g for tetradrachms. Underweight coins may be plated forgeries or ancient fourrées.</li>
+                <li><strong>Die Axis:</strong> Usually 9 o'clock (coins turn), though variation exists. Consistent 12 o'clock (medal alignment) is suspicious for classical issues.</li>
+                <li><strong>Metal:</strong> High silver content gives authentic owls a distinctive ring when dropped. Modern fakes often use base metal cores.</li>
+                <li><strong>Style:</strong> Study many authentic examples. Forgeries often have "off" proportions, wrong letter forms, or anachronistic features.</li>
+                <li><strong>Surface:</strong> Genuine ancient silver develops characteristic crystalline structure. Look for flow lines from striking.</li>
+                <li><strong>Provenance:</strong> Buy from reputable dealers. Known collection history adds significant confidence.</li>
+                <li><strong>Die Studies:</strong> Some dies are published. A known die match confirms authenticity.</li>
+            </ul>
+
+            <h3>Common Forgery Types</h3>
+            <ul>
+                <li><strong>Cast Fakes:</strong> Made from molds of genuine coins. Look for soft details, porous surfaces, seam lines.</li>
+                <li><strong>Struck Fakes:</strong> Made with modern dies. Often too perfect, wrong style, or from "impossible" die combinations.</li>
+                <li><strong>Fourrées:</strong> Ancient plated coins (silver over bronze/copper core). These ARE ancient but worth less than solid silver.</li>
+                <li><strong>Tooled Coins:</strong> Genuine but damaged coins "improved" by adding detail. Look for inconsistent surfaces, wrong textures.</li>
+            </ul>
+        </section>
+
+        <section class="section" id="market">
+            <h2>💰 Market & Collecting</h2>
+            
+            <h3>Price Ranges (2024-2025)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grade / Type</th>
+                        <th>Price Range (USD)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Classical Tetradrachm (VF)</td>
+                        <td>$400 - $800</td>
+                        <td>Most accessible entry point</td>
+                    </tr>
+                    <tr>
+                        <td>Classical Tetradrachm (EF)</td>
+                        <td>$800 - $2,000</td>
+                        <td>Sharp details, good centering</td>
+                    </tr>
+                    <tr>
+                        <td>Classical Tetradrachm (Choice)</td>
+                        <td>$2,000 - $5,000</td>
+                        <td>Exceptional strike and preservation</td>
+                    </tr>
+                    <tr>
+                        <td>Archaic Tetradrachm</td>
+                        <td>$3,000 - $30,000+</td>
+                        <td>Rare, highly sought after</td>
+                    </tr>
+                    <tr>
+                        <td>New Style Tetradrachm</td>
+                        <td>$500 - $2,500</td>
+                        <td>Dated issues command premiums</td>
+                    </tr>
+                    <tr>
+                        <td>Drachm</td>
+                        <td>$150 - $600</td>
+                        <td>Budget-friendly option</td>
+                    </tr>
+                    <tr>
+                        <td>Small Fractions (Obol, etc.)</td>
+                        <td>$50 - $300</td>
+                        <td>Charming, affordable, often crude</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>What Affects Value</h3>
+            <ul>
+                <li><strong>Style:</strong> Well-executed dies command premiums</li>
+                <li><strong>Centering:</strong> Full, centered designs worth more</li>
+                <li><strong>Metal Quality:</strong> Good silver, no porosity or corrosion</li>
+                <li><strong>Strike:</strong> Sharp details on both sides</li>
+                <li><strong>Toning:</strong> Attractive cabinet toning adds value</li>
+                <li><strong>Provenance:</strong> Notable collections command premiums</li>
+                <li><strong>Test Cuts:</strong> Generally neutral to slight discount, but some collectors prefer them</li>
+            </ul>
+
+            <div class="highlight-box tip">
+                <strong>Best Value Strategy:</strong> Look for coins graded VF-EF with good style and centering rather than chasing "perfect" high-grade examples. A well-struck VF tells the same story as a superb EF at a fraction of the price.
+            </div>
+        </section>
+
+        <section class="section" id="imitations">
+            <h2>🌍 Ancient Imitations</h2>
+            <p>The owl's success bred imitation. From Egypt to Arabia to Afghanistan, local mints copied the owl design—sometimes closely, sometimes with local variations.</p>
+
+            <div class="famous-grid">
+                <div class="famous-card">
+                    <span class="emoji-large">🇪🇬</span>
+                    <h4>Egyptian Imitations</h4>
+                    <p>Ptolemaic Egypt struck owl-influenced tetradrachms. Some are crude local copies; others are sophisticated official issues. Look for: softer style, different fabric, local control marks.</p>
+                </div>
+                
+                <div class="famous-card">
+                    <span class="emoji-large">🇾🇪</span>
+                    <h4>Arabian Imitations</h4>
+                    <p>South Arabian kingdoms (Yemen region) struck owl derivatives for centuries. Often smaller, lighter, with degraded or stylized designs. Some have local legends in South Arabian script.</p>
+                </div>
+                
+                <div class="famous-card">
+                    <span class="emoji-large">🇦🇫</span>
+                    <h4>Bactrian Imitations</h4>
+                    <p>Found in Afghanistan and surrounding regions. Some are quite close to Athenian originals; others show local artistic interpretation. Evidence of how far owl trade reached.</p>
+                </div>
+                
+                <div class="famous-card">
+                    <span class="emoji-large">🏛️</span>
+                    <h4>Other Greek Mints</h4>
+                    <p>Several Greek cities struck owl-types, sometimes to facilitate trade with areas where owls were expected. These "pseudo-Athenian" issues are collectible in their own right.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box info">
+                <strong>Collecting Imitations:</strong> Ancient imitations are fascinating collectibles that illustrate the owl's international reach. They're generally less expensive than genuine Athenian issues and tell a compelling story about ancient trade networks.
+            </div>
+        </section>
+
+        <section class="section" id="resources">
+            <h2>📚 Further Reading</h2>
+            
+            <h3>Essential References</h3>
+            <ul>
+                <li><strong>Starr, C.G.</strong> - <em>Athenian Coinage 480-449 BC</em> (1970). The standard work on early classical owls.</li>
+                <li><strong>Kraay, C.M.</strong> - <em>Archaic and Classical Greek Coins</em> (1976). Excellent overview including Athens.</li>
+                <li><strong>Svoronos, J.N.</strong> - <em>Les Monnaies d'Athènes</em> (1923-26). The comprehensive die study, still cited.</li>
+                <li><strong>Kroll, J.H.</strong> - <em>The Greek Coins</em> (Athenian Agora XXVI, 1993). Excavation coins with context.</li>
+                <li><strong>Thompson, M.</strong> - <em>The New Style Silver Coinage of Athens</em> (1961). Definitive for late period.</li>
+            </ul>
+
+            <h3>Online Resources</h3>
+            <ul>
+                <li><a href="https://www.acsearch.info" target="_blank">ACSearch</a> - Search auction archives for price comparisons</li>
+                <li><a href="https://www.cngcoins.com" target="_blank">Classical Numismatic Group</a> - Major auction house with extensive archives</li>
+                <li><a href="https://www.wildwinds.com" target="_blank">WildWinds</a> - Free reference database with images</li>
+                <li><a href="https://numismatics.org" target="_blank">American Numismatic Society</a> - Research resources and MANTIS database</li>
+            </ul>
+
+            <h3>Forums & Communities</h3>
+            <ul>
+                <li><a href="https://www.cointalk.com" target="_blank">CoinTalk</a> - Active ancient coin discussions</li>
+                <li><a href="https://www.forumancientcoins.com" target="_blank">Forum Ancient Coins</a> - Dealer site with excellent educational content</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Part of the <a href="../index.html">Ancient Coin Checklist</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">🦉 ΑΘΕ — The owl sees all</p>
+        </footer>
+    </div>
+</body>
+</html>

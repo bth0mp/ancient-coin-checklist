@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Mint Reference Guide | Ancient Coin Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --gold-dark: #b8860b;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #12121f;
+            --bg-card: #232342;
+            --text-light: #e8e8e8;
+            --text-muted: #a0a0a0;
+            --accent-red: #8b3a3a;
+            --accent-green: #3a6b4a;
+            --accent-blue: #3a5a8b;
+            --accent-purple: #6b3a8b;
+            --accent-orange: #8b5a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            color: var(--text-light);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--gold-dark);
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--gold-light);
+        }
+
+        .intro-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .intro-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .intro-section p {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .fact-box {
+            background: var(--bg-darker);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .fact-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .fact-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Reading Mintmarks Section */
+        .reading-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .reading-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .mintmark-anatomy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .anatomy-card {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #3a3a5a;
+        }
+
+        .anatomy-card h3 {
+            color: var(--gold-light);
+            margin-bottom: 0.75rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .example-mark {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            background: #1a1a2e;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .mark-breakdown {
+            font-size: 0.95rem;
+        }
+
+        .mark-breakdown span {
+            display: block;
+            padding: 0.25rem 0;
+        }
+
+        /* Officina Numbers */
+        .officina-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .officina-table th,
+        .officina-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid #3a3a5a;
+        }
+
+        .officina-table th {
+            background: var(--bg-darker);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .officina-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Mint Directory */
+        .mint-directory {
+            margin-bottom: 3rem;
+        }
+
+        .mint-directory h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .region-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid #3a3a5a;
+            color: var(--text-light);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold-dark);
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        .mints-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mint-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #3a3a5a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mint-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .mint-card[data-region="west"] { border-left: 4px solid var(--accent-red); }
+        .mint-card[data-region="east"] { border-left: 4px solid var(--accent-purple); }
+        .mint-card[data-region="balkans"] { border-left: 4px solid var(--accent-blue); }
+        .mint-card[data-region="britain"] { border-left: 4px solid var(--accent-green); }
+        .mint-card[data-region="africa"] { border-left: 4px solid var(--accent-orange); }
+
+        .mint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .mint-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .mint-modern {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .mint-dates {
+            background: var(--bg-darker);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .mint-marks {
+            background: var(--bg-darker);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .mint-marks h4 {
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .marks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .mark-tag {
+            font-family: 'Courier New', monospace;
+            background: #2a2a4a;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+        }
+
+        .mint-notes {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .mint-notes strong {
+            color: var(--text-light);
+        }
+
+        /* Decoder Tool */
+        .decoder-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .decoder-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .decoder-input {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .decoder-input input {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-darker);
+            border: 2px solid #3a3a5a;
+            border-radius: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            width: 250px;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .decoder-input input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .decoder-input button {
+            background: var(--gold-dark);
+            border: none;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .decoder-input button:hover {
+            background: var(--gold);
+        }
+
+        .decoder-result {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-height: 100px;
+        }
+
+        .decoder-result.has-result {
+            border: 2px solid var(--gold-dark);
+        }
+
+        .result-mint {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-details {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .result-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Common Abbreviations */
+        .abbrev-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .abbrev-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .abbrev-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .abbrev-item {
+            background: var(--bg-darker);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .abbrev-code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: var(--gold);
+            min-width: 60px;
+        }
+
+        .abbrev-meaning {
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline-section {
+            margin-bottom: 3rem;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold-dark), var(--gold), var(--gold-dark));
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 5%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -38px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -38px;
+        }
+
+        .timeline-date {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #3a3a5a;
+            margin-top: 3rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+            .mints-grid { grid-template-columns: 1fr; }
+            
+            .timeline::before { left: 20px; }
+            .timeline-item {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+            .timeline-item::before {
+                left: -38px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/coins/" class="back-link">← Back to Coin Checklist</a>
+        
+        <header>
+            <h1>🏛️ Roman Mint Reference Guide</h1>
+            <p class="subtitle">Understanding mintmarks across the Roman Empire</p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro-section">
+            <h2>The Roman Minting System</h2>
+            <p>
+                Roman coinage production evolved from a single mint in Rome to a vast network of imperial mints 
+                spanning three continents. By the 4th century AD, over 15 mints operated simultaneously, each 
+                with multiple workshops (officinae) producing millions of coins annually.
+            </p>
+            <p>
+                <strong>Mintmarks</strong> first appeared consistently during the reign of Aurelian (270-275 AD) 
+                and became standard under Diocletian's coinage reforms (294 AD). These marks allowed the imperial 
+                treasury to track production, identify sources of debased coinage, and ensure quality control.
+            </p>
+            <div class="quick-facts">
+                <div class="fact-box">
+                    <div class="fact-number">20+</div>
+                    <div class="fact-label">Major Imperial Mints</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-number">294 AD</div>
+                    <div class="fact-label">Diocletian's Reforms</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-number">500+</div>
+                    <div class="fact-label">Years of Roman Coinage</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-number">1-12</div>
+                    <div class="fact-label">Officinae per Mint</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Read Mintmarks -->
+        <section class="reading-section">
+            <h2>📖 How to Read Mintmarks</h2>
+            <div class="mintmark-anatomy">
+                <div class="anatomy-card">
+                    <h3>Basic Structure</h3>
+                    <div class="example-mark">PLG</div>
+                    <div class="mark-breakdown">
+                        <span><strong>P</strong> = Pecunia (money) or Prima (first)</span>
+                        <span><strong>L</strong> = Lugdunum (Lyon)</span>
+                        <span><strong>G</strong> = Gallica or workshop mark</span>
+                    </div>
+                </div>
+                <div class="anatomy-card">
+                    <h3>With Officina Number</h3>
+                    <div class="example-mark">SMANT Γ</div>
+                    <div class="mark-breakdown">
+                        <span><strong>SM</strong> = Sacra Moneta (sacred mint)</span>
+                        <span><strong>ANT</strong> = Antioch</span>
+                        <span><strong>Γ</strong> = Third officina (Gamma = 3)</span>
+                    </div>
+                </div>
+                <div class="anatomy-card">
+                    <h3>Late Roman Style</h3>
+                    <div class="example-mark">CONOB</div>
+                    <div class="mark-breakdown">
+                        <span><strong>CON</strong> = Constantinople</span>
+                        <span><strong>OB</strong> = Obryzum (pure gold)</span>
+                        <span>Common on Byzantine solidi</span>
+                    </div>
+                </div>
+                <div class="anatomy-card">
+                    <h3>Field Marks</h3>
+                    <div class="example-mark">★ // SMAN</div>
+                    <div class="mark-breakdown">
+                        <span><strong>★</strong> = Field mark (dating/series)</span>
+                        <span><strong>//</strong> = Exergue line</span>
+                        <span><strong>SMAN</strong> = Antioch mint</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--gold); margin-bottom: 1rem;">Officina Numbers</h3>
+            <p style="margin-bottom: 1rem;">Officinae (workshops) were numbered using Latin letters, Greek letters, or numerals:</p>
+            <table class="officina-table">
+                <tr>
+                    <th>Number</th>
+                    <th>Latin</th>
+                    <th>Greek</th>
+                    <th>Numeral</th>
+                </tr>
+                <tr><td>1</td><td>P (Prima)</td><td>A (Alpha)</td><td>I</td></tr>
+                <tr><td>2</td><td>S (Secunda)</td><td>B (Beta)</td><td>II</td></tr>
+                <tr><td>3</td><td>T (Tertia)</td><td>Γ (Gamma)</td><td>III</td></tr>
+                <tr><td>4</td><td>Q (Quarta)</td><td>Δ (Delta)</td><td>IIII</td></tr>
+                <tr><td>5</td><td>V (Quinta)</td><td>E (Epsilon)</td><td>V</td></tr>
+                <tr><td>6</td><td>VI (Sexta)</td><td>ς (Stigma)</td><td>VI</td></tr>
+                <tr><td>7</td><td>VII (Septima)</td><td>Z (Zeta)</td><td>VII</td></tr>
+                <tr><td>8</td><td>VIII (Octava)</td><td>H (Eta)</td><td>VIII</td></tr>
+                <tr><td>9</td><td>IX (Nona)</td><td>Θ (Theta)</td><td>VIIII</td></tr>
+                <tr><td>10</td><td>X (Decima)</td><td>I (Iota)</td><td>X</td></tr>
+            </table>
+        </section>
+
+        <!-- Mintmark Decoder -->
+        <section class="decoder-section">
+            <h2>🔍 Mintmark Decoder</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-muted);">
+                Enter a mintmark from the exergue of your coin to identify the mint
+            </p>
+            <div class="decoder-input">
+                <input type="text" id="mintmark-input" placeholder="e.g., PLON" maxlength="12">
+                <button onclick="decodeMintmark()">Decode</button>
+            </div>
+            <div class="decoder-result" id="decoder-result">
+                <div class="result-placeholder">
+                    Enter a mintmark above to see its meaning
+                </div>
+            </div>
+        </section>
+
+        <!-- Mint Directory -->
+        <section class="mint-directory">
+            <h2>📍 Imperial Mint Directory</h2>
+            <div class="region-filters">
+                <button class="filter-btn active" data-filter="all">All Mints</button>
+                <button class="filter-btn" data-filter="west">🔴 Western</button>
+                <button class="filter-btn" data-filter="east">🟣 Eastern</button>
+                <button class="filter-btn" data-filter="balkans">🔵 Balkans</button>
+                <button class="filter-btn" data-filter="britain">🟢 Britain</button>
+                <button class="filter-btn" data-filter="africa">🟠 Africa</button>
+            </div>
+
+            <div class="mints-grid" id="mints-grid">
+                <!-- Western Mints -->
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Roma</div>
+                            <div class="mint-modern">Rome, Italy</div>
+                        </div>
+                        <div class="mint-dates">c. 269 BC – 476 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">R</span>
+                            <span class="mark-tag">ROM</span>
+                            <span class="mark-tag">RΩ</span>
+                            <span class="mark-tag">RM</span>
+                            <span class="mark-tag">VRB ROM</span>
+                            <span class="mark-tag">SMRP</span>
+                            <span class="mark-tag">SMRS</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        The original and most prestigious Roman mint. <strong>Oficinae: up to 7.</strong> 
+                        Often unmarked in Republican/early Imperial periods. "SMR" = Sacra Moneta Roma.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Lugdunum</div>
+                            <div class="mint-modern">Lyon, France</div>
+                        </div>
+                        <div class="mint-dates">c. 15 BC – 423 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">LVG</span>
+                            <span class="mark-tag">LG</span>
+                            <span class="mark-tag">PLG</span>
+                            <span class="mark-tag">LVGD</span>
+                            <span class="mark-tag">SMLG</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Major Gallic mint. <strong>Officinae: up to 4.</strong> Augustus established it for 
+                        gold and silver. Often has globe or crescent field marks.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Treveri</div>
+                            <div class="mint-modern">Trier, Germany</div>
+                        </div>
+                        <div class="mint-dates">c. 294 – 430 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">TR</span>
+                            <span class="mark-tag">TRE</span>
+                            <span class="mark-tag">PTR</span>
+                            <span class="mark-tag">STR</span>
+                            <span class="mark-tag">SMTR</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Imperial residence mint, produced vast quantities under Constantine. 
+                        <strong>Officinae: up to 4.</strong> Premium quality dies.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Arelate</div>
+                            <div class="mint-modern">Arles, France</div>
+                        </div>
+                        <div class="mint-dates">c. 313 – 475 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">AR</span>
+                            <span class="mark-tag">ARL</span>
+                            <span class="mark-tag">PARL</span>
+                            <span class="mark-tag">CONST</span>
+                            <span class="mark-tag">SMAR</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Renamed <strong>Constantina</strong> (328-340) when Constantine resided there. 
+                        CONST marks from this period. <strong>Officinae: up to 4.</strong>
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Mediolanum</div>
+                            <div class="mint-modern">Milan, Italy</div>
+                        </div>
+                        <div class="mint-dates">c. 259 – 498 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">MD</span>
+                            <span class="mark-tag">MED</span>
+                            <span class="mark-tag">MDPS</span>
+                            <span class="mark-tag">SMMED</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Important late Roman mint, imperial residence under Maximian. 
+                        <strong>Officinae: up to 4.</strong> High quality gold emissions.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Ticinum</div>
+                            <div class="mint-modern">Pavia, Italy</div>
+                        </div>
+                        <div class="mint-dates">c. 274 – 326 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">T</span>
+                            <span class="mark-tag">TIC</span>
+                            <span class="mark-tag">PT</span>
+                            <span class="mark-tag">SMTIC</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Important Tetrarchic mint, closed under Constantine. <strong>Officinae: up to 4.</strong> 
+                        Known for high-relief portraiture.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Aquileia</div>
+                            <div class="mint-modern">Aquileia, Italy</div>
+                        </div>
+                        <div class="mint-dates">c. 294 – 425 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">AQ</span>
+                            <span class="mark-tag">AQP</span>
+                            <span class="mark-tag">AQOB</span>
+                            <span class="mark-tag">SMAQ</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Strategic northeast Italian mint. <strong>Officinae: up to 3.</strong> 
+                        Produced fine solidis; distinctive "star" field marks common.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="west">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Ravenna</div>
+                            <div class="mint-modern">Ravenna, Italy</div>
+                        </div>
+                        <div class="mint-dates">c. 402 – 751 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">RV</span>
+                            <span class="mark-tag">RAV</span>
+                            <span class="mark-tag">RVPS</span>
+                            <span class="mark-tag">COMOB</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Capital of Western Empire from 402 AD. Continued under Ostrogoths and Byzantines. 
+                        <strong>Officinae: 2-3.</strong>
+                    </p>
+                </div>
+
+                <!-- British Mints -->
+                <div class="mint-card" data-region="britain">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Londinium</div>
+                            <div class="mint-modern">London, Britain</div>
+                        </div>
+                        <div class="mint-dates">c. 286 – 325 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">L</span>
+                            <span class="mark-tag">LON</span>
+                            <span class="mark-tag">ML</span>
+                            <span class="mark-tag">MLN</span>
+                            <span class="mark-tag">PLON</span>
+                            <span class="mark-tag">PLN</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Founded by <strong>Carausius</strong> during British secession. Operated until 
+                        Constantine closed it. <strong>Officinae: up to 2.</strong> Unique RSR/INPCDA marks.
+                        <a href="/ancients/londinium/" style="color: var(--gold);">→ Full Londinium Guide</a>
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="britain">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Camulodunum</div>
+                            <div class="mint-modern">Colchester, Britain</div>
+                        </div>
+                        <div class="mint-dates">c. 287 – 296 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">C</span>
+                            <span class="mark-tag">CL</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Secondary British mint under Carausius/Allectus. Attribution debated – possibly 
+                        "Clausentum" (Bitterne). <strong>Limited production.</strong>
+                    </p>
+                </div>
+
+                <!-- Eastern Mints -->
+                <div class="mint-card" data-region="east">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Antiochia</div>
+                            <div class="mint-modern">Antakya, Turkey</div>
+                        </div>
+                        <div class="mint-dates">c. 300 BC – 610 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">AN</span>
+                            <span class="mark-tag">ANT</span>
+                            <span class="mark-tag">SMAN</span>
+                            <span class="mark-tag">ANTOB</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Major eastern mint, huge output. <strong>Officinae: up to 15!</strong> 
+                        Distinctive style with larger, flatter flans. Greek letter officinae standard.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="east">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Constantinopolis</div>
+                            <div class="mint-modern">Istanbul, Turkey</div>
+                        </div>
+                        <div class="mint-dates">c. 330 – 1453 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">C</span>
+                            <span class="mark-tag">CON</span>
+                            <span class="mark-tag">CONS</span>
+                            <span class="mark-tag">CONOB</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Capital mint from 330 AD, operated until the Fall. <strong>Officinae: up to 11.</strong> 
+                        CONOB standard on solidi (Constantinople Obryzum = pure gold).
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="east">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Nicomedia</div>
+                            <div class="mint-modern">İzmit, Turkey</div>
+                        </div>
+                        <div class="mint-dates">c. 294 – 474 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">N</span>
+                            <span class="mark-tag">NIC</span>
+                            <span class="mark-tag">SMN</span>
+                            <span class="mark-tag">SMNA</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Diocletian's capital, major Tetrarchic mint. <strong>Officinae: up to 7.</strong> 
+                        High-quality dies; often confused with Constantinople.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="east">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Cyzicus</div>
+                            <div class="mint-modern">Bandırma area, Turkey</div>
+                        </div>
+                        <div class="mint-dates">c. 268 – 474 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">K</span>
+                            <span class="mark-tag">KY</span>
+                            <span class="mark-tag">CYZ</span>
+                            <span class="mark-tag">SMK</span>
+                            <span class="mark-tag">SMKA</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Ancient Greek mint revived for Roman use. <strong>Officinae: up to 10.</strong> 
+                        Known for heavy antoniniani and quality bronzes.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="east">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Heraclea</div>
+                            <div class="mint-modern">Marmara Ereğli, Turkey</div>
+                        </div>
+                        <div class="mint-dates">c. 291 – 474 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">H</span>
+                            <span class="mark-tag">HER</span>
+                            <span class="mark-tag">SMHA</span>
+                            <span class="mark-tag">HERAC</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Thracian mint on Propontis. <strong>Officinae: up to 5.</strong> 
+                        Produced fine portrait work under Constantine.
+                    </p>
+                </div>
+
+                <!-- Balkans Mints -->
+                <div class="mint-card" data-region="balkans">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Siscia</div>
+                            <div class="mint-modern">Sisak, Croatia</div>
+                        </div>
+                        <div class="mint-dates">c. 262 – 387 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">SIS</span>
+                            <span class="mark-tag">SISC</span>
+                            <span class="mark-tag">ASIS</span>
+                            <span class="mark-tag">BSIS</span>
+                            <span class="mark-tag">SMSIS</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Major Balkan mint, prolific under tetrarchy. <strong>Officinae: up to 5.</strong> 
+                        Often features star (*) and wreath field marks.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="balkans">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Sirmium</div>
+                            <div class="mint-modern">Sremska Mitrovica, Serbia</div>
+                        </div>
+                        <div class="mint-dates">c. 320 – 395 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">SIR</span>
+                            <span class="mark-tag">SIRM</span>
+                            <span class="mark-tag">ASIRM</span>
+                            <span class="mark-tag">SMSIR</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Imperial residence and military base. <strong>Officinae: up to 4.</strong> 
+                        Fine gold issues for military donatives.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="balkans">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Thessalonica</div>
+                            <div class="mint-modern">Thessaloniki, Greece</div>
+                        </div>
+                        <div class="mint-dates">c. 298 – 620 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">TES</span>
+                            <span class="mark-tag">THES</span>
+                            <span class="mark-tag">TS</span>
+                            <span class="mark-tag">SMTS</span>
+                            <span class="mark-tag">TESOB</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Galerius's capital, continued through Byzantine era. <strong>Officinae: up to 5.</strong> 
+                        Known for large, well-struck folles.
+                    </p>
+                </div>
+
+                <!-- African Mints -->
+                <div class="mint-card" data-region="africa">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Alexandria</div>
+                            <div class="mint-modern">Alexandria, Egypt</div>
+                        </div>
+                        <div class="mint-dates">c. 294 AD – 646 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">AL</span>
+                            <span class="mark-tag">ALE</span>
+                            <span class="mark-tag">SMAL</span>
+                            <span class="mark-tag">SMALA</span>
+                            <span class="mark-tag">ALEXOB</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Egyptian mint, previously struck provincial tetradrachms (to 296 AD). 
+                        <strong>Officinae: up to 4.</strong> Distinctive large flans.
+                    </p>
+                </div>
+
+                <div class="mint-card" data-region="africa">
+                    <div class="mint-header">
+                        <div>
+                            <div class="mint-name">Carthago</div>
+                            <div class="mint-modern">Tunis area, Tunisia</div>
+                        </div>
+                        <div class="mint-dates">c. 296 – 311 AD</div>
+                    </div>
+                    <div class="mint-marks">
+                        <h4>Common Marks:</h4>
+                        <div class="marks-list">
+                            <span class="mark-tag">K</span>
+                            <span class="mark-tag">PK</span>
+                            <span class="mark-tag">PKΓ</span>
+                            <span class="mark-tag">FK</span>
+                        </div>
+                    </div>
+                    <p class="mint-notes">
+                        Brief operation under Tetrarchy. Uses "K" for Karthago. <strong>Officinae: 3.</strong> 
+                        Often confused with Cyzicus (also "K").
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Prefixes -->
+        <section class="abbrev-section">
+            <h2>📚 Common Mintmark Abbreviations</h2>
+            <div class="abbrev-grid">
+                <div class="abbrev-item">
+                    <span class="abbrev-code">SM</span>
+                    <span class="abbrev-meaning">Sacra Moneta (sacred mint)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">M</span>
+                    <span class="abbrev-meaning">Moneta (mint)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">P</span>
+                    <span class="abbrev-meaning">Pecunia or Prima (money/first)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">OF</span>
+                    <span class="abbrev-meaning">Officina (workshop)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">OB</span>
+                    <span class="abbrev-meaning">Obryzum (pure gold)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">PS</span>
+                    <span class="abbrev-meaning">Pusulatum (refined silver)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">COM</span>
+                    <span class="abbrev-meaning">Comitatus (imperial court)</span>
+                </div>
+                <div class="abbrev-item">
+                    <span class="abbrev-code">VOT</span>
+                    <span class="abbrev-meaning">Vota (vows/anniversary)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evolution Timeline -->
+        <section class="timeline-section">
+            <h2>📜 Evolution of Roman Minting</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 269 BC</div>
+                    <div class="timeline-content">
+                        First Roman silver denarius struck at Rome. Single mint system dominates 
+                        Republic and early Empire.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 15 BC</div>
+                    <div class="timeline-content">
+                        Augustus establishes Lugdunum mint for precious metal coinage. 
+                        Beginning of multi-mint system.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 260 AD</div>
+                    <div class="timeline-content">
+                        Crisis of Third Century leads to proliferation of mints. 
+                        Gallienus operates 10+ facilities.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">274 AD</div>
+                    <div class="timeline-content">
+                        Aurelian's reforms standardize mintmarks. XXI marks indicate 
+                        silver content (1/20 = 5%).
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">294 AD</div>
+                    <div class="timeline-content">
+                        Diocletian's monetary reforms establish consistent mintmark system. 
+                        15 mints operate under Tetrarchy.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">330 AD</div>
+                    <div class="timeline-content">
+                        Constantinople dedicated; becomes primary eastern mint. 
+                        CONOB standard established for solidi.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">395 AD</div>
+                    <div class="timeline-content">
+                        Empire permanently divided. Eastern mints thrive; 
+                        western mints decline with barbarian incursions.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">476 AD</div>
+                    <div class="timeline-content">
+                        Fall of Western Empire. Rome mint continues under Ostrogoths. 
+                        Byzantine mints carry tradition to 1453.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                Part of the <a href="/coins/">Ancient Coin Checklist</a> project<br>
+                References: RIC (Roman Imperial Coinage), LRBC (Late Roman Bronze Coinage)
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Mint data for decoder
+        const mintData = {
+            // Rome
+            'R': { mint: 'Roma', location: 'Rome, Italy', dates: '269 BC – 476 AD' },
+            'ROM': { mint: 'Roma', location: 'Rome, Italy', dates: '269 BC – 476 AD' },
+            'RM': { mint: 'Roma', location: 'Rome, Italy', dates: '269 BC – 476 AD' },
+            'SMR': { mint: 'Roma', location: 'Rome, Italy', dates: '269 BC – 476 AD', note: 'Sacra Moneta Roma' },
+            'SMRP': { mint: 'Roma', location: 'Rome, Italy', officina: 'Prima (1st)' },
+            'SMRS': { mint: 'Roma', location: 'Rome, Italy', officina: 'Secunda (2nd)' },
+            'SMRT': { mint: 'Roma', location: 'Rome, Italy', officina: 'Tertia (3rd)' },
+            'SMRQ': { mint: 'Roma', location: 'Rome, Italy', officina: 'Quarta (4th)' },
+            
+            // Lugdunum
+            'LVG': { mint: 'Lugdunum', location: 'Lyon, France', dates: '15 BC – 423 AD' },
+            'LG': { mint: 'Lugdunum', location: 'Lyon, France', dates: '15 BC – 423 AD' },
+            'PLG': { mint: 'Lugdunum', location: 'Lyon, France', officina: 'Prima (1st)' },
+            'SLG': { mint: 'Lugdunum', location: 'Lyon, France', officina: 'Secunda (2nd)' },
+            'SMLG': { mint: 'Lugdunum', location: 'Lyon, France', note: 'Sacra Moneta Lugdunum' },
+            
+            // Trier
+            'TR': { mint: 'Treveri', location: 'Trier, Germany', dates: '294 – 430 AD' },
+            'TRE': { mint: 'Treveri', location: 'Trier, Germany', dates: '294 – 430 AD' },
+            'PTR': { mint: 'Treveri', location: 'Trier, Germany', officina: 'Prima (1st)' },
+            'STR': { mint: 'Treveri', location: 'Trier, Germany', officina: 'Secunda (2nd)' },
+            'SMTR': { mint: 'Treveri', location: 'Trier, Germany', note: 'Sacra Moneta Treveri' },
+            
+            // Arles
+            'AR': { mint: 'Arelate', location: 'Arles, France', dates: '313 – 475 AD' },
+            'ARL': { mint: 'Arelate', location: 'Arles, France', dates: '313 – 475 AD' },
+            'PARL': { mint: 'Arelate', location: 'Arles, France', officina: 'Prima (1st)' },
+            'SARL': { mint: 'Arelate', location: 'Arles, France', officina: 'Secunda (2nd)' },
+            'CONST': { mint: 'Arelate (Constantina)', location: 'Arles, France', note: 'Renamed 328-340 AD' },
+            'SMAR': { mint: 'Arelate', location: 'Arles, France', note: 'Sacra Moneta Arelate' },
+            
+            // London
+            'L': { mint: 'Londinium', location: 'London, Britain', dates: '286 – 325 AD' },
+            'LON': { mint: 'Londinium', location: 'London, Britain', dates: '286 – 325 AD' },
+            'ML': { mint: 'Londinium', location: 'London, Britain', note: 'Moneta Londinium' },
+            'MLN': { mint: 'Londinium', location: 'London, Britain', note: 'Moneta Londinium' },
+            'PLON': { mint: 'Londinium', location: 'London, Britain', officina: 'Prima (1st)' },
+            'PLN': { mint: 'Londinium', location: 'London, Britain', officina: 'Prima (1st)' },
+            'MSL': { mint: 'Londinium', location: 'London, Britain', note: 'Moneta Sacra Londinium' },
+            
+            // Constantinople
+            'C': { mint: 'Constantinopolis (or others)', location: 'Multiple possible', note: 'Context needed' },
+            'CON': { mint: 'Constantinopolis', location: 'Istanbul, Turkey', dates: '330 – 1453 AD' },
+            'CONS': { mint: 'Constantinopolis', location: 'Istanbul, Turkey', dates: '330 – 1453 AD' },
+            'CONOB': { mint: 'Constantinopolis', location: 'Istanbul, Turkey', note: 'Pure gold (obryzum)' },
+            'CONSA': { mint: 'Constantinopolis', location: 'Istanbul, Turkey', officina: 'Alpha (1st)' },
+            'CONSB': { mint: 'Constantinopolis', location: 'Istanbul, Turkey', officina: 'Beta (2nd)' },
+            
+            // Antioch
+            'AN': { mint: 'Antiochia', location: 'Antakya, Turkey', dates: '300 BC – 610 AD' },
+            'ANT': { mint: 'Antiochia', location: 'Antakya, Turkey', dates: '300 BC – 610 AD' },
+            'SMAN': { mint: 'Antiochia', location: 'Antakya, Turkey', note: 'Sacra Moneta Antioch' },
+            'SMANT': { mint: 'Antiochia', location: 'Antakya, Turkey', note: 'Sacra Moneta Antioch' },
+            'ANTOB': { mint: 'Antiochia', location: 'Antakya, Turkey', note: 'Pure gold' },
+            
+            // Nicomedia
+            'N': { mint: 'Nicomedia', location: 'İzmit, Turkey', dates: '294 – 474 AD' },
+            'NIC': { mint: 'Nicomedia', location: 'İzmit, Turkey', dates: '294 – 474 AD' },
+            'SMN': { mint: 'Nicomedia', location: 'İzmit, Turkey', note: 'Sacra Moneta Nicomedia' },
+            'SMNA': { mint: 'Nicomedia', location: 'İzmit, Turkey', officina: 'Alpha (1st)' },
+            'SMNB': { mint: 'Nicomedia', location: 'İzmit, Turkey', officina: 'Beta (2nd)' },
+            
+            // Cyzicus
+            'K': { mint: 'Cyzicus (or Carthago)', location: 'Multiple possible', note: 'K used by both' },
+            'KY': { mint: 'Cyzicus', location: 'Bandırma area, Turkey', dates: '268 – 474 AD' },
+            'CYZ': { mint: 'Cyzicus', location: 'Bandırma area, Turkey', dates: '268 – 474 AD' },
+            'SMK': { mint: 'Cyzicus', location: 'Bandırma area, Turkey', note: 'Sacra Moneta Kyzikos' },
+            'SMKA': { mint: 'Cyzicus', location: 'Bandırma area, Turkey', officina: 'Alpha (1st)' },
+            
+            // Heraclea
+            'H': { mint: 'Heraclea', location: 'Marmara Ereğli, Turkey', dates: '291 – 474 AD' },
+            'HER': { mint: 'Heraclea', location: 'Marmara Ereğli, Turkey', dates: '291 – 474 AD' },
+            'SMHA': { mint: 'Heraclea', location: 'Marmara Ereğli, Turkey', officina: 'Alpha (1st)' },
+            'SMHB': { mint: 'Heraclea', location: 'Marmara Ereğli, Turkey', officina: 'Beta (2nd)' },
+            
+            // Siscia
+            'SIS': { mint: 'Siscia', location: 'Sisak, Croatia', dates: '262 – 387 AD' },
+            'SISC': { mint: 'Siscia', location: 'Sisak, Croatia', dates: '262 – 387 AD' },
+            'ASIS': { mint: 'Siscia', location: 'Sisak, Croatia', officina: 'Alpha/Prima (1st)' },
+            'BSIS': { mint: 'Siscia', location: 'Sisak, Croatia', officina: 'Beta/Secunda (2nd)' },
+            'SMSIS': { mint: 'Siscia', location: 'Sisak, Croatia', note: 'Sacra Moneta Siscia' },
+            
+            // Sirmium
+            'SIR': { mint: 'Sirmium', location: 'Sremska Mitrovica, Serbia', dates: '320 – 395 AD' },
+            'SIRM': { mint: 'Sirmium', location: 'Sremska Mitrovica, Serbia', dates: '320 – 395 AD' },
+            'ASIRM': { mint: 'Sirmium', location: 'Sremska Mitrovica, Serbia', officina: 'Alpha (1st)' },
+            'SMSIR': { mint: 'Sirmium', location: 'Sremska Mitrovica, Serbia', note: 'Sacra Moneta Sirmium' },
+            
+            // Thessalonica
+            'TES': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', dates: '298 – 620 AD' },
+            'THES': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', dates: '298 – 620 AD' },
+            'TS': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', dates: '298 – 620 AD' },
+            'TSA': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', officina: 'Alpha (1st)' },
+            'SMTS': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', note: 'Sacra Moneta Thessalonica' },
+            'TESOB': { mint: 'Thessalonica', location: 'Thessaloniki, Greece', note: 'Pure gold' },
+            
+            // Milan
+            'MD': { mint: 'Mediolanum', location: 'Milan, Italy', dates: '259 – 498 AD' },
+            'MED': { mint: 'Mediolanum', location: 'Milan, Italy', dates: '259 – 498 AD' },
+            'MDPS': { mint: 'Mediolanum', location: 'Milan, Italy', note: 'Refined silver (pusulatum)' },
+            'SMMED': { mint: 'Mediolanum', location: 'Milan, Italy', note: 'Sacra Moneta Mediolanum' },
+            
+            // Ticinum
+            'T': { mint: 'Ticinum', location: 'Pavia, Italy', dates: '274 – 326 AD' },
+            'TIC': { mint: 'Ticinum', location: 'Pavia, Italy', dates: '274 – 326 AD' },
+            'PT': { mint: 'Ticinum', location: 'Pavia, Italy', officina: 'Prima (1st)' },
+            'ST': { mint: 'Ticinum', location: 'Pavia, Italy', officina: 'Secunda (2nd)' },
+            'SMTIC': { mint: 'Ticinum', location: 'Pavia, Italy', note: 'Sacra Moneta Ticinum' },
+            
+            // Aquileia
+            'AQ': { mint: 'Aquileia', location: 'Aquileia, Italy', dates: '294 – 425 AD' },
+            'AQP': { mint: 'Aquileia', location: 'Aquileia, Italy', officina: 'Prima (1st)' },
+            'AQS': { mint: 'Aquileia', location: 'Aquileia, Italy', officina: 'Secunda (2nd)' },
+            'AQOB': { mint: 'Aquileia', location: 'Aquileia, Italy', note: 'Pure gold' },
+            'SMAQ': { mint: 'Aquileia', location: 'Aquileia, Italy', note: 'Sacra Moneta Aquileia' },
+            
+            // Ravenna
+            'RV': { mint: 'Ravenna', location: 'Ravenna, Italy', dates: '402 – 751 AD' },
+            'RAV': { mint: 'Ravenna', location: 'Ravenna, Italy', dates: '402 – 751 AD' },
+            'RVPS': { mint: 'Ravenna', location: 'Ravenna, Italy', note: 'Refined silver' },
+            'COMOB': { mint: 'Ravenna (or mobile)', location: 'Ravenna, Italy', note: 'Comitatus Obryzum (court gold)' },
+            
+            // Alexandria
+            'AL': { mint: 'Alexandria', location: 'Alexandria, Egypt', dates: '294 – 646 AD' },
+            'ALE': { mint: 'Alexandria', location: 'Alexandria, Egypt', dates: '294 – 646 AD' },
+            'SMAL': { mint: 'Alexandria', location: 'Alexandria, Egypt', note: 'Sacra Moneta Alexandria' },
+            'SMALA': { mint: 'Alexandria', location: 'Alexandria, Egypt', officina: 'Alpha (1st)' },
+            'ALEXOB': { mint: 'Alexandria', location: 'Alexandria, Egypt', note: 'Pure gold' },
+            
+            // Carthage
+            'PK': { mint: 'Carthago', location: 'Tunis area, Tunisia', dates: '296 – 311 AD' },
+            'FK': { mint: 'Carthago', location: 'Tunis area, Tunisia', note: 'K = Karthago' },
+        };
+
+        function decodeMintmark() {
+            const input = document.getElementById('mintmark-input').value.toUpperCase().trim();
+            const resultDiv = document.getElementById('decoder-result');
+            
+            if (!input) {
+                resultDiv.innerHTML = '<div class="result-placeholder">Enter a mintmark above to see its meaning</div>';
+                resultDiv.classList.remove('has-result');
+                return;
+            }
+            
+            // Try exact match first
+            let result = mintData[input];
+            
+            // Try removing common prefixes/suffixes
+            if (!result) {
+                // Try without trailing Greek/Latin letters (officina)
+                const withoutOfficina = input.replace(/[ΑΒΓΔΕABΓΔSPQTVIXA]$/, '');
+                result = mintData[withoutOfficina];
+            }
+            
+            // Try partial match
+            if (!result) {
+                for (const [mark, data] of Object.entries(mintData)) {
+                    if (input.includes(mark) || mark.includes(input)) {
+                        result = data;
+                        break;
+                    }
+                }
+            }
+            
+            if (result) {
+                let html = `<div class="result-mint">🏛️ ${result.mint}</div>`;
+                html += `<div class="result-details">`;
+                html += `<strong>Location:</strong> ${result.location}<br>`;
+                if (result.dates) html += `<strong>Active:</strong> ${result.dates}<br>`;
+                if (result.officina) html += `<strong>Officina:</strong> ${result.officina}<br>`;
+                if (result.note) html += `<strong>Note:</strong> ${result.note}`;
+                html += `</div>`;
+                
+                resultDiv.innerHTML = html;
+                resultDiv.classList.add('has-result');
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="result-placeholder">
+                        No exact match found for "${input}".<br>
+                        Try the main mint abbreviation (e.g., LON, ANT, TES, SIS)
+                    </div>`;
+                resultDiv.classList.remove('has-result');
+            }
+        }
+
+        // Enter key triggers decode
+        document.getElementById('mintmark-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') decodeMintmark();
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter cards
+                document.querySelectorAll('.mint-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.region === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

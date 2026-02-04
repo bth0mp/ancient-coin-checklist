@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Photography Guide - Ancient Coin Checklist</title>
+    <link rel="icon" type="image/svg+xml" href="../../coins/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #242424;
+            --text-primary: #e5e5e5;
+            --text-secondary: #a3a3a3;
+            --accent-gold: #d4af37;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --border-color: #333;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        
+        /* Navigation */
+        .back-nav {
+            margin-bottom: 2rem;
+        }
+        
+        .back-nav a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .back-nav a:hover {
+            color: #f4cf57;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .title-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .meta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            color: var(--accent-green);
+            margin: 1.25rem 0 0.75rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        p strong {
+            color: var(--text-primary);
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        li strong {
+            color: var(--text-primary);
+        }
+        
+        /* Info boxes */
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--accent-green);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .warning-box h4 {
+            color: var(--accent-orange);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        
+        .warning-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .gear-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .gear-box h4 {
+            color: var(--accent-blue);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        
+        .gear-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Settings table */
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .settings-table th {
+            text-align: left;
+            padding: 0.75rem;
+            background: var(--bg-tertiary);
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .settings-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .settings-table tr:hover td {
+            background: var(--bg-secondary);
+        }
+        
+        .settings-table code {
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-green);
+        }
+        
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .comparison-card h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .comparison-card.good h4 { color: var(--accent-green); }
+        .comparison-card.bad h4 { color: #ef4444; }
+        
+        .comparison-card ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+        
+        /* Step cards */
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8962e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .step-content h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        
+        .step-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Budget tiers */
+        .budget-tier {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .budget-tier.budget { border-left: 4px solid var(--accent-green); }
+        .budget-tier.mid { border-left: 4px solid var(--accent-blue); }
+        .budget-tier.pro { border-left: 4px solid var(--accent-gold); }
+        
+        .budget-tier h4 {
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .budget-tier.budget h4 { color: var(--accent-green); }
+        .budget-tier.mid h4 { color: var(--accent-blue); }
+        .budget-tier.pro h4 { color: var(--accent-gold); }
+        
+        .price-tag {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Code/technical */
+        code {
+            background: var(--bg-tertiary);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9em;
+            color: var(--accent-green);
+        }
+        
+        /* Links */
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #f4cf57;
+            text-decoration: underline;
+        }
+        
+        /* Table of contents */
+        .toc {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-gold);
+        }
+        
+        .toc ol {
+            margin-bottom: 0;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+        }
+        
+        .toc a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Diagram box */
+        .diagram-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+        
+        .diagram-box pre {
+            margin: 0;
+            white-space: pre;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent-gold);
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="back-nav">
+            <a href="../../coins/">← Back to Coin Checklist</a>
+        </nav>
+        
+        <header>
+            <div class="title-icon">📷</div>
+            <h1>Coin Photography Guide</h1>
+            <p class="subtitle">Techniques for documenting your ancient coin collection</p>
+            <p class="meta">A practical guide for collectors • Last updated February 2026</p>
+        </header>
+        
+        <nav class="toc">
+            <h3>📑 Contents</h3>
+            <ol>
+                <li><a href="#why">Why Photograph Your Collection?</a></li>
+                <li><a href="#equipment">Equipment Overview</a></li>
+                <li><a href="#lighting">Lighting Techniques</a></li>
+                <li><a href="#camera-settings">Camera Settings</a></li>
+                <li><a href="#setup">Setup & Workflow</a></li>
+                <li><a href="#backgrounds">Backgrounds & Presentation</a></li>
+                <li><a href="#post-processing">Post-Processing</a></li>
+                <li><a href="#common-mistakes">Common Mistakes</a></li>
+                <li><a href="#mobile">Phone Photography Tips</a></li>
+                <li><a href="#archive">Archiving Your Images</a></li>
+            </ol>
+        </nav>
+        
+        <section id="why">
+            <h2>📸 Why Photograph Your Collection?</h2>
+            
+            <p>Good photography serves your collection in multiple ways:</p>
+            
+            <ul>
+                <li><strong>Insurance documentation</strong> — Essential for claims. Photograph every coin with a ruler for scale.</li>
+                <li><strong>Before/after conservation</strong> — Track changes and preserve the "as-received" state.</li>
+                <li><strong>Sharing & selling</strong> — Quality photos are crucial for forums, sales, and publications.</li>
+                <li><strong>Personal archive</strong> — Build a catalog that outlasts the physical collection.</li>
+                <li><strong>Research & attribution</strong> — High-quality images help with die studies and RIC matching.</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 Tip: Photograph on Arrival</h4>
+                <p>Take photos of every coin when it arrives, before any handling or storage. This creates a permanent record of the coin's condition at acquisition — invaluable for insurance and future reference.</p>
+            </div>
+        </section>
+        
+        <section id="equipment">
+            <h2>🛠️ Equipment Overview</h2>
+            
+            <h3>Camera Options</h3>
+            
+            <div class="budget-tier budget">
+                <h4>📱 Budget: Smartphone <span class="price-tag">$0 (use what you have)</span></h4>
+                <p>Modern smartphone cameras are surprisingly capable. The iPhone 13+ and recent Android flagships can capture excellent coin photos with proper lighting. Main limitation: macro capability and manual controls.</p>
+                <ul>
+                    <li>Use the telephoto lens if available (2x-3x optical zoom)</li>
+                    <li>Consider a clip-on macro lens ($10-30)</li>
+                    <li>Lock focus and exposure before shooting</li>
+                </ul>
+            </div>
+            
+            <div class="budget-tier mid">
+                <h4>📷 Mid-Range: Compact Camera or Mirrorless <span class="price-tag">$300-800</span></h4>
+                <p>Cameras like the <strong>Fuji X100V</strong>, Sony RX100, or entry-level mirrorless bodies offer excellent quality with macro modes. The fixed-lens compacts are portable; mirrorless allows lens changes.</p>
+                <ul>
+                    <li>Fuji X100V: 23mm f/2, excellent macro mode down to 10cm</li>
+                    <li>Sony RX100 VII: 24-200mm zoom with close focus</li>
+                    <li>Canon M50/Sony A6000 series with macro lens</li>
+                </ul>
+            </div>
+            
+            <div class="budget-tier pro">
+                <h4>🎯 Professional: DSLR/Mirrorless + Macro Lens <span class="price-tag">$1,000+</span></h4>
+                <p>A dedicated macro lens (100mm f/2.8 or similar) with 1:1 reproduction ratio delivers the best results. Working distance allows proper lighting without shadows.</p>
+                <ul>
+                    <li>Canon 100mm f/2.8L Macro IS</li>
+                    <li>Sony 90mm f/2.8 Macro G OSS</li>
+                    <li>Laowa 100mm f/2.8 2x Ultra Macro (budget macro option)</li>
+                </ul>
+            </div>
+            
+            <h3>Essential Accessories</h3>
+            
+            <ul>
+                <li><strong>Tripod or copy stand</strong> — Camera shake ruins macro shots. A basic tabletop tripod ($20-40) or copy stand ($50-100) is essential.</li>
+                <li><strong>Remote shutter or self-timer</strong> — Even pressing the shutter button can cause blur. Use 2-second timer at minimum.</li>
+                <li><strong>Lighting</strong> — See detailed section below. This is where most improvement happens.</li>
+                <li><strong>Neutral backgrounds</strong> — Gray, black, or white cards/fabric. Avoid busy patterns.</li>
+            </ul>
+        </section>
+        
+        <section id="lighting">
+            <h2>💡 Lighting Techniques</h2>
+            
+            <p>Lighting is the single most important factor in coin photography. A cheap camera with great lighting will outperform an expensive camera with poor lighting every time.</p>
+            
+            <h3>The Three Main Approaches</h3>
+            
+            <h4>1. Diffused Daylight (Free)</h4>
+            <p>Natural light from a north-facing window (or overcast sky) provides soft, even illumination. Position the coin near the window but not in direct sunlight.</p>
+            <ul>
+                <li><strong>Pros:</strong> Free, natural color, soft shadows</li>
+                <li><strong>Cons:</strong> Inconsistent, limited to daytime, weather-dependent</li>
+                <li><strong>Best for:</strong> Quick photos, bronze patina, testing setups</li>
+            </ul>
+            
+            <h4>2. Angled Lights (Side Lighting)</h4>
+            <p>Two adjustable desk lamps at 45° angles from opposite sides. This creates dimension and highlights relief.</p>
+            
+            <div class="diagram-box">
+<pre>         [Camera/Phone]
+              |
+              ▼
+   💡 ───────[Coin]─────── 💡
+   (45°)               (45°)
+   
+Side view:
+        [Camera]
+           |
+    💡     ▼      💡
+     \   [Coin]   /
+      \    |     /
+       \   |    /
+        45° 45°
+</pre>
+            </div>
+            
+            <ul>
+                <li><strong>Pros:</strong> Shows relief, adjustable, inexpensive ($20-50 for two LED lamps)</li>
+                <li><strong>Cons:</strong> Can create harsh shadows if not diffused, requires balancing</li>
+                <li><strong>Best for:</strong> High-relief coins, portrait details, die studies</li>
+            </ul>
+            
+            <h4>3. Pseudo-Axial / Ring Light</h4>
+            <p>Light comes from directly above/around the lens, illuminating the coin perpendicular to its surface. Creates even lighting with minimal shadows.</p>
+            
+            <div class="gear-box">
+                <h4>🔧 Recommended Ring Lights</h4>
+                <p><strong>Laowa Front LED Ring Light</strong> — Powerful, designed for macro, battery-powered option. ~$100</p>
+                <p><strong>Amazon basics ring light</strong> — Works for phones and small cameras. ~$20-40</p>
+                <p><strong>DIY option:</strong> LED strip around a cardboard tube that fits your lens.</p>
+            </div>
+            
+            <ul>
+                <li><strong>Pros:</strong> Even lighting, shows toning/luster, no shadows</li>
+                <li><strong>Cons:</strong> Can look "flat," may miss some surface detail</li>
+                <li><strong>Best for:</strong> Shiny silver, toned coins, consistent catalog photos</li>
+            </ul>
+            
+            <h3>Lighting by Metal</h3>
+            
+            <table class="settings-table">
+                <tr>
+                    <th>Metal</th>
+                    <th>Challenge</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td><strong>Silver</strong></td>
+                    <td>Bright reflections, toning</td>
+                    <td>Ring light or heavily diffused side lights. Gray background.</td>
+                </tr>
+                <tr>
+                    <td><strong>Gold</strong></td>
+                    <td>Extreme reflectivity</td>
+                    <td>Diffuse everything. White background often works best.</td>
+                </tr>
+                <tr>
+                    <td><strong>Bronze/AE</strong></td>
+                    <td>Dark surfaces, patina</td>
+                    <td>Angled lights to catch patina color. May need longer exposure.</td>
+                </tr>
+                <tr>
+                    <td><strong>Billon</strong></td>
+                    <td>Mixed surface texture</td>
+                    <td>Combination: ring light + one angled fill.</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>💡 The Diffusion Secret</h4>
+                <p>Raw light from an LED or bulb is harsh. Soften it with:</p>
+                <ul>
+                    <li>White tissue paper taped over the light</li>
+                    <li>Translucent plastic containers</li>
+                    <li>Professional diffusion panels ($10-30)</li>
+                    <li>Bouncing light off white paper/foam board</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="camera-settings">
+            <h2>⚙️ Camera Settings</h2>
+            
+            <h3>The Key Settings</h3>
+            
+            <table class="settings-table">
+                <tr>
+                    <th>Setting</th>
+                    <th>Recommended</th>
+                    <th>Why</th>
+                </tr>
+                <tr>
+                    <td><strong>Aperture</strong></td>
+                    <td><code>f/8</code> to <code>f/11</code></td>
+                    <td>Sweet spot for sharpness and depth of field. f/2.8 = razor-thin focus. f/16+ = diffraction softness.</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO</strong></td>
+                    <td><code>100</code> or <code>200</code></td>
+                    <td>Lowest noise. With a tripod and good lighting, you don't need high ISO.</td>
+                </tr>
+                <tr>
+                    <td><strong>Shutter</strong></td>
+                    <td>Whatever the light requires</td>
+                    <td>On a tripod, 1/15s or slower is fine. Use 2-second timer to avoid shake.</td>
+                </tr>
+                <tr>
+                    <td><strong>White Balance</strong></td>
+                    <td><code>Daylight</code> or <code>Custom</code></td>
+                    <td>Consistency matters more than "correct." Set to match your light source.</td>
+                </tr>
+                <tr>
+                    <td><strong>Focus Mode</strong></td>
+                    <td><code>Manual</code> or <code>Single AF</code></td>
+                    <td>Lock focus on the coin's highest point. Continuous AF hunts at close range.</td>
+                </tr>
+                <tr>
+                    <td><strong>Image Format</strong></td>
+                    <td><code>RAW + JPEG</code></td>
+                    <td>RAW for editing flexibility, JPEG for quick sharing.</td>
+                </tr>
+            </table>
+            
+            <h3>Fuji X100V Specific Settings</h3>
+            
+            <div class="gear-box">
+                <h4>📷 Fuji X100V Coin Photography Setup</h4>
+                <ul>
+                    <li><strong>Mode:</strong> Aperture Priority (A)</li>
+                    <li><strong>Aperture:</strong> f/8</li>
+                    <li><strong>ISO:</strong> 160 (base ISO for best quality)</li>
+                    <li><strong>Macro mode:</strong> Enable (flower icon) — focuses to 10cm</li>
+                    <li><strong>Focus:</strong> Manual with focus peaking (red highlights)</li>
+                    <li><strong>Timer:</strong> 2 seconds</li>
+                    <li><strong>Film simulation:</strong> PROVIA/Standard (neutral colors)</li>
+                </ul>
+                <p><strong>Note:</strong> The X100V's 23mm lens (35mm equivalent) requires getting close. Consider the WCL-X100 wide conversion lens for more working distance, or use the 2x digital teleconverter in crop mode.</p>
+            </div>
+            
+            <h3>Depth of Field in Macro</h3>
+            
+            <p>At close focusing distances, depth of field becomes extremely shallow. Even at f/11, you may only have 1-2mm in focus. For high-relief coins:</p>
+            
+            <ul>
+                <li><strong>Focus on the eyes</strong> (for portraits) — viewers look there first</li>
+                <li><strong>Stop down to f/11-f/16</strong> — accept some diffraction for more DOF</li>
+                <li><strong>Focus stacking</strong> (advanced) — Take multiple shots at different focus points and blend in software</li>
+            </ul>
+        </section>
+        
+        <section id="setup">
+            <h2>🎬 Setup & Workflow</h2>
+            
+            <h3>Step-by-Step Process</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Prepare the Space</h4>
+                    <p>Find a stable surface away from vibrations (not on a washing machine!). Set up your tripod/copy stand. Ensure consistent ambient light — close blinds if daylight varies.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Position the Coin</h4>
+                    <p>Place on your background. Use a small piece of poster putty underneath to prevent rolling and allow angle adjustment. The coin should be perfectly flat to the camera sensor (parallel planes).</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Set Up Lighting</h4>
+                    <p>Position your lights. Turn off room lights to avoid mixed color temperatures. Take test shots and adjust. Look for even illumination and pleasing shadows.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Focus Precisely</h4>
+                    <p>Use live view zoom (usually 10x) to focus on the highest relief area. For portraits, focus on the eye or forehead. Use manual focus for consistency.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Shoot Both Sides</h4>
+                    <p>Take multiple exposures of each side. Bracket exposure if unsure (slightly over/under). Flip the coin by rotating around the vertical axis (like turning a page) to maintain orientation.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h4>Include Scale Reference</h4>
+                    <p>For at least one shot, include a ruler or coin sizing reference. This is essential for documentation and helps others gauge the coin's size.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Handling Precautions</h4>
+                <p>Always handle coins by the edges. Wear cotton gloves for valuable pieces. Clean the background between coins to avoid dust transfer. Never touch the coin's surfaces — skin oils cause long-term damage.</p>
+            </div>
+        </section>
+        
+        <section id="backgrounds">
+            <h2>🎨 Backgrounds & Presentation</h2>
+            
+            <h3>Background Selection</h3>
+            
+            <table class="settings-table">
+                <tr>
+                    <th>Background</th>
+                    <th>Best For</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td><strong>18% Gray</strong></td>
+                    <td>Silver, mixed lots</td>
+                    <td>Industry standard. Neutral, doesn't influence toning perception.</td>
+                </tr>
+                <tr>
+                    <td><strong>Black</strong></td>
+                    <td>Silver, bronze</td>
+                    <td>Dramatic. Hides edges if coin is dark. Use matte black (felt/velvet).</td>
+                </tr>
+                <tr>
+                    <td><strong>White</strong></td>
+                    <td>Gold, bright silver</td>
+                    <td>Clean, auction-style. Can blow out highlights on shiny coins.</td>
+                </tr>
+                <tr>
+                    <td><strong>Blue</strong></td>
+                    <td>Gold specifically</td>
+                    <td>Traditional for gold photography. Provides contrast.</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>💡 DIY Backgrounds</h4>
+                <ul>
+                    <li><strong>Gray card:</strong> $5-10 from any camera store</li>
+                    <li><strong>Black velvet:</strong> Craft store fabric, absorbs light beautifully</li>
+                    <li><strong>Construction paper:</strong> Works in a pinch, replace when worn</li>
+                    <li><strong>Poster board:</strong> Smooth, cheap, replaceable</li>
+                </ul>
+            </div>
+            
+            <h3>Framing & Composition</h3>
+            
+            <ul>
+                <li><strong>Fill the frame</strong> — The coin should occupy 70-80% of the image</li>
+                <li><strong>Consistent orientation</strong> — Portrait up (12 o'clock at top) unless studying die axis</li>
+                <li><strong>Leave breathing room</strong> — Small margin around the coin for cropping flexibility</li>
+                <li><strong>Match obverse/reverse</strong> — Keep both sides at same scale and lighting</li>
+            </ul>
+        </section>
+        
+        <section id="post-processing">
+            <h2>🖥️ Post-Processing</h2>
+            
+            <h3>Recommended Software</h3>
+            
+            <ul>
+                <li><strong>Adobe Lightroom</strong> — Industry standard, excellent batch processing</li>
+                <li><strong>Capture One</strong> — Superior color science, steeper learning curve</li>
+                <li><strong>Darktable</strong> — Free, open-source Lightroom alternative</li>
+                <li><strong>Photoshop</strong> — Advanced retouching, focus stacking</li>
+                <li><strong>Snapseed</strong> — Excellent free mobile editor</li>
+            </ul>
+            
+            <h3>Basic Adjustments</h3>
+            
+            <ol>
+                <li><strong>White balance</strong> — Correct any color cast. The background should be neutral.</li>
+                <li><strong>Exposure</strong> — Adjust so details are visible in both highlights and shadows.</li>
+                <li><strong>Contrast</strong> — Slight increase helps definition. Don't overdo it.</li>
+                <li><strong>Sharpening</strong> — Apply carefully. Over-sharpening creates ugly halos.</li>
+                <li><strong>Crop & straighten</strong> — Square crop, perfectly level coin.</li>
+            </ol>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card good">
+                    <h4>✅ Good Practice</h4>
+                    <ul>
+                        <li>Subtle adjustments</li>
+                        <li>Accurate colors</li>
+                        <li>Visible surface detail</li>
+                        <li>Consistent across collection</li>
+                        <li>Preserves original character</li>
+                    </ul>
+                </div>
+                <div class="comparison-card bad">
+                    <h4>❌ Avoid</h4>
+                    <ul>
+                        <li>Over-saturation</li>
+                        <li>Extreme sharpening halos</li>
+                        <li>Cloning out flaws (misrepresentation)</li>
+                        <li>HDR "grunge" effects</li>
+                        <li>Heavy vignetting</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Ethics in Coin Photography</h4>
+                <p>For sales and attribution, your photos should represent the coin <em>accurately</em>. Removing scratches, enhancing details, or manipulating colors crosses into misrepresentation. Save artistic edits for personal display only.</p>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>🚫 Common Mistakes</h2>
+            
+            <h3>Technical Errors</h3>
+            
+            <ul>
+                <li><strong>Camera shake</strong> — Use tripod + timer. Even small movements ruin macro shots.</li>
+                <li><strong>Wrong focus point</strong> — Focus on the highest relief, not the flat field.</li>
+                <li><strong>Too wide aperture</strong> — f/2.8 looks good in portraits, not coins. Use f/8-11.</li>
+                <li><strong>Mixed lighting</strong> — Room lights + desk lamp = color cast nightmare.</li>
+                <li><strong>JPEG compression</strong> — Always shoot RAW, or at least highest-quality JPEG.</li>
+            </ul>
+            
+            <h3>Lighting Errors</h3>
+            
+            <ul>
+                <li><strong>Hot spots</strong> — Bright reflections from undiffused light. Diffuse or angle away.</li>
+                <li><strong>Flat lighting</strong> — All ring light with no dimension. Add subtle side fill.</li>
+                <li><strong>Dark shadows</strong> — Single light source creates heavy shadows. Use fill or reflector.</li>
+                <li><strong>Inconsistent color</strong> — Different bulb types mix poorly. Stick to one light source type.</li>
+            </ul>
+            
+            <h3>Setup Errors</h3>
+            
+            <ul>
+                <li><strong>Coin not level</strong> — Creates uneven focus. Use putty to adjust angle.</li>
+                <li><strong>Dirty background</strong> — Dust and fibers show in macro. Clean between shots.</li>
+                <li><strong>Fingerprints on coin</strong> — Handle by edges only. Visible in oblique lighting.</li>
+                <li><strong>Camera not parallel</strong> — Creates keystoning (coin looks oval). Level the camera.</li>
+            </ul>
+        </section>
+        
+        <section id="mobile">
+            <h2>📱 Phone Photography Tips</h2>
+            
+            <p>Modern smartphones can take excellent coin photos with the right technique:</p>
+            
+            <h3>Essential Tips</h3>
+            
+            <ol>
+                <li><strong>Use the 2x or 3x telephoto lens</strong> — More working distance, less distortion</li>
+                <li><strong>Lock focus and exposure</strong> — Tap and hold on the coin until the lock indicator appears</li>
+                <li><strong>Prop your phone</strong> — Use a phone tripod or stack of books for stability</li>
+                <li><strong>Add a clip-on macro lens</strong> — $15-30 for dramatic close-up improvement</li>
+                <li><strong>Use the timer</strong> — 3-second delay eliminates touch shake</li>
+            </ol>
+            
+            <h3>Recommended Phone Apps</h3>
+            
+            <ul>
+                <li><strong>ProCamera / Halide</strong> (iOS) — Manual controls, RAW capture</li>
+                <li><strong>Open Camera</strong> (Android) — Free, full manual control</li>
+                <li><strong>Snapseed</strong> — Excellent free editor for both platforms</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 Quick Phone Setup</h4>
+                <p>Lean your phone against something stable (mug, box) pointing down at a 45° angle. Place the coin on white paper near a window. Use a piece of white paper on the opposite side as a reflector. Tap to focus on the coin, tap the sun icon to reduce exposure slightly. Use 3-second timer. Simple, free, effective.</p>
+            </div>
+        </section>
+        
+        <section id="archive">
+            <h2>💾 Archiving Your Images</h2>
+            
+            <h3>File Organization</h3>
+            
+            <p>Develop a consistent naming convention:</p>
+            
+            <code>Category_Ruler_Denomination_Reference_Side.jpg</code>
+            
+            <p>Examples:</p>
+            <ul>
+                <li><code>Londinium_Carausius_Antoninianus_RIC-98_Obv.jpg</code></li>
+                <li><code>Athens_Classical_Tetradrachm_Starr-group-V_Rev.jpg</code></li>
+                <li><code>CelticBritain_Cunobelin_Stater_ABC-2774_Obv.jpg</code></li>
+            </ul>
+            
+            <h3>Backup Strategy</h3>
+            
+            <ul>
+                <li><strong>Local drive</strong> — Primary storage on your computer</li>
+                <li><strong>External drive</strong> — Regular backups, stored separately</li>
+                <li><strong>Cloud storage</strong> — Google Drive, Dropbox, or iCloud for offsite backup</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 The 3-2-1 Rule</h4>
+                <p><strong>3</strong> copies of your data, on <strong>2</strong> different types of media, with <strong>1</strong> offsite. For a valuable collection archive, this isn't paranoia — it's prudence.</p>
+            </div>
+            
+            <h3>Resolution & Format</h3>
+            
+            <ul>
+                <li><strong>Archive:</strong> Full-resolution RAW or TIFF files</li>
+                <li><strong>Working copies:</strong> High-quality JPEG (90%+)</li>
+                <li><strong>Web sharing:</strong> 1500-2000px on long edge, JPEG 80%</li>
+                <li><strong>Thumbnails:</strong> 400-600px for catalogs and quick reference</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>📚 Further Resources</h2>
+            
+            <ul>
+                <li><a href="https://coinimaging.com/photography.html" target="_blank" rel="noopener">CoinImaging.com Photography Guide</a> — Comprehensive technical reference</li>
+                <li><a href="https://www.reddit.com/r/AncientCoins/" target="_blank" rel="noopener">r/AncientCoins</a> — Active community with photography discussions</li>
+                <li><a href="https://artemis-collection.com/photography/" target="_blank" rel="noopener">Artemis Collection Photography</a> — Pseudo-axial lighting techniques</li>
+                <li><a href="https://www.forumancientcoins.com/" target="_blank" rel="noopener">Forum Ancient Coins</a> — Photography subforum with examples and critiques</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>Part of the <a href="../../coins/">Ancient Coin Checklist</a> collection guides.</p>
+            <p>Created by Janet 🐟 | <a href="../../janet/">About Janet</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -4180,6 +4180,33 @@ body.light-theme .ref-num {
     box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
 }
 
+/* Research Articles section - our original scholarship */
+.resources-category.research-articles {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resources-category.research-articles h3 {
+    color: var(--accent-gold);
+}
+
+.resources-category.research-articles .resource-card {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.1) 0%, var(--color-gray-900) 100%);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.resources-category.research-articles .resource-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(212, 175, 55, 0.1);
+}
+
+.resources-category.research-articles .resource-badge {
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
 /* Warning resource card (Fake detection) */
 .resource-card.resource-warning {
     border-color: var(--error);

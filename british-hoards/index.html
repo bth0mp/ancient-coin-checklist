@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buried Treasure: Britain's Greatest Coin Hoards | Ancient Coin Research</title>
+    <meta name="description" content="Explore the remarkable coin hoards discovered across Britain — from Roman gold at Hoxne to Celtic treasure at Hallaton. Stories of buried wealth and the people who hid it.">
+    <meta name="keywords" content="Hoxne Hoard, Frome Hoard, Cunetio Hoard, Hallaton Treasure, Snettisham, Roman coins, Celtic coins, British treasure, metal detecting, numismatics">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Buried Treasure: Britain's Greatest Coin Hoards">
+    <meta property="og:description" content="The stories behind Britain's most spectacular ancient coin discoveries — Roman gold, Celtic silver, and the mysteries of why they were buried.">
+    <meta property="og:type" content="article">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-card: #16161e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --accent-salmon: #fa8072;
+            --accent-bronze: #cd7f32;
+            --accent-green: #4a9d6e;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-salmon);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-primary) 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+        }
+
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+
+        /* Hoard Cards */
+        .hoard-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .hoard-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-gold);
+        }
+
+        .hoard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hoard-title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .hoard-badge {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #f5d87a 100%);
+            color: #1a1a24;
+        }
+
+        .badge-silver {
+            background: linear-gradient(135deg, #a0a0a0 0%, #d0d0d0 100%);
+            color: #1a1a24;
+        }
+
+        .badge-bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #e0a060 100%);
+            color: #1a1a24;
+        }
+
+        .badge-celtic {
+            background: linear-gradient(135deg, #4a9d6e 0%, #70c090 100%);
+            color: #1a1a24;
+        }
+
+        .hoard-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .meta-value.highlight {
+            color: var(--accent-gold);
+        }
+
+        .hoard-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hoard-description p {
+            margin-bottom: 1rem;
+        }
+
+        .hoard-highlights {
+            margin-top: 1rem;
+        }
+
+        .hoard-highlights h4 {
+            color: var(--accent-salmon);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .hoard-highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .hoard-highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .hoard-highlights li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .why-section h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .reason-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .reason-card h4 {
+            color: var(--accent-salmon);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .reason-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Map placeholder */
+        .map-note {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        /* Quote */
+        .quote-block {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .quote-block cite {
+            display: block;
+            margin-top: 0.75rem;
+            color: var(--accent-salmon);
+            font-size: 0.9rem;
+            font-style: normal;
+        }
+
+        /* Collector Section */
+        .collector-section {
+            background: linear-gradient(135deg, #1a1f2e 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .collector-section h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .collector-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .tip-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tip-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent-salmon);
+            font-weight: 500;
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-salmon);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .hoard-header {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../../coins/" class="logo">🏛️ Ancient Coin Collection</a>
+            <nav class="nav-links">
+                <a href="../../coins/" class="nav-link">Checklist</a>
+                <a href="../londinium/" class="nav-link">Londinium Guide</a>
+                <a href="../carausius-virgil/" class="nav-link">Carausius & Virgil</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-icon">🗺️</div>
+        <h1>Buried Treasure</h1>
+        <p class="subtitle">Britain's Greatest Ancient Coin Hoards — and the stories of why they were never reclaimed</p>
+    </section>
+
+    <main class="content">
+        <div class="intro">
+            <p>Britain has yielded more than <strong>1,200 documented Roman coin hoards</strong> — more per square mile than anywhere else in the former Roman Empire. From the gold and silver of fleeing Romano-British families to the ritual offerings of Iron Age priests, these buried treasures tell stories of crisis, faith, and the fragility of civilisation.</p>
+            <p>Why so many hoards? Britain's position at the edge of empire made it vulnerable. When central authority collapsed, there was no one to return to. The coins stayed in the ground — waiting for metal detectorists, farmers, and archaeologists to find them fifteen centuries later.</p>
+        </div>
+
+        <!-- Stats Banner -->
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Documented Roman Hoards</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">~125,000</div>
+                <div class="stat-label">Coins in Top 5 Hoards</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">70 BC–410 AD</div>
+                <div class="stat-label">Date Range</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">£4.5M+</div>
+                <div class="stat-label">Hoxne Hoard Value (2023)</div>
+            </div>
+        </div>
+
+        <!-- Roman Hoards Section -->
+        <div class="section-header">
+            <span class="section-icon">🏛️</span>
+            <h2>The Great Roman Hoards</h2>
+        </div>
+
+        <!-- Hoxne Hoard -->
+        <article class="hoard-card">
+            <div class="hoard-header">
+                <h3 class="hoard-title">The Hoxne Hoard</h3>
+                <div class="hoard-badge">
+                    <span class="badge badge-gold">Gold & Silver</span>
+                    <span class="badge badge-silver">Largest Late Roman</span>
+                </div>
+            </div>
+            
+            <div class="hoard-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Discovered</div>
+                    <div class="meta-value">1992</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Hoxne, Suffolk</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Coin Count</div>
+                    <div class="meta-value highlight">14,865</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Total Objects</div>
+                    <div class="meta-value">~15,000</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Value (2023)</div>
+                    <div class="meta-value highlight">£4.5 million</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Current Home</div>
+                    <div class="meta-value">British Museum</div>
+                </div>
+            </div>
+
+            <div class="hoard-description">
+                <p>The largest hoard of late Roman gold and silver found anywhere in the former Roman Empire. Discovered by Eric Lawes, who was using a metal detector to find a lost hammer for his friend — he found the hammer too, which is now also in the British Museum.</p>
+                <p>The hoard was buried after AD 407 in an oak chest, carefully organised with items wrapped in cloth and stored in smaller boxes. The owners clearly intended to return. They never did.</p>
+                <p>Contents include <strong>569 gold solidi</strong>, <strong>14,212 siliquae</strong>, 29 pieces of gold jewellery, 98 silver spoons, and remarkable objects like the famous "Hoxne Tigress" handle and the Empress pepper pot. The gold alone weighs 3.5 kg; the silver 23.75 kg.</p>
+            </div>
+
+            <div class="hoard-highlights">
+                <h4>Notable Objects</h4>
+                <ul>
+                    <li>The "Empress" pepper pot (pipiratorium) — finest surviving example</li>
+                    <li>Gold body-chain — extremely rare survival</li>
+                    <li>Silver tigress handle — masterwork of late Roman art</li>
+                    <li>Inscribed spoons naming family members (Aurelius Ursicinus)</li>
+                    <li>Peter Whatling's hammer</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Cunetio Hoard -->
+        <article class="hoard-card">
+            <div class="hoard-header">
+                <h3 class="hoard-title">The Cunetio Hoard</h3>
+                <div class="hoard-badge">
+                    <span class="badge badge-bronze">Bronze/Billon</span>
+                    <span class="badge badge-silver">Largest by Count</span>
+                </div>
+            </div>
+            
+            <div class="hoard-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Discovered</div>
+                    <div class="meta-value">1978</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Mildenhall, Wiltshire</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Coin Count</div>
+                    <div class="meta-value highlight">54,951</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Weight</div>
+                    <div class="meta-value">180 kg (390 lb)</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date Range</div>
+                    <div class="meta-value">AD 250–275</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Current Home</div>
+                    <div class="meta-value">British Museum</div>
+                </div>
+            </div>
+
+            <div class="hoard-description">
+                <p>The largest coin hoard ever found in Britain by raw count. Discovered by metal detectorists Peter Humphries and John Booth on Crown Estate land near the Roman town of Cunetio.</p>
+                <p>Unlike Hoxne's precious metals, Cunetio contains mostly debased <strong>radiates</strong> (antoniniani) — the everyday currency of the Crisis of the Third Century. This was someone's life savings at a time when inflation was destroying the Roman economy.</p>
+                <p>Many coins are from the breakaway <strong>Gallic Empire</strong> of Postumus, showing how Britain was part of this separatist realm during the chaos of the 260s-270s.</p>
+            </div>
+
+            <div class="hoard-highlights">
+                <h4>Historical Context</h4>
+                <ul>
+                    <li>Buried during the Crisis of the Third Century</li>
+                    <li>Coins mostly minted under Gallic Empire emperors</li>
+                    <li>Site was an important Romano-British market town</li>
+                    <li>Featured on Time Team in 2009</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Frome Hoard -->
+        <article class="hoard-card">
+            <div class="hoard-header">
+                <h3 class="hoard-title">The Frome Hoard</h3>
+                <div class="hoard-badge">
+                    <span class="badge badge-bronze">Bronze/Silver</span>
+                    <span class="badge badge-gold">Carausius Treasure</span>
+                </div>
+            </div>
+            
+            <div class="hoard-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Discovered</div>
+                    <div class="meta-value">2010</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Frome, Somerset</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Coin Count</div>
+                    <div class="meta-value highlight">52,503</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Carausius Coins</div>
+                    <div class="meta-value highlight">766</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date Range</div>
+                    <div class="meta-value">AD 253–305</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Current Home</div>
+                    <div class="meta-value">Museum of Somerset</div>
+                </div>
+            </div>
+
+            <div class="hoard-description">
+                <p>Found by Dave Crisp after detecting a "funny signal" — the second-largest Roman hoard by count and one of the most important for British numismatics.</p>
+                <p>The Frome Hoard contains the <strong>largest group of Carausius coins ever found</strong> — 766 pieces from Britain's breakaway emperor who ruled from 286-293 AD. Five of these are silver denarii bearing the mysterious "RSR" inscription (<a href="../carausius-virgil/" style="color: var(--accent-salmon);">Virgil's golden age poetry</a>).</p>
+                <p>The coins were so heavy (160 kg) that the pot would have needed to be buried first, then filled — no one could have carried it.</p>
+            </div>
+
+            <div class="hoard-highlights">
+                <h4>Why It Matters</h4>
+                <ul>
+                    <li>Largest collection of Carausius coins — Britain's rebel emperor</li>
+                    <li>Includes rare silver denarii with Virgilian inscriptions</li>
+                    <li>5% of identifiable coins are from the Britannic Empire</li>
+                    <li>One of only two times silver denarii were struck in the 3rd century</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Celtic Hoards Section -->
+        <div class="section-header">
+            <span class="section-icon">⚔️</span>
+            <h2>Iron Age Celtic Hoards</h2>
+        </div>
+
+        <!-- Hallaton Treasure -->
+        <article class="hoard-card">
+            <div class="hoard-header">
+                <h3 class="hoard-title">The Hallaton Treasure</h3>
+                <div class="hoard-badge">
+                    <span class="badge badge-celtic">Celtic</span>
+                    <span class="badge badge-gold">Largest Iron Age</span>
+                </div>
+            </div>
+            
+            <div class="hoard-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Discovered</div>
+                    <div class="meta-value">2000</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Hallaton, Leicestershire</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Coin Count</div>
+                    <div class="meta-value highlight">5,000+</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tribal Origin</div>
+                    <div class="meta-value">Corieltauvi</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date Range</div>
+                    <div class="meta-value">~50 BC – AD 50</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Current Home</div>
+                    <div class="meta-value">Harborough Museum</div>
+                </div>
+            </div>
+
+            <div class="hoard-description">
+                <p>The largest hoard of British Iron Age coins ever found. Discovered by local volunteers of the Hallaton Fieldwork Group, this treasure more than <strong>doubled the known number of Corieltauvian coins</strong>.</p>
+                <p>This wasn't hidden wealth — it was a <strong>ritual deposit</strong> at an open-air shrine. The site includes pig bones (offerings), a sacrificed dog skeleton believed to guard the treasure, and a remarkable silver-gilt Roman parade helmet — one of only three known from Britain.</p>
+                <p>The hoard includes the <strong>oldest Roman coin found in Britain</strong>: a silver piece dated to 211 BC, evidence of pre-conquest trade or diplomacy with Rome.</p>
+            </div>
+
+            <div class="hoard-highlights">
+                <h4>Ritual Objects</h4>
+                <ul>
+                    <li>Silver-gilt Roman parade helmet (Hallaton Helmet)</li>
+                    <li>Sacrificed dog skeleton — ritual guardian</li>
+                    <li>Silver ring inscribed "TOT" (god Toutatis)</li>
+                    <li>Pig bones from ritual feasting</li>
+                    <li>4,835 Corieltauvi tribal coins</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Snettisham Hoard -->
+        <article class="hoard-card">
+            <div class="hoard-header">
+                <h3 class="hoard-title">The Snettisham Treasure</h3>
+                <div class="hoard-badge">
+                    <span class="badge badge-celtic">Celtic</span>
+                    <span class="badge badge-gold">Gold Torcs</span>
+                </div>
+            </div>
+            
+            <div class="hoard-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Discovered</div>
+                    <div class="meta-value">1948–1992</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Snettisham, Norfolk</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Objects</div>
+                    <div class="meta-value highlight">150+ torcs</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tribal Origin</div>
+                    <div class="meta-value">Iceni (Boudica's tribe)</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date</div>
+                    <div class="meta-value">~70 BC</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Current Home</div>
+                    <div class="meta-value">British Museum</div>
+                </div>
+            </div>
+
+            <div class="hoard-description">
+                <p>A series of spectacular finds over 44 years, including the famous <strong>Great Torc</strong> — perhaps the finest piece of Celtic metalwork ever found. The quality suggests royal ownership, possibly belonging to the Iceni kings who would later produce Boudica.</p>
+                <p>Many torcs were deliberately cut and damaged before burial. Electron microscopy at the British Museum reveals the cut marks are intentional — <strong>ritual destruction</strong> as a votive offering, making the objects unusable in this world but fitting for the gods.</p>
+                <p>Ranked #4 in the BBC's "Our Top Ten Treasures" documentary.</p>
+            </div>
+
+            <div class="hoard-highlights">
+                <h4>Masterpieces</h4>
+                <ul>
+                    <li>The Great Torc — 1 kg of gold, exceptional craftsmanship</li>
+                    <li>70+ complete torcs in gold, silver, and electrum</li>
+                    <li>Evidence of ritual destruction (votive offerings)</li>
+                    <li>Possibly Iceni royal treasure</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Why Section -->
+        <section class="why-section">
+            <h3>📜 Why Were So Many Hoards Buried in Britain?</h3>
+            <div class="reason-grid">
+                <div class="reason-card">
+                    <h4>Crisis of the Third Century</h4>
+                    <p>AD 235-284 brought civil wars, plague, and economic collapse. Wealthy Romano-Britons buried their savings as raiders threatened.</p>
+                </div>
+                <div class="reason-card">
+                    <h4>End of Roman Britain</h4>
+                    <p>After AD 410, there was no Roman authority to return to. Families fled to Gaul or died in the chaos — their treasure stayed buried.</p>
+                </div>
+                <div class="reason-card">
+                    <h4>Boudica's Revolt (AD 60-61)</h4>
+                    <p>The Iceni rebellion destroyed three cities. Romans and Britons alike hid valuables during the violence.</p>
+                </div>
+                <div class="reason-card">
+                    <h4>Celtic Ritual Practice</h4>
+                    <p>Iron Age Britons deposited valuables as votive offerings — gifts to gods at sacred sites, never meant to be retrieved.</p>
+                </div>
+                <div class="reason-card">
+                    <h4>Banks Don't Exist</h4>
+                    <p>No safe deposit boxes in the ancient world. The ground was the safest vault — if you survived to dig it up.</p>
+                </div>
+                <div class="reason-card">
+                    <h4>Island at Empire's Edge</h4>
+                    <p>Britain's distance from Rome made it vulnerable when central authority weakened. No legions to protect returning owners.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-block">
+            "The very act of not returning for a buried hoard is itself evidence of catastrophe — whether personal death, family extinction, or civilisational collapse. Every hoard is a tragedy."
+            <cite>— Richard Abdy, British Museum, on Romano-British hoards</cite>
+        </div>
+
+        <!-- Timeline -->
+        <div class="section-header">
+            <span class="section-icon">📅</span>
+            <h2>Timeline of Major Discoveries</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">1948–1992</div>
+                <div class="timeline-content"><strong>Snettisham Treasure</strong> — Multiple finds over 44 years yield spectacular Celtic gold torcs</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">1978</div>
+                <div class="timeline-content"><strong>Cunetio Hoard</strong> — 54,951 coins found in Wiltshire, largest by count</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">1992</div>
+                <div class="timeline-content"><strong>Hoxne Hoard</strong> — Farmer's lost hammer leads to £4.5 million treasure</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">1996</div>
+                <div class="timeline-content"><strong>Treasure Act</strong> passed, reforming English law on finds (partly inspired by Hoxne)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2000</div>
+                <div class="timeline-content"><strong>Hallaton Treasure</strong> — Largest Iron Age hoard discovered by local volunteers</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2010</div>
+                <div class="timeline-content"><strong>Frome Hoard</strong> — 52,503 coins including largest Carausius group ever found</div>
+            </div>
+        </div>
+
+        <!-- Collector Section -->
+        <section class="collector-section">
+            <h3>💰 For Collectors: Hoard Coins on the Market</h3>
+            <p>While the great hoards are in museums, many smaller hoards have dispersed coins onto the market. "Hoard provenance" can add interest (and sometimes value) to a coin.</p>
+            
+            <ul class="tip-list">
+                <li><strong>Cunetio-type radiates</strong> — Common antoniniani from c. AD 260-275 are affordable (£5-30) and may have been buried in similar hoards</li>
+                <li><strong>Carausius bronzes</strong> — The "Britannic Empire" coins are collectible; most authentic pieces £30-150</li>
+                <li><strong>Corieltauvian staters</strong> — Celtic gold coins from Hallaton's tribe appear at auction (£500-2,000+)</li>
+                <li><strong>Portable Antiquities Scheme</strong> — Check PAS database for coins found near you</li>
+                <li><strong>Provenance premium</strong> — Coins with documented hoard provenance often command 10-30% more</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;">
+                <a href="https://www.acsearch.info" style="color: var(--accent-salmon);">🔍 Search auction archives →</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://finds.org.uk" style="color: var(--accent-salmon);">📋 Portable Antiquities Scheme →</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="../../coins/">Coin Checklist</a>
+            <a href="../londinium/">Londinium Guide</a>
+            <a href="../carausius-virgil/">Carausius & Virgil</a>
+        </div>
+        <p class="footer-copy">Research by Janet • Ancient Coin Collection</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Londinium Mint | Interactive Guide to Roman London's Coinage</title>
+    <meta name="description" content="Comprehensive guide to the Roman mint at Londinium (London), covering its history, emperors, mintmarks, and identification tips for collectors.">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --accent-gold: #d4af37;
+            --accent-salmon: #fa8072;
+            --accent-bronze: #cd7f32;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-salmon);
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-primary) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-gold), var(--accent-bronze), var(--accent-salmon));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.75rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--accent-salmon);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Emperor Cards */
+        .emperor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .emperor-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .emperor-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-gold);
+        }
+
+        .emperor-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .emperor-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .emperor-name {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+        }
+
+        .emperor-dates {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .emperor-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .emperor-mintmarks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .mintmark-tag {
+            background: var(--bg-tertiary);
+            color: var(--accent-salmon);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Mintmark Guide */
+        .mintmark-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .mintmark-table th,
+        .mintmark-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mintmark-table th {
+            background: var(--bg-tertiary);
+            color: var(--accent-gold);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .mintmark-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .mintmark-table tr:hover td {
+            background: var(--bg-tertiary);
+        }
+
+        .mintmark-code {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--accent-salmon);
+            background: var(--bg-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .rarity-common { color: #6eb86e; }
+        .rarity-scarce { color: #d4af37; }
+        .rarity-rare { color: #fa8072; }
+        .rarity-very-rare { color: #e74c3c; }
+
+        /* Tips Cards */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .tip-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tip-card ul {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-left: 1.25rem;
+        }
+
+        .tip-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Mintmark Finder */
+        .finder-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .finder-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .finder-input input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: monospace;
+        }
+
+        .finder-input input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .finder-input input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .finder-result {
+            padding: 1.5rem;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        .finder-result.found {
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .finder-result.not-found {
+            border-left: 3px solid var(--text-secondary);
+        }
+
+        /* References */
+        .ref-list {
+            list-style: none;
+        }
+
+        .ref-list li {
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .ref-list li strong {
+            color: var(--text-primary);
+        }
+
+        .ref-list a {
+            color: var(--accent-salmon);
+            text-decoration: none;
+        }
+
+        .ref-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer a {
+            color: var(--accent-salmon);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .mintmark-table {
+                font-size: 0.9rem;
+            }
+
+            .mintmark-table th,
+            .mintmark-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">🪙 Ancient Coin Checklist</a>
+            <nav class="header-nav">
+                <a href="../carausius-virgil/" class="nav-link">Carausius & Virgil</a>
+                <a href="../#resources" class="nav-link">Resources</a>
+                <a href="../" class="back-link">← Checklist</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>THE LONDINIUM MINT</h1>
+        <p class="subtitle">
+            A comprehensive guide to the Roman mint at London — one of the most historically significant 
+            provincial mints of the late Roman Empire, operating during Britain's turbulent transition 
+            from breakaway empire to reconquered province.
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">c. 286</div>
+                <div class="stat-label">First Coinage</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">~40</div>
+                <div class="stat-label">Years Active</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">12+</div>
+                <div class="stat-label">Emperors</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Mintmark Variants</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <!-- History Timeline -->
+        <section id="history">
+            <div class="section-header">
+                <span class="section-icon">📜</span>
+                <h2>History of the Mint</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 286-287 AD</div>
+                    <div class="timeline-title">Carausius Establishes the Mint</div>
+                    <div class="timeline-desc">
+                        The usurper Carausius, commander of the Classis Britannica, establishes the Londinium mint 
+                        after declaring himself emperor of Britain and northern Gaul. His coins feature remarkable 
+                        literary references, including abbreviated quotes from Virgil's Fourth Eclogue.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">293 AD</div>
+                    <div class="timeline-title">Allectus Takes Power</div>
+                    <div class="timeline-desc">
+                        Allectus, Carausius's finance minister, assassinates his emperor and takes control. 
+                        The London mint continues operating, though coin quality and artistic style decline. 
+                        His quinarii with galley reverses are particularly distinctive.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">296 AD</div>
+                    <div class="timeline-title">Constantius I Reconquers Britain</div>
+                    <div class="timeline-desc">
+                        Caesar Constantius Chlorus defeats Allectus and reintegrates Britain into the Roman Empire. 
+                        The famous "LON" mintmark medallion celebrates his arrival with the legend "REDDITOR LVCIS AETERNAE" 
+                        (Restorer of Eternal Light). The mint is reorganized under tetrarchic control.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">296-310 AD</div>
+                    <div class="timeline-title">Tetrarchic Period</div>
+                    <div class="timeline-desc">
+                        The mint produces coins for all four tetrarchs: Diocletian, Maximian, Constantius I, and Galerius. 
+                        Mintmarks evolve from LON to variations including PLN (Pecunia Londinium) and MSL.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">310-314 AD</div>
+                    <div class="timeline-title">Constantine I and Licinius</div>
+                    <div class="timeline-desc">
+                        Following Constantius I's death at York in 306, his son Constantine uses the London mint 
+                        to assert legitimacy. Coins for both Constantine and his co-emperor Licinius are produced.
+                        The mint uses PLN and PLON mintmarks during this period.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 314 AD</div>
+                    <div class="timeline-title">First Closure</div>
+                    <div class="timeline-desc">
+                        The London mint closes as Constantine consolidates power and reduces the number of 
+                        provincial mints. Britain would rely on continental mints for coinage.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">c. 383 AD</div>
+                    <div class="timeline-title">Magnus Maximus Revival (Possible)</div>
+                    <div class="timeline-desc">
+                        Some numismatists attribute certain coins of the usurper Magnus Maximus to a briefly 
+                        reopened London mint (mintmark AVG or AVGOB). This attribution remains debated.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emperors -->
+        <section id="emperors">
+            <div class="section-header">
+                <span class="section-icon">👑</span>
+                <h2>Emperors of the London Mint</h2>
+            </div>
+            
+            <div class="emperor-grid">
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">🦅</div>
+                        <div>
+                            <div class="emperor-name">Carausius</div>
+                            <div class="emperor-dates">r. 286-293 AD</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        The founder. A Menapian naval commander who created an independent British empire. 
+                        His coins are prized for their literary sophistication — the RSR and INPCDA marks 
+                        reference Virgil's messianic Fourth Eclogue. Legitimacy through poetry.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">L</span>
+                        <span class="mintmark-tag">LON</span>
+                        <span class="mintmark-tag">ML</span>
+                        <span class="mintmark-tag">MLXXI</span>
+                        <span class="mintmark-tag">RSR</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">⚓</div>
+                        <div>
+                            <div class="emperor-name">Allectus</div>
+                            <div class="emperor-dates">r. 293-296 AD</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        The usurper's usurper. Finance minister who murdered Carausius but couldn't match 
+                        his predecessor's vision. Coins show artistic decline but remain historically fascinating. 
+                        His galley quinarii are iconic symbols of the breakaway empire.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">ML</span>
+                        <span class="mintmark-tag">MSL</span>
+                        <span class="mintmark-tag">S/P</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">⚔️</div>
+                        <div>
+                            <div class="emperor-name">Constantius I Chlorus</div>
+                            <div class="emperor-dates">Caesar 293-305, Augustus 305-306 AD</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        The reconqueror. His arrival at London in 296 is commemorated on one of Roman Britain's 
+                        most famous coins — the REDDITOR LVCIS AETERNAE medallion. Father of Constantine the Great.
+                        Died at York in 306 after campaigning against the Picts.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">LON</span>
+                        <span class="mintmark-tag">PLN</span>
+                        <span class="mintmark-tag">L</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">🏛️</div>
+                        <div>
+                            <div class="emperor-name">Diocletian</div>
+                            <div class="emperor-dates">r. 284-305 AD (Augustus)</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        The architect of the Tetrarchy. Though he never visited Britain, London struck coins 
+                        in his name as senior Augustus. His administrative reforms shaped how provincial 
+                        mints operated across the empire.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">LON</span>
+                        <span class="mintmark-tag">PLN</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">🛡️</div>
+                        <div>
+                            <div class="emperor-name">Maximian</div>
+                            <div class="emperor-dates">r. 286-305 AD (Augustus)</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        Diocletian's co-Augustus in the west. London minted coins bearing his portrait and 
+                        titles after the reconquest. His troubled later career (multiple abdications and 
+                        comebacks) makes London issues from specific periods desirable.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">LON</span>
+                        <span class="mintmark-tag">PLN</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">☀️</div>
+                        <div>
+                            <div class="emperor-name">Constantine I</div>
+                            <div class="emperor-dates">Caesar 306, Augustus 306-337 AD</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        Proclaimed emperor at York after his father's death. London was one of the first 
+                        mints to recognize him. His early London issues are historically important as 
+                        they document his rise from regional usurper to sole ruler of the Roman world.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">PLN</span>
+                        <span class="mintmark-tag">PLON</span>
+                        <span class="mintmark-tag">LON</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">🌙</div>
+                        <div>
+                            <div class="emperor-name">Licinius I</div>
+                            <div class="emperor-dates">r. 308-324 AD</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        Constantine's brother-in-law and eventual rival. London coins for Licinius were 
+                        struck during the period of cooperation between the two emperors. After his defeat, 
+                        these issues became relics of a brief peace.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">PLN</span>
+                    </div>
+                </div>
+
+                <div class="emperor-card">
+                    <div class="emperor-header">
+                        <div class="emperor-icon">❓</div>
+                        <div>
+                            <div class="emperor-name">Magnus Maximus</div>
+                            <div class="emperor-dates">r. 383-388 AD (debated)</div>
+                        </div>
+                    </div>
+                    <div class="emperor-body">
+                        Some scholars argue this British usurper briefly reopened the London mint. 
+                        The attribution of AVG-marked solidi to London remains controversial. 
+                        If genuine, these would be the last coins of Roman London.
+                    </div>
+                    <div class="emperor-mintmarks">
+                        <span class="mintmark-tag">AVG</span>
+                        <span class="mintmark-tag">AVGOB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mintmark Guide -->
+        <section id="mintmarks">
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h2>Mintmark Reference</h2>
+            </div>
+            
+            <table class="mintmark-table">
+                <thead>
+                    <tr>
+                        <th>Mintmark</th>
+                        <th>Period</th>
+                        <th>Meaning</th>
+                        <th>Rarity</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="mintmark-code">L</span></td>
+                        <td>286-296</td>
+                        <td>Londinium</td>
+                        <td class="rarity-common">Common</td>
+                        <td>Simple early mark used by Carausius</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">LON</span></td>
+                        <td>286-314</td>
+                        <td>Londinium</td>
+                        <td class="rarity-common">Common</td>
+                        <td>Standard abbreviation, used throughout</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">ML</span></td>
+                        <td>286-296</td>
+                        <td>Moneta Londinium</td>
+                        <td class="rarity-scarce">Scarce</td>
+                        <td>Carausius and Allectus period</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">MLXXI</span></td>
+                        <td>286-293</td>
+                        <td>Moneta Londinium (purity mark)</td>
+                        <td class="rarity-rare">Rare</td>
+                        <td>XXI indicates silver content ratio</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">MSL</span></td>
+                        <td>293-296</td>
+                        <td>Moneta Signata Londinium</td>
+                        <td class="rarity-scarce">Scarce</td>
+                        <td>Used by Allectus</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">PLN</span></td>
+                        <td>296-314</td>
+                        <td>Pecunia Londinium</td>
+                        <td class="rarity-common">Common</td>
+                        <td>Standard tetrarchic format</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">PLON</span></td>
+                        <td>307-314</td>
+                        <td>Pecunia Londinium</td>
+                        <td class="rarity-scarce">Scarce</td>
+                        <td>Extended form, Constantine period</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">MLL</span></td>
+                        <td>286-293</td>
+                        <td>Moneta Londinium (doubled)</td>
+                        <td class="rarity-rare">Rare</td>
+                        <td>Carausius issue</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">RSR</span></td>
+                        <td>286-293</td>
+                        <td>Redeunt Saturnia Regna</td>
+                        <td class="rarity-very-rare">Very Rare</td>
+                        <td>Virgil's Eclogue IV: "The Golden Age returns"</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">INPCDA</span></td>
+                        <td>286-293</td>
+                        <td>Iam Nova Progenies Caelo Demittitur Alto</td>
+                        <td class="rarity-very-rare">Very Rare</td>
+                        <td>"Now a new generation descends from heaven"</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">S/P, S|P</span></td>
+                        <td>293-296</td>
+                        <td>Signata Pecunia</td>
+                        <td class="rarity-scarce">Scarce</td>
+                        <td>Split field marks, Allectus</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mintmark-code">AVG</span></td>
+                        <td>383-388?</td>
+                        <td>Augusta (disputed)</td>
+                        <td class="rarity-very-rare">Very Rare</td>
+                        <td>Magnus Maximus attribution debated</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Interactive Finder -->
+        <section id="finder">
+            <div class="section-header">
+                <span class="section-icon">🔎</span>
+                <h2>Mintmark Identifier</h2>
+            </div>
+            
+            <div class="finder-container">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Enter a mintmark from your coin to identify its period and significance:
+                </p>
+                <div class="finder-input">
+                    <input type="text" id="mintmark-input" placeholder="Enter mintmark (e.g., PLN, LON, RSR)" 
+                           autocomplete="off" spellcheck="false">
+                </div>
+                <div class="finder-result" id="finder-result">
+                    <p style="color: var(--text-secondary); font-style: italic;">
+                        Type a mintmark above to see details...
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Identification Tips -->
+        <section id="identification">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h2>Identification Tips</h2>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>🎨 Style Recognition</h3>
+                    <p>
+                        London coins have a distinctive style — portraits tend to be less refined than 
+                        continental mints but have character. Carausius coins often show a distinctive 
+                        "heavy-jawed" portrait style. Compare with known examples before attributing.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>⚖️ Weight Standards</h3>
+                    <ul>
+                        <li><strong>Antoninianus (Carausius):</strong> ~4g average, often lighter than official issues</li>
+                        <li><strong>Quinarius (Allectus):</strong> ~2.5-3g, distinctive galley reverses</li>
+                        <li><strong>Follis (Tetrarchic):</strong> ~10g initially, decreasing over time</li>
+                        <li><strong>Nummus (Constantine):</strong> ~3-4g reduced follis</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🏺 Patina & Metal</h3>
+                    <p>
+                        British finds often show distinctive green/brown patinas from UK soil conditions. 
+                        Genuine London coins may have slightly different alloy compositions than continental 
+                        issues — Carausius in particular used variable silver content.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>⚠️ Common Fakes</h3>
+                    <p>
+                        Carausius coins are frequently forged due to high collector demand. Watch for:
+                    </p>
+                    <ul>
+                        <li>Too-perfect legends (ancient dies had imperfections)</li>
+                        <li>Wrong weight or flan shape</li>
+                        <li>Modern tool marks visible under magnification</li>
+                        <li>Suspiciously good condition for the type</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📚 Key References</h3>
+                    <ul>
+                        <li><strong>RIC V.2</strong> — Carausius and Allectus</li>
+                        <li><strong>RIC VI</strong> — Diocletian through Maximinus II</li>
+                        <li><strong>RIC VII</strong> — Constantine to Licinius</li>
+                        <li><strong>Burnett (1984)</strong> — Coinage of Allectus</li>
+                        <li><strong>Williams (2004)</strong> — Carausius reference</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🌍 Finding London Coins</h3>
+                    <p>
+                        London mint coins appear regularly in:
+                    </p>
+                    <ul>
+                        <li>UK metal detecting finds (most common source)</li>
+                        <li>Major auction houses (CNG, Roma, Baldwin's)</li>
+                        <li>Specialist dealers in Romano-British material</li>
+                        <li>Old British collections being dispersed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section id="references">
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h2>Further Reading</h2>
+            </div>
+            
+            <ul class="ref-list">
+                <li>
+                    <strong>Mattingly, H. & Sydenham, E.A.</strong> — 
+                    <em>Roman Imperial Coinage, Volume V, Part 2</em> (1933) — 
+                    The standard reference for Carausius and Allectus
+                </li>
+                <li>
+                    <strong>Sutherland, C.H.V. & Carson, R.A.G.</strong> — 
+                    <em>Roman Imperial Coinage, Volume VI</em> (1967) — 
+                    Tetrarchic coinage including London mint
+                </li>
+                <li>
+                    <strong>Bruun, P.M.</strong> — 
+                    <em>Roman Imperial Coinage, Volume VII</em> (1966) — 
+                    Constantine through Licinius, final London issues
+                </li>
+                <li>
+                    <strong>de la Bédoyère, Guy</strong> — 
+                    "Carausius and the Marks RSR and INPCDA" (1998) — 
+                    Groundbreaking discovery of the Virgilian references
+                </li>
+                <li>
+                    <strong>Casey, P.J.</strong> — 
+                    <em>Carausius and Allectus: The British Usurpers</em> (1994) — 
+                    Comprehensive historical study
+                </li>
+                <li>
+                    <strong>Portable Antiquities Scheme</strong> — 
+                    <a href="https://finds.org.uk" target="_blank">finds.org.uk</a> — 
+                    Database of British finds including many London mint coins
+                </li>
+                <li>
+                    <strong>Wildwinds</strong> — 
+                    <a href="http://wildwinds.com" target="_blank">wildwinds.com</a> — 
+                    Free online reference with images of Roman coins
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>
+            Research compiled by <a href="../../janet/">Janet</a> 🐟 for the 
+            <a href="../">Ancient Coin Checklist</a>
+            <br/><a href="../carausius-virgil/">Carausius & Virgil</a> · <a href="../british-hoards/">British Hoards</a>
+        </p>
+        <p style="margin-top: 0.5rem;">
+            Last updated: February 2026
+        </p>
+    </footer>
+
+    <script>
+        // Mintmark database
+        const mintmarks = {
+            'L': {
+                period: '286-296 AD',
+                meaning: 'Londinium',
+                emperors: 'Carausius, Constantius I',
+                rarity: 'Common',
+                notes: 'Simple early mark used primarily by Carausius. Found in exergue of antoniniani.'
+            },
+            'LON': {
+                period: '286-314 AD',
+                meaning: 'Londinium',
+                emperors: 'Carausius through Constantine I',
+                rarity: 'Common',
+                notes: 'Standard three-letter abbreviation used throughout the mint\'s operation. The most frequently encountered London mintmark.'
+            },
+            'ML': {
+                period: '286-296 AD',
+                meaning: 'Moneta Londinium (Mint of London)',
+                emperors: 'Carausius, Allectus',
+                rarity: 'Scarce',
+                notes: 'Used during the British Empire period. Often found with officina marks (A, B, etc.)'
+            },
+            'MLXXI': {
+                period: '286-293 AD',
+                meaning: 'Moneta Londinium + XXI (purity mark)',
+                emperors: 'Carausius',
+                rarity: 'Rare',
+                notes: 'The XXI indicates a silver-to-bronze ratio standard. Carausius attempted to present his coinage as higher quality than continental issues.'
+            },
+            'MSL': {
+                period: '293-296 AD',
+                meaning: 'Moneta Signata Londinium',
+                emperors: 'Allectus',
+                rarity: 'Scarce',
+                notes: 'Characteristic of Allectus\'s reign. "Signata" suggests officially stamped money.'
+            },
+            'PLN': {
+                period: '296-314 AD',
+                meaning: 'Pecunia Londinium (Money of London)',
+                emperors: 'Constantius I, Diocletian, Maximian, Constantine I, Licinius',
+                rarity: 'Common',
+                notes: 'Standard tetrarchic format. The P (Pecunia) was used by mints across the empire.'
+            },
+            'PLON': {
+                period: '307-314 AD',
+                meaning: 'Pecunia Londinium (extended form)',
+                emperors: 'Constantine I',
+                rarity: 'Scarce',
+                notes: 'Extended four-letter form used in the later operation of the mint.'
+            },
+            'MLL': {
+                period: '286-293 AD',
+                meaning: 'Moneta Londinium (doubled L)',
+                emperors: 'Carausius',
+                rarity: 'Rare',
+                notes: 'Unusual doubled form, possibly indicating a specific officina or issue.'
+            },
+            'RSR': {
+                period: '286-293 AD',
+                meaning: 'Redeunt Saturnia Regna ("The Saturnian/Golden Age returns")',
+                emperors: 'Carausius',
+                rarity: 'Very Rare',
+                notes: 'One of the most remarkable Roman coin marks. References Virgil\'s Fourth Eclogue, associating Carausius with a prophesied new Golden Age. Discovered by Guy de la Bédoyère in 1998.'
+            },
+            'INPCDA': {
+                period: '286-293 AD',
+                meaning: 'Iam Nova Progenies Caelo Demittitur Alto ("Now a new generation descends from heaven on high")',
+                emperors: 'Carausius',
+                rarity: 'Very Rare',
+                notes: 'Companion to RSR, also from Virgil\'s Fourth Eclogue. Perhaps the only ancient coins to quote classical literature in abbreviated form.'
+            },
+            'S/P': {
+                period: '293-296 AD',
+                meaning: 'Signata Pecunia',
+                emperors: 'Allectus',
+                rarity: 'Scarce',
+                notes: 'Split field marks appearing on either side of a device in the reverse field.'
+            },
+            'SP': {
+                period: '293-296 AD',
+                meaning: 'Signata Pecunia',
+                emperors: 'Allectus',
+                rarity: 'Scarce',
+                notes: 'Variant of S/P, letters together. Used on Allectus quinarii and antoniniani.'
+            },
+            'AVG': {
+                period: '383-388 AD (?)',
+                meaning: 'Augusta (disputed)',
+                emperors: 'Magnus Maximus (debated)',
+                rarity: 'Very Rare',
+                notes: 'Attribution of AVG-marked gold to London is controversial. Some scholars argue these are from a briefly reopened London mint; others assign them to continental mints. If genuine, these would be the last Roman coins of London.'
+            },
+            'AVGOB': {
+                period: '383-388 AD (?)',
+                meaning: 'Augusta Obryzum (pure gold)',
+                emperors: 'Magnus Maximus (debated)',
+                rarity: 'Very Rare',
+                notes: 'OB indicates refined gold (obryzum). Same attribution debate as AVG.'
+            }
+        };
+
+        const input = document.getElementById('mintmark-input');
+        const result = document.getElementById('finder-result');
+
+        input.addEventListener('input', function() {
+            const query = this.value.toUpperCase().trim().replace(/[|\/]/g, '');
+            
+            if (!query) {
+                result.className = 'finder-result';
+                result.innerHTML = '<p style="color: var(--text-secondary); font-style: italic;">Type a mintmark above to see details...</p>';
+                return;
+            }
+
+            // Try exact match first, then partial
+            let match = mintmarks[query];
+            if (!match) {
+                // Try without S/P separator variations
+                match = mintmarks[query.replace('SP', 'S/P')];
+            }
+            if (!match) {
+                // Try partial matches
+                for (const [key, value] of Object.entries(mintmarks)) {
+                    if (key.includes(query) || query.includes(key)) {
+                        match = value;
+                        break;
+                    }
+                }
+            }
+
+            if (match) {
+                result.className = 'finder-result found';
+                result.innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <span class="mintmark-code" style="font-size: 1.3rem;">${query}</span>
+                        <span style="color: var(--accent-gold); margin-left: 1rem;">${match.meaning}</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div><strong style="color: var(--text-primary);">Period:</strong> <span style="color: var(--text-secondary);">${match.period}</span></div>
+                        <div><strong style="color: var(--text-primary);">Emperors:</strong> <span style="color: var(--text-secondary);">${match.emperors}</span></div>
+                        <div><strong style="color: var(--text-primary);">Rarity:</strong> <span style="color: var(--text-secondary);">${match.rarity}</span></div>
+                        <div><strong style="color: var(--text-primary);">Notes:</strong> <span style="color: var(--text-secondary);">${match.notes}</span></div>
+                    </div>
+                `;
+            } else {
+                result.className = 'finder-result not-found';
+                result.innerHTML = `
+                    <p style="color: var(--text-secondary);">
+                        <strong style="color: var(--text-primary);">"${query}"</strong> not found in the London mintmark database.
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem; font-size: 0.9rem;">
+                        This could be a variant spelling, an officina mark, or possibly from a different mint. 
+                        Common London marks include: LON, PLN, ML, MSL, RSR, PLON.
+                    </p>
+                `;
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

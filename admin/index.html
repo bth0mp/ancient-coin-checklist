@@ -205,10 +205,122 @@
             border: none;
         }
         
+        /* Analytics */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .analytics-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .analytics-card .label { color: #888; font-size: 0.85rem; margin-bottom: 4px; }
+        .analytics-card .value { font-size: 1.8rem; font-weight: 700; }
+        .analytics-card .value.gold { color: #ffd700; }
+        .analytics-card .value.green { color: #4ade80; }
+        .analytics-card .value.blue { color: #60a5fa; }
+        
+        /* Bar Charts */
+        .bar-chart { margin-top: 8px; }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 140px;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .bar-track {
+            flex: 1;
+            height: 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .bar-fill.blue { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .bar-fill.green { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .bar-value {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: #000;
+            font-weight: 600;
+        }
+        .bar-count {
+            width: 50px;
+            text-align: left;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        
+        /* Timeline */
+        .timeline-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 120px;
+            padding: 10px 0;
+        }
+        .timeline-bar {
+            flex: 1;
+            background: linear-gradient(180deg, #ffd700, #b8860b);
+            border-radius: 4px 4px 0 0;
+            min-width: 20px;
+            max-width: 60px;
+            position: relative;
+        }
+        .timeline-bar:hover { opacity: 0.8; }
+        .timeline-bar .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            display: none;
+        }
+        .timeline-bar:hover .tooltip { display: block; }
+        .timeline-labels {
+            display: flex;
+            gap: 4px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .timeline-labels span {
+            flex: 1;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            min-width: 20px;
+            max-width: 60px;
+        }
+        .no-data { color: #666; font-style: italic; padding: 20px 0; }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .stat-card .value { font-size: 1.5rem; }
+            .bar-label { width: 100px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -323,10 +435,33 @@
         <!-- Analytics Tab -->
         <div class="tab-content" id="tab-analytics">
             <div class="section">
-                <h2>📊 Collection Analytics</h2>
-                <div id="analyticsContent">
-                    <p>Loading analytics...</p>
-                </div>
+                <h2>📊 Collection Overview</h2>
+                <div id="overviewStats" class="analytics-grid"></div>
+            </div>
+            
+            <div class="section">
+                <h2>📈 Category Breakdown</h2>
+                <div id="categoryChart"></div>
+            </div>
+            
+            <div class="section">
+                <h2>💰 Top Valued Coins</h2>
+                <table id="topCoinsTable">
+                    <thead>
+                        <tr><th>Coin</th><th>Paid</th><th>Acquired</th></tr>
+                    </thead>
+                    <tbody id="topCoinsBody"></tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>📅 Acquisition Timeline</h2>
+                <div id="timelineChart"></div>
+            </div>
+            
+            <div class="section">
+                <h2>🎯 Category Completion</h2>
+                <div id="completionChart"></div>
             </div>
         </div>
         
@@ -442,10 +577,21 @@
             ownedCoins.forEach(([coinId]) => {
                 const acq = acquisitions[coinId] || {};
                 const note = notes[coinId] || '';
+                // Infer category if not set
+                let cat = acq.category;
+                if (!cat) {
+                    const id = coinId.toLowerCase();
+                    if (id.includes('athens') || id.includes('owl') || id.includes('tetradrachm')) cat = 'Greek';
+                    else if (id.includes('denarius') || id.includes('sestertius') || id.includes('antoninianus')) cat = 'Roman';
+                    else if (id.includes('carausius') || id.includes('allectus') || id.includes('londinium')) cat = 'Londinium';
+                    else if (id.includes('parthian')) cat = 'Parthian';
+                    else if (id.includes('bactrian') || id.includes('kushan')) cat = 'Bactrian';
+                    else cat = '-';
+                }
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${coinId.replace(/-/g, ' ')}</td>
-                    <td>${acq.category || '-'}</td>
+                    <td>${cat}</td>
                     <td>${acq.date || '-'}</td>
                     <td>${acq.paid ? '$' + acq.paid : '-'}</td>
                     <td>${note ? note.substring(0, 50) + '...' : '-'}</td>
@@ -458,12 +604,21 @@
             wishlistBody.innerHTML = '';
             wishlistItems.forEach(([coinId]) => {
                 const note = notes[coinId] || '';
+                // Infer category from coin ID
+                let cat = '-';
+                const id = coinId.toLowerCase();
+                if (id.includes('athens') || id.includes('owl') || id.includes('tetradrachm')) cat = 'Greek';
+                else if (id.includes('denarius') || id.includes('sestertius') || id.includes('antoninianus')) cat = 'Roman';
+                else if (id.includes('carausius') || id.includes('allectus') || id.includes('londinium')) cat = 'Londinium';
+                else if (id.includes('parthian')) cat = 'Parthian';
+                else if (id.includes('bactrian') || id.includes('kushan')) cat = 'Bactrian';
+                
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${coinId.replace(/-/g, ' ')}</td>
+                    <td>${cat}</td>
                     <td>-</td>
-                    <td>-</td>
-                    <td>${note ? note.substring(0, 50) + '...' : '-'}</td>
+                    <td>${note ? note.substring(0, 50) + (note.length > 50 ? '...' : '') : '-'}</td>
                 `;
                 wishlistBody.appendChild(row);
             });
@@ -482,24 +637,8 @@
                 invoicesBody.appendChild(row);
             });
             
-            // Analytics
-            const analyticsContent = document.getElementById('analyticsContent');
-            const categories = {};
-            ownedCoins.forEach(([coinId]) => {
-                const acq = acquisitions[coinId] || {};
-                const cat = acq.category || 'Unknown';
-                categories[cat] = (categories[cat] || 0) + 1;
-            });
-            
-            let analyticsHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">';
-            Object.entries(categories).sort((a, b) => b[1] - a[1]).forEach(([cat, count]) => {
-                analyticsHTML += `<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
-                    <div style="color: #888;">${cat}</div>
-                    <div style="font-size: 1.5rem; color: #ffd700;">${count}</div>
-                </div>`;
-            });
-            analyticsHTML += '</div>';
-            analyticsContent.innerHTML = analyticsHTML || '<p>No data yet</p>';
+            // Build analytics
+            buildAnalytics(ownedCoins, acquisitions, notes, wishlistItems);
         }
         
         function exportAllData() {
@@ -547,6 +686,190 @@
                 }
             };
             reader.readAsText(file);
+        }
+        
+        function buildAnalytics(ownedCoins, acquisitions, notes, wishlistItems) {
+            // Overview Stats
+            let totalSpent = 0, pricedCount = 0, avgPrice = 0;
+            let highestCoin = { id: '', price: 0 };
+            let earliestDate = null, latestDate = null;
+            
+            ownedCoins.forEach(([coinId]) => {
+                const acq = acquisitions[coinId] || {};
+                if (acq.paid) {
+                    const price = parseFloat(acq.paid) || 0;
+                    totalSpent += price;
+                    pricedCount++;
+                    if (price > highestCoin.price) {
+                        highestCoin = { id: coinId, price };
+                    }
+                }
+                if (acq.date) {
+                    const d = new Date(acq.date);
+                    if (!earliestDate || d < earliestDate) earliestDate = d;
+                    if (!latestDate || d > latestDate) latestDate = d;
+                }
+            });
+            avgPrice = pricedCount ? (totalSpent / pricedCount) : 0;
+            
+            document.getElementById('overviewStats').innerHTML = `
+                <div class="analytics-card">
+                    <div class="label">Total Coins</div>
+                    <div class="value gold">${ownedCoins.length}</div>
+                </div>
+                <div class="analytics-card">
+                    <div class="label">Total Spent</div>
+                    <div class="value green">$${totalSpent.toFixed(0)}</div>
+                </div>
+                <div class="analytics-card">
+                    <div class="label">Average Price</div>
+                    <div class="value blue">$${avgPrice.toFixed(0)}</div>
+                </div>
+                <div class="analytics-card">
+                    <div class="label">Most Expensive</div>
+                    <div class="value gold">$${highestCoin.price.toFixed(0)}</div>
+                </div>
+                <div class="analytics-card">
+                    <div class="label">Wishlist Items</div>
+                    <div class="value blue">${wishlistItems.length}</div>
+                </div>
+                <div class="analytics-card">
+                    <div class="label">With Prices</div>
+                    <div class="value green">${pricedCount}/${ownedCoins.length}</div>
+                </div>
+            `;
+            
+            // Category breakdown
+            const categories = {};
+            ownedCoins.forEach(([coinId]) => {
+                // Try to infer category from coin ID if not in acquisitions
+                const acq = acquisitions[coinId] || {};
+                let cat = acq.category;
+                if (!cat) {
+                    // Infer from naming patterns
+                    const id = coinId.toLowerCase();
+                    if (id.includes('athens') || id.includes('owl') || id.includes('tetradrachm')) cat = 'Greek';
+                    else if (id.includes('denarius') || id.includes('sestertius') || id.includes('antoninianus')) cat = 'Roman Imperial';
+                    else if (id.includes('republican') || id.includes('legionary')) cat = 'Roman Republic';
+                    else if (id.includes('carausius') || id.includes('allectus') || id.includes('londinium')) cat = 'Londinium';
+                    else if (id.includes('parthian')) cat = 'Parthian';
+                    else if (id.includes('bactrian') || id.includes('kushan')) cat = 'Bactrian/Kushan';
+                    else if (id.includes('byzantine')) cat = 'Byzantine';
+                    else cat = 'Other';
+                }
+                categories[cat] = (categories[cat] || 0) + 1;
+            });
+            
+            const sortedCats = Object.entries(categories).sort((a, b) => b[1] - a[1]);
+            const maxCat = sortedCats.length ? sortedCats[0][1] : 1;
+            
+            let catHTML = '<div class="bar-chart">';
+            sortedCats.forEach(([cat, count]) => {
+                const pct = (count / maxCat) * 100;
+                catHTML += `
+                    <div class="bar-row">
+                        <span class="bar-label">${cat}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: ${pct}%"></div>
+                            <span class="bar-value">${count}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            catHTML += '</div>';
+            document.getElementById('categoryChart').innerHTML = catHTML || '<p class="no-data">No category data</p>';
+            
+            // Top valued coins
+            const coinsByValue = ownedCoins
+                .map(([coinId]) => {
+                    const acq = acquisitions[coinId] || {};
+                    return { id: coinId, paid: parseFloat(acq.paid) || 0, date: acq.date };
+                })
+                .filter(c => c.paid > 0)
+                .sort((a, b) => b.paid - a.paid)
+                .slice(0, 10);
+            
+            const topBody = document.getElementById('topCoinsBody');
+            topBody.innerHTML = '';
+            if (coinsByValue.length === 0) {
+                topBody.innerHTML = '<tr><td colspan="3" class="no-data">No priced coins yet</td></tr>';
+            } else {
+                coinsByValue.forEach(c => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${c.id.replace(/-/g, ' ')}</td>
+                        <td style="color: #4ade80; font-weight: 600;">$${c.paid.toFixed(0)}</td>
+                        <td style="color: #888;">${c.date || '-'}</td>
+                    `;
+                    topBody.appendChild(row);
+                });
+            }
+            
+            // Acquisition timeline (by month)
+            const monthlySpend = {};
+            const monthlyCounts = {};
+            ownedCoins.forEach(([coinId]) => {
+                const acq = acquisitions[coinId] || {};
+                if (acq.date) {
+                    const d = new Date(acq.date);
+                    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                    monthlySpend[key] = (monthlySpend[key] || 0) + (parseFloat(acq.paid) || 0);
+                    monthlyCounts[key] = (monthlyCounts[key] || 0) + 1;
+                }
+            });
+            
+            const months = Object.keys(monthlySpend).sort();
+            if (months.length === 0) {
+                document.getElementById('timelineChart').innerHTML = '<p class="no-data">No dated acquisitions yet</p>';
+            } else {
+                const maxSpend = Math.max(...Object.values(monthlySpend), 1);
+                let timelineHTML = '<div class="timeline-row">';
+                months.forEach(m => {
+                    const spend = monthlySpend[m];
+                    const count = monthlyCounts[m];
+                    const height = (spend / maxSpend) * 100;
+                    timelineHTML += `
+                        <div class="timeline-bar" style="height: ${Math.max(height, 5)}%;">
+                            <div class="tooltip">${m}<br>$${spend.toFixed(0)} (${count} coins)</div>
+                        </div>
+                    `;
+                });
+                timelineHTML += '</div><div class="timeline-labels">';
+                months.forEach(m => {
+                    const [y, mo] = m.split('-');
+                    timelineHTML += `<span>${mo}/${y.slice(2)}</span>`;
+                });
+                timelineHTML += '</div>';
+                document.getElementById('timelineChart').innerHTML = timelineHTML;
+            }
+            
+            // Category completion (based on estimated totals)
+            const categoryTotals = {
+                'Londinium': 50,    // Approximate known Londinium mint coins
+                'Greek': 200,       // Many possibilities
+                'Roman Imperial': 300,
+                'Roman Republic': 150,
+                'Parthian': 80,
+                'Bactrian/Kushan': 60,
+                'Byzantine': 100
+            };
+            
+            let completionHTML = '<div class="bar-chart">';
+            Object.entries(categoryTotals).forEach(([cat, total]) => {
+                const owned = categories[cat] || 0;
+                const pct = Math.min((owned / total) * 100, 100);
+                completionHTML += `
+                    <div class="bar-row">
+                        <span class="bar-label">${cat}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill ${pct >= 50 ? 'green' : 'blue'}" style="width: ${pct}%"></div>
+                        </div>
+                        <span class="bar-count">${owned}/${total}</span>
+                    </div>
+                `;
+            });
+            completionHTML += '</div>';
+            document.getElementById('completionChart').innerHTML = completionHTML;
         }
     </script>
 </body>

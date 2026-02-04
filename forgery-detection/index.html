@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Coin Forgery Detection Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16161a;
+            --card-bg: #25253a;
+            --text: #e8e8e8;
+            --text-muted: #a0a0a0;
+            --danger: #e74c3c;
+            --danger-light: #ff6b6b;
+            --warning: #f39c12;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 3rem;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+        }
+        
+        .warning-banner {
+            background: linear-gradient(135deg, #4a1f1f 0%, #2d1515 100%);
+            border: 2px solid var(--danger);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .warning-banner h3 {
+            color: var(--danger-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .warning-banner p {
+            color: #ffcccc;
+        }
+        
+        .toc {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .toc h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+            columns: 2;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .toc a:hover {
+            color: var(--gold);
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gold);
+        }
+        
+        section h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--gold-light);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card h4 {
+            margin-bottom: 0.75rem;
+            color: var(--gold-light);
+        }
+        
+        .red-flag {
+            border-left: 4px solid var(--danger);
+        }
+        
+        .red-flag h4 {
+            color: var(--danger-light);
+        }
+        
+        .green-flag {
+            border-left: 4px solid var(--success);
+        }
+        
+        .green-flag h4 {
+            color: var(--success);
+        }
+        
+        .yellow-flag {
+            border-left: 4px solid var(--warning);
+        }
+        
+        .yellow-flag h4 {
+            color: var(--warning);
+        }
+        
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .forgery-type {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .forgery-type {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .type-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #3a3a5a;
+        }
+        
+        .type-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .danger-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .danger-high {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .danger-medium {
+            background: var(--warning);
+            color: #1a1a2e;
+        }
+        
+        .danger-low {
+            background: var(--success);
+            color: white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #3a3a5a;
+        }
+        
+        th {
+            background: var(--darker-bg);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        .checklist {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .checklist h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #3a3a5a;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .quote {
+            border-left: 4px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        
+        .quote cite {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--gold);
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tool-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .tool-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-item h5 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .tool-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        .comparison-table {
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .stat {
+            font-size: 2rem;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--gold);
+            margin-top: 3rem;
+            color: var(--text-muted);
+        }
+        
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .toc ul {
+                columns: 1;
+            }
+            
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../coins/" class="back-link">← Back to Collection</a>
+        
+        <header>
+            <h1>🔍 Forgery Detection Guide</h1>
+            <p class="subtitle">How to Identify Fake Ancient Coins</p>
+        </header>
+        
+        <div class="warning-banner">
+            <h3>⚠️ The Stakes Are Real</h3>
+            <p>Forgeries have existed since antiquity — some ancient fakes are now collectible themselves. Modern forgeries, however, are created to deceive. Estimates suggest <strong>10-30% of ancient coins on the open market are fake</strong>, with some categories (rare gold, "investment grade" pieces) seeing even higher rates. Knowledge is your best defense.</p>
+        </div>
+        
+        <nav class="toc">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#types">1. Types of Forgeries</a></li>
+                <li><a href="#visual">2. Visual Detection</a></li>
+                <li><a href="#physical">3. Physical Tests</a></li>
+                <li><a href="#provenance">4. Provenance Red Flags</a></li>
+                <li><a href="#categories">5. High-Risk Categories</a></li>
+                <li><a href="#tools">6. Detection Tools</a></li>
+                <li><a href="#case-studies">7. Case Studies</a></li>
+                <li><a href="#resources">8. Resources</a></li>
+            </ul>
+        </nav>
+        
+        <section id="types">
+            <h2>1. Types of Forgeries</h2>
+            
+            <p>Understanding how fakes are made helps you spot them. Different production methods leave different telltale signs.</p>
+            
+            <div class="forgery-type">
+                <div class="type-card">
+                    <h4>Cast Forgeries <span class="danger-level danger-low">Easier to Detect</span></h4>
+                    <p>Made by creating a mold from a genuine coin and pouring molten metal. Most common type.</p>
+                    <ul>
+                        <li>Porous, "bubbly" surface texture</li>
+                        <li>Soft, mushy details</li>
+                        <li>Seam lines from mold halves</li>
+                        <li>Often slightly underweight (shrinkage)</li>
+                        <li>File marks where seams were removed</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <h4>Struck Forgeries <span class="danger-level danger-high">Hardest to Detect</span></h4>
+                    <p>Made with hand-cut dies, mimicking ancient production. The most dangerous fakes.</p>
+                    <ul>
+                        <li>Sharp, fresh details</li>
+                        <li>May have die polish lines</li>
+                        <li>Modern tool marks on edges</li>
+                        <li>Often "too perfect" for the type</li>
+                        <li>Die axis may be wrong for mint</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <h4>Electrotype <span class="danger-level danger-medium">Moderate Risk</span></h4>
+                    <p>Copper shells electroplated from genuine coins, filled with lead or solder.</p>
+                    <ul>
+                        <li>Seam visible on edge</li>
+                        <li>Wrong weight (usually light)</li>
+                        <li>Hollow sound when dropped</li>
+                        <li>Surface may be too "shiny"</li>
+                        <li>19th-century museum copies common</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <h4>Tooled/Altered <span class="danger-level danger-high">Very Deceptive</span></h4>
+                    <p>Genuine coins modified to increase value — different emperor, added features, etc.</p>
+                    <ul>
+                        <li>Inconsistent patina in reworked areas</li>
+                        <li>Portrait doesn't match legend style</li>
+                        <li>Scratches filled and re-toned</li>
+                        <li>Metal flow inconsistent</li>
+                        <li>May start as a genuine coin</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote">
+                <p>"The best defense against forgeries is to know your coins. Study die links, style, and fabric until authentic coins look 'right' and fakes look 'wrong' — even before you can articulate why."</p>
+                <cite>— Wayne Sayles, Classical Numismatic Group</cite>
+            </div>
+        </section>
+        
+        <section id="visual">
+            <h2>2. Visual Detection Methods</h2>
+            
+            <h3>Surface Examination</h3>
+            
+            <div class="card green-flag">
+                <h4>✓ Signs of Authenticity</h4>
+                <ul>
+                    <li><strong>Flow lines:</strong> Radiating lines from metal flowing under die pressure</li>
+                    <li><strong>Die wear progression:</strong> Consistent with known die sequences</li>
+                    <li><strong>Natural patina:</strong> Develops in recesses, thins on high points</li>
+                    <li><strong>Edge characteristics:</strong> Rough, irregular from ancient striking</li>
+                    <li><strong>Crystalline structure:</strong> Visible under magnification in silver</li>
+                </ul>
+            </div>
+            
+            <div class="card red-flag">
+                <h4>✗ Warning Signs</h4>
+                <ul>
+                    <li><strong>Casting bubbles:</strong> Tiny pits, especially in protected areas</li>
+                    <li><strong>Seam lines:</strong> Faint lines around the edge circumference</li>
+                    <li><strong>Mushy details:</strong> Soft, poorly defined features throughout</li>
+                    <li><strong>Artificial patina:</strong> Too uniform, wrong color, sits on surface</li>
+                    <li><strong>Modern tool marks:</strong> Machine-perfect edges, lathe marks</li>
+                    <li><strong>"Fresh" surfaces:</strong> No wear but heavy "patina" — contradictory</li>
+                </ul>
+            </div>
+            
+            <h3>Style Analysis</h3>
+            
+            <p>This is where experience matters most. Ancient die engravers had distinctive styles, regional variations, and period-appropriate conventions.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>What to Check</th>
+                        <th>Common Forger Mistakes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lettering</td>
+                        <td>Form, spacing, period-appropriate style</td>
+                        <td>Modern letter shapes, too uniform spacing</td>
+                    </tr>
+                    <tr>
+                        <td>Portrait</td>
+                        <td>Hair rendering, facial proportions, neck truncation</td>
+                        <td>Wrong portrait style for mint/period, lifeless expression</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse Figures</td>
+                        <td>Anatomy, drapery folds, attribute details</td>
+                        <td>Stiff posture, incorrect attributes, flat drapery</td>
+                    </tr>
+                    <tr>
+                        <td>Exergue Line</td>
+                        <td>Straight, curved, or absent per type</td>
+                        <td>Added where shouldn't exist, wrong style</td>
+                    </tr>
+                    <tr>
+                        <td>Border</td>
+                        <td>Dotted, linear, or beaded per period</td>
+                        <td>Wrong border type for denomination/era</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>The "Wrong" Test</h3>
+            
+            <p>With experience, authentic coins develop a familiar "feel." When examining a suspect coin, ask:</p>
+            
+            <div class="card yellow-flag">
+                <h4>⚡ Trust Your Instincts</h4>
+                <ul>
+                    <li>Does anything look "wrong" even if you can't explain it?</li>
+                    <li>Is it "too good to be true" — perfect centering, full legends, choice surfaces?</li>
+                    <li>Does the style match published examples from this mint?</li>
+                    <li>Would you stake your reputation on this coin?</li>
+                </ul>
+                <p><em>If something feels off, investigate further or walk away. Your instincts are often processing information your conscious mind hasn't articulated yet.</em></p>
+            </div>
+        </section>
+        
+        <section id="physical">
+            <h2>3. Physical Testing</h2>
+            
+            <h3>Essential Measurements</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test</th>
+                        <th>Equipment</th>
+                        <th>What It Reveals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Weight</strong></td>
+                        <td>Digital scale (0.01g precision)</td>
+                        <td>Cast fakes often 5-15% light due to shrinkage; plated fakes may be heavy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diameter</strong></td>
+                        <td>Calipers</td>
+                        <td>Cast copies shrink ~2-5%; should match known standards</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Die Axis</strong></td>
+                        <td>Visual rotation</td>
+                        <td>Mints had characteristic axes (Rome: 6 o'clock; Greek: varies)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Specific Gravity</strong></td>
+                        <td>Scale + water displacement</td>
+                        <td>Gold: 19.3, Silver: 10.5, Bronze: 8.9 — forgeries often wrong</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Specific Gravity Testing</h3>
+            
+            <p>One of the most reliable physical tests. Measures density by comparing weight in air vs. water:</p>
+            
+            <div class="card">
+                <h4>SG Formula</h4>
+                <p><strong>SG = Weight in Air ÷ (Weight in Air − Weight in Water)</strong></p>
+                <p>Expected values:</p>
+                <ul>
+                    <li>Pure gold: 19.3</li>
+                    <li>Electrum: 12-16 (varies by composition)</li>
+                    <li>Pure silver: 10.5</li>
+                    <li>Ancient silver (debased): 9.5-10.5</li>
+                    <li>Bronze: 8.7-8.9</li>
+                    <li>Lead (used in cast fakes): 11.3</li>
+                </ul>
+                <p><em>Note: Fourrées (ancient plated coins) and modern plated fakes will show wrong SG.</em></p>
+            </div>
+            
+            <h3>Non-Destructive Tests</h3>
+            
+            <div class="card green-flag">
+                <h4>✓ Safe Tests</h4>
+                <ul>
+                    <li><strong>Magnet test:</strong> Ancient silver/gold/bronze are non-magnetic. Any magnetic response = fake or modern</li>
+                    <li><strong>Ring test:</strong> Silver coins ring when dropped on hard surface; lead-filled fakes thud</li>
+                    <li><strong>Ice test (gold):</strong> Gold conducts heat rapidly — ice melts faster on gold than on fakes</li>
+                    <li><strong>Breath test:</strong> Authentic patina doesn't change when breathed on; artificial patina may fog differently</li>
+                </ul>
+            </div>
+            
+            <div class="card red-flag">
+                <h4>✗ Tests to Avoid</h4>
+                <ul>
+                    <li><strong>Acid testing:</strong> Destroys surfaces, voids guarantees</li>
+                    <li><strong>Filing/cutting:</strong> Permanent damage</li>
+                    <li><strong>Aggressive cleaning:</strong> Removes patina, lowers value</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="provenance">
+            <h2>4. Provenance Red Flags</h2>
+            
+            <p>Where a coin comes from often matters as much as how it looks.</p>
+            
+            <div class="card red-flag">
+                <h4>🚩 High-Risk Scenarios</h4>
+                <ul>
+                    <li><strong>"Old collection" with no documentation</strong> — The most common forger story</li>
+                    <li><strong>Eastern European or Bulgarian origin</strong> — Major forgery production centers</li>
+                    <li><strong>Seller refuses return policy</strong> — Legitimate dealers offer guarantees</li>
+                    <li><strong>Price too good to be true</strong> — Rare types at common prices = likely fake</li>
+                    <li><strong>No professional photos</strong> — Hides details that would reveal forgery</li>
+                    <li><strong>Auction house you've never heard of</strong> — Research reputation first</li>
+                    <li><strong>Facebook Marketplace / random eBay sellers</strong> — Buyer beware territory</li>
+                    <li><strong>Offered privately at a coin show</strong> — May be avoiding dealer scrutiny</li>
+                </ul>
+            </div>
+            
+            <div class="card green-flag">
+                <h4>✓ Confidence Builders</h4>
+                <ul>
+                    <li><strong>Published provenance</strong> — Appeared in prior auction catalogs</li>
+                    <li><strong>Old collection tickets/envelopes</strong> — Especially pre-1970</li>
+                    <li><strong>Reputable auction house</strong> — CNG, Roma, NAC, Heritage, etc.</li>
+                    <li><strong>Lifetime guarantee of authenticity</strong> — Standard from major dealers</li>
+                    <li><strong>Third-party grading</strong> — NGC Ancients provides additional review</li>
+                    <li><strong>Die match to published specimen</strong> — Proves same dies used</li>
+                </ul>
+            </div>
+            
+            <h3>The Bulgarian Connection</h3>
+            
+            <p>Bulgaria has become the world's primary source of ancient coin forgeries. Skilled craftsmen produce everything from crude tourist fakes to dangerous high-quality struck forgeries.</p>
+            
+            <div class="card yellow-flag">
+                <h4>⚠️ Known Forgery "Families"</h4>
+                <p>Certain prolific forgers' products are now documented:</p>
+                <ul>
+                    <li><strong>"Slavey" group:</strong> Greek silver, especially Macedonian</li>
+                    <li><strong>"Lipanoff" workshop:</strong> Roman aurei and rare denarii</li>
+                    <li><strong>"Becker" (historical):</strong> 19th-century dies still producing?</li>
+                </ul>
+                <p><em>Check databases like Forum Ancient Coins' fake reports before buying.</em></p>
+            </div>
+        </section>
+        
+        <section id="categories">
+            <h2>5. High-Risk Categories</h2>
+            
+            <p>Some coin types attract more forgeries due to high values or collector demand.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Risk Level</th>
+                        <th>Why Forged</th>
+                        <th>What to Watch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Roman Aurei</strong></td>
+                        <td><span class="danger-level danger-high">Extreme</span></td>
+                        <td>High gold value + collector premium</td>
+                        <td>SG test, die style, struck vs cast</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twelve Caesars Denarii</strong></td>
+                        <td><span class="danger-level danger-high">Extreme</span></td>
+                        <td>Popular set, high prices for early emperors</td>
+                        <td>Portrait style, especially Otho/Vitellius</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Greek Decadrachms</strong></td>
+                        <td><span class="danger-level danger-high">Extreme</span></td>
+                        <td>Syracuse, Athens — $50K+ genuine</td>
+                        <td>Die matches, weight, fabric</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Judaean Silver</strong></td>
+                        <td><span class="danger-level danger-high">Extreme</span></td>
+                        <td>Religious demand, limited supply</td>
+                        <td>Shekels especially targeted</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Athens Owls</strong></td>
+                        <td><span class="danger-level danger-medium">High</span></td>
+                        <td>Iconic, expensive in high grades</td>
+                        <td>Die style evolution, test cuts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alexander Tetradrachms</strong></td>
+                        <td><span class="danger-level danger-medium">High</span></td>
+                        <td>Huge market, many mint variations</td>
+                        <td>Mint attributions, style</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Byzantine Gold</strong></td>
+                        <td><span class="danger-level danger-medium">High</span></td>
+                        <td>Religious imagery, gold content</td>
+                        <td>Lightweight strikes common genuine</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Late Roman Bronze</strong></td>
+                        <td><span class="danger-level danger-low">Lower</span></td>
+                        <td>Low value = low forgery incentive</td>
+                        <td>Still verify expensive types</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="quote">
+                <p>"If someone offers you a rare coin at a common coin price, the most likely explanation is that it's a common fake, not a rare find."</p>
+                <cite>— David Sear, Roman Coins and Their Values</cite>
+            </div>
+        </section>
+        
+        <section id="tools">
+            <h2>6. Detection Tools</h2>
+            
+            <div class="tool-grid">
+                <div class="tool-item">
+                    <div class="icon">⚖️</div>
+                    <h5>Digital Scale</h5>
+                    <p>0.01g precision minimum. Essential for weight verification.</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">📏</div>
+                    <h5>Calipers</h5>
+                    <p>Digital calipers for diameter measurement to 0.1mm.</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">🔬</div>
+                    <h5>Loupe/Microscope</h5>
+                    <p>10x-30x magnification reveals surface details.</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">🧲</div>
+                    <h5>Rare Earth Magnet</h5>
+                    <p>Neodymium magnet for ferrous metal detection.</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">💡</div>
+                    <h5>Good Lighting</h5>
+                    <p>Raking light reveals surface texture issues.</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">📚</div>
+                    <h5>Reference Books</h5>
+                    <p>RIC, SNG, Sear — compare to published examples.</p>
+                </div>
+            </div>
+            
+            <h3>Advanced Testing (Professional)</h3>
+            
+            <div class="card">
+                <h4>XRF Analysis</h4>
+                <p>X-ray fluorescence provides precise metal composition analysis. Available through:</p>
+                <ul>
+                    <li>NGC Ancients (included with submission)</li>
+                    <li>University archaeology departments</li>
+                    <li>Some major auction houses</li>
+                    <li>Portable XRF devices ($15K+)</li>
+                </ul>
+                <p><strong>Reveals:</strong> Trace elements, plating layers, alloy composition — often conclusive for precious metals.</p>
+            </div>
+        </section>
+        
+        <section id="case-studies">
+            <h2>7. Case Studies</h2>
+            
+            <h3>Case 1: The "Perfect" Aureus</h3>
+            
+            <div class="card">
+                <p><strong>Scenario:</strong> A Nero aureus offered privately at a major coin show. "Old European collection." Price: $8,000 (market: $15,000+).</p>
+                <p><strong>Red flags found:</strong></p>
+                <ul>
+                    <li>Weight: 7.1g (should be ~7.3g for period)</li>
+                    <li>Surface showed faint casting porosity under 20x magnification</li>
+                    <li>Lettering style didn't match Rome mint products</li>
+                    <li>Seller refused to allow specific gravity test</li>
+                </ul>
+                <p><strong>Verdict:</strong> Cast forgery. Seller disappeared from the show.</p>
+            </div>
+            
+            <h3>Case 2: The Tooled Portrait</h3>
+            
+            <div class="card">
+                <p><strong>Scenario:</strong> Julius Caesar denarius, lifetime issue, excellent portrait. Major auction house, estimated $12,000.</p>
+                <p><strong>Investigation:</strong></p>
+                <ul>
+                    <li>Coin was genuine base — right weight, style, fabric</li>
+                    <li>Portrait showed tooling marks under magnification</li>
+                    <li>Original coin likely a lower-grade specimen</li>
+                    <li>Hair curls had been "enhanced" with modern tools</li>
+                    <li>Artificial toning applied over tooled areas</li>
+                </ul>
+                <p><strong>Verdict:</strong> Genuine coin, but tooled to increase grade. Withdrawn from auction after expert review.</p>
+            </div>
+            
+            <h3>Case 3: The Die Link Victory</h3>
+            
+            <div class="card green-flag">
+                <p><strong>Scenario:</strong> Suspiciously nice Syracuse decadrachm offered online. Seller unknown, price reasonable.</p>
+                <p><strong>Verification:</strong></p>
+                <ul>
+                    <li>Photographed coin at multiple angles</li>
+                    <li>Compared to published die study (Tudeer)</li>
+                    <li>Found exact obverse die match to known genuine specimen</li>
+                    <li>Weight matched within 0.1g of die-linked coin</li>
+                    <li>Specific gravity: 10.48 (pure silver)</li>
+                </ul>
+                <p><strong>Verdict:</strong> <strong>Authentic.</strong> Purchased and later confirmed by NGC Ancients with XRF.</p>
+            </div>
+        </section>
+        
+        <section id="resources">
+            <h2>8. Resources</h2>
+            
+            <h3>Online Databases</h3>
+            
+            <ul>
+                <li><a href="https://www.forumancientcoins.com/fakes/" style="color: var(--gold);">Forum Ancient Coins — Fake Reports</a> — Community-reported forgeries with photos</li>
+                <li><a href="https://www.cngcoins.com/" style="color: var(--gold);">CNG Archives</a> — Thousands of authenticated examples for comparison</li>
+                <li><a href="https://numismatics.org/" style="color: var(--gold);">American Numismatic Society</a> — MANTIS database, die studies</li>
+                <li><a href="https://www.acsearch.info/" style="color: var(--gold);">ACSearch</a> — Auction archives for provenance research</li>
+            </ul>
+            
+            <h3>Essential Books</h3>
+            
+            <ul>
+                <li><strong>Klawans, Z.</strong> — <em>Imitations and Inventions of Roman Coins</em></li>
+                <li><strong>Hill, G.F.</strong> — <em>Becker the Counterfeiter</em></li>
+                <li><strong>Sayles, W.</strong> — <em>Classical Deception</em></li>
+                <li><strong>Series-specific die studies</strong> — Vary by type (Crawford for Roman Republican, etc.)</li>
+            </ul>
+            
+            <h3>Professional Authentication</h3>
+            
+            <div class="card">
+                <h4>NGC Ancients</h4>
+                <p>Third-party grading with authenticity guarantee. Includes XRF analysis for precious metals. Coins encapsulated in tamper-evident holders.</p>
+                <p><strong>Pros:</strong> Objective opinion, transferable guarantee, liquidity boost</p>
+                <p><strong>Cons:</strong> Cost ($25-150), wait time, coin sealed in plastic</p>
+            </div>
+            
+            <h3>Community Resources</h3>
+            
+            <ul>
+                <li><a href="https://www.cointalk.com/forums/ancient-coins.pair/" style="color: var(--gold);">CoinTalk Ancient Coins Forum</a></li>
+                <li><a href="https://www.forumancientcoins.com/" style="color: var(--gold);">Forum Ancient Coins</a></li>
+                <li><a href="https://www.reddit.com/r/AncientCoins/" style="color: var(--gold);">Reddit r/AncientCoins</a></li>
+            </ul>
+            
+            <p><em>When in doubt, post photos and ask. The community is generally helpful and many experienced collectors will review coins for free.</em></p>
+        </section>
+        
+        <div class="checklist">
+            <h4>📋 Pre-Purchase Checklist</h4>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Does the weight fall within expected range for this type?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Are there any casting bubbles or seam lines visible?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Does the style match published examples from this mint?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Is the patina natural (thin on high points, heavy in recesses)?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Does the seller offer a lifetime authenticity guarantee?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Is the price consistent with market values, or suspiciously low?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Can you verify provenance or find die matches?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Have you checked fake report databases for this type?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Would you feel comfortable submitting this to NGC?</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div>Does anything feel "wrong" that you can't quite explain?</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Part of the <a href="../../coins/">Ancient Coin Checklist</a> educational resources</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Remember: When in doubt, don't buy. There will always be another coin.</p>
+        </footer>
+    </div>
+</body>
+</html>
